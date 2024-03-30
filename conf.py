@@ -228,7 +228,7 @@ release = ""
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = "en"
+language = "es"
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
@@ -293,7 +293,7 @@ html_theme_path = [alabaster.get_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-# html_title = None
+html_title = "Blog de Python Perú"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 # html_short_title = None
@@ -359,7 +359,7 @@ html_static_path = ["_static"]
 # Sphinx supports the following languages:
 #   'da', 'de', 'en', 'es', 'fi', 'fr', 'hu', 'it', 'ja'
 #   'nl', 'no', 'pt', 'ro', 'ru', 'sv', 'tr'
-# html_search_language = 'en'
+html_search_language = "es"
 
 # A dictionary with options for the search language support, empty by default.
 # Now only 'ja' uses this config value
@@ -370,6 +370,4 @@ html_static_path = ["_static"]
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "PythonPerublogdoc"
-
-
+htmlhelp_basename = "PythonPeruBlog"
