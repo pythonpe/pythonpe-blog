@@ -370,4 +370,4 @@ html_search_language = "es"
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "PythonPerublog"
+htmlhelp_basename = "PythonPeruBlog"
