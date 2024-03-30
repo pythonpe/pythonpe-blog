@@ -4,6 +4,5 @@
 Acerca de Python Perú
 =====================
 
-```python
-# TODO
-```
+.. code-block:: python
+    # TODO
