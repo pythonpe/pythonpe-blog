@@ -1,0 +1,32 @@
+name: Deploy Blog to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # or your default branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' 
+      
+      - name: Install Dependencies
+        run: |
+          pip install sphinx ablog sphinx_pydata_theme
+      
+      - name: Build Blog
+        run: ablog build
+      
+      - name: Publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_build/html
