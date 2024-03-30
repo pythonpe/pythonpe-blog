@@ -35,8 +35,8 @@ blog_baseurl = "blog.python.pe"
 # links. Dictionary keys are what should be used in ``post`` directive
 # to refer to the author.  Default is ``{}``.
 blog_authors = {
-    "Hellhound": ("Jean Pierre Chauvel", None),
-    "Soloidx": ("Ider Delzo", None),
+    "hellhound": ("Jean Pierre Chauvel", None),
+    "soloidx": ("Ider Delzo", None),
 }
 
 

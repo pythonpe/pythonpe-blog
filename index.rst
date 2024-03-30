@@ -3,13 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Python Peru's Blog!
-============================================
+Bienvenidos al Blog de Python Perú
+==================================
 
-Hello World! Find more about me here: :ref:`about`
+Hola Mundo! Encuentre más de nosotros aquí: :ref:`about`
 
 
-Here is a list of most recent posts:
+Posts recientes:
 
 .. postlist:: 5
    :excerpts:
@@ -26,4 +26,3 @@ Here is a list of most recent posts:
    :hidden:
 
    about.rst
-

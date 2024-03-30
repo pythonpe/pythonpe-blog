@@ -1,8 +1,9 @@
 
 .. _about:
 
-About Python Peru
-============================
+Acerca de Python Perú
+=====================
 
-The world wants to know more about you.
-
+```python
+# TODO
+```

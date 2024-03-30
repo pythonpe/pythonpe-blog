@@ -13,6 +13,16 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.12' 
+      - name: Set Locale
+        run: |
+          sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen es_PE.UTF-8
+          sudo localectl set-locale LANG="es_PE.UTF-8"
+          export LANG="es_PE.UTF-8"
+          sudo update-locale
+          locale -a
+          locale
+          locale -c -k LC_NUMERIC
+          localectl status
       - name: Install Dependencies
         run: |
           pip install -r requirements.txt
