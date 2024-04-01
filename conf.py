@@ -12,6 +12,9 @@ import os
 import sys
 import ablog
 import alabaster
+import locale
+
+locale.setlocale(locale.LC_ALL, "es_ES")
 
 # -- General ABlog Options ----------------------------------------------------
 
