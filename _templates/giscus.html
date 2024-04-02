@@ -1,0 +1,17 @@
+{% if pagename.startswith("blog") and pagename.split("/") | length > 1 %}
+<script src="https://giscus.app/client.js"
+        data-repo="pythonpe/pythonpe-blog"
+        data-repo-id="R_kgDOLnXH7w"
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOLnXH784CeaCq"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="es"
+        crossorigin="anonymous"
+        async>
+</script>
+{% endif %}
