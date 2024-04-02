@@ -14,7 +14,7 @@ import ablog
 import alabaster
 import locale
 
-locale.setlocale(locale.LC_ALL, "es_PE.UTF-8")
+#locale.setlocale(locale.LC_ALL, "es_PE.UTF-8")
 
 # -- General ABlog Options ----------------------------------------------------
 
@@ -116,9 +116,6 @@ html_sidebars = {
             'ablog/categories.html',  'ablog/archives.html',
             'searchbox.html',
             ],
-}
-html_theme_options = {
-    "article_footer_items": ["giscus.html"],
 }
 
 # -- Blog Feed Options --------------------------------------------------------
@@ -292,6 +289,7 @@ html_theme = 'pydata_sphinx_theme'
 # documentation.
 html_theme_options = {
     "search_bar_text": "Buscar en el blog...",
+    "article_footer_items": ["giscus.html"],
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
