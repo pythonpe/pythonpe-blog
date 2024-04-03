@@ -201,6 +201,7 @@ extensions = [
     'alabaster',
     'ablog',
     'myst_parser',
+    "sphinxcontrib.youtube",
 ]
 
 # The suffix(es) of source filenames.
