@@ -10,9 +10,9 @@ language: Spanish
 
 # Manejo de time zones en Python
 
-![Python developer](/_static/images/ia_developer_datetime.jpg)
-
 Una de las tareas muy frecuentes para un desarrollador es el manejo de fechas, y siempre es un dolor de cabeza manejar los time zones, si bien, actualmente existen librerías que nos ayudan enormemente en este proceso podemos repasar básicamente cómo implementar time zones por nosotros mismos.
+
+![Python developer](/_static/images/ia_developer_datetime.jpg)
 
 ## Uso simple con UTC:
 
