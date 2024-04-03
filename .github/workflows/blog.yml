@@ -15,10 +15,10 @@ jobs:
           python-version: '3.12' 
       - name: Set Locale
         run: |
-          sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen es_PE.UTF-8
-          sudo localectl set-locale LANG="es_PE.UTF-8"
-          export LANG="es_PE.UTF-8"
-          export LANGUAGE="es_PE.UTF-8"
+          sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen es_ES.UTF-8
+          sudo localectl set-locale LANG="es_ES.UTF-8"
+          export LANG="es_ES.UTF-8"
+          export LANGUAGE="es_ES.UTF-8"
           sudo update-locale
           locale -a
           locale

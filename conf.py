@@ -14,7 +14,7 @@ import ablog
 import alabaster
 import locale
 
-locale.setlocale(locale.LC_ALL, "es_PE.UTF-8")
+locale.setlocale(locale.LC_ALL, "es_ES.UTF-8")
 
 # -- General ABlog Options ----------------------------------------------------
 
