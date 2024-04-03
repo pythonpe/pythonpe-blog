@@ -1,4 +1,6 @@
 {% if pagename.startswith("blog") and pagename.split("/") | length > 1 %}
+{% set token = pagename.split("/")[-1] %}
+{% if "tag" != token and "archive" != token and not token.startswith("2") %}
 <script src="https://giscus.app/client.js"
         data-repo="pythonpe/pythonpe-blog"
         data-repo-id="R_kgDOLnXH7w"
@@ -14,4 +16,5 @@
         crossorigin="anonymous"
         async>
 </script>
+{% endif %}
 {% endif %}
