@@ -1,7 +1,7 @@
 {% if pagename.startswith("blog") and pagename.split("/") | length > 1 %}
 {% set dir = pagename.split("/")[1] %}
 {% set token = pagename.split("/")[-1] %}
-{% if "archive" != dir and "author" != dir and "category" != dir and "tag" != dir and not token.startswith("2") %}
+{% if "archive" != dir and "author" != dir and "category" != dir and "language" != dir and "location" != dir and "tag" != dir and not token.startswith("2") %}
 <script src="https://giscus.app/client.js"
         data-repo="pythonpe/pythonpe-blog"
         data-repo-id="R_kgDOLnXH7w"
