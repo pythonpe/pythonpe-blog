@@ -23,3 +23,7 @@ Then you can serve the files locally using this command:
 ```sh
 poetry run ablog serve
 ```
+
+## Notice
+
+Any contribution you make should be placed in the `blog/` directory and you could choose between reStructuredText (.rst) or Markdown (.md).
