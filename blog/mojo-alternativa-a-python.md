@@ -2,10 +2,10 @@
 blogpost: true
 date: Apr 2, 2024
 author: hellhound
-location: World
+location: Lima, Perú
 category: Lenguaje
 tags: mojo, python, ai-generated
-language: Spanish
+language: Español
 ---
 
 # Mojo: El Nuevo Lenguaje de Programación que Promete Revolucionar Python
