@@ -289,6 +289,23 @@ html_theme = 'pydata_sphinx_theme'
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
+    "icon_links": [
+        {
+            "name": "Grupo de WhatsApp",
+            "url": "https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk",
+            "icon": "fa-brands fa-whatsapp",
+        },
+        {
+            "name": "Repositorio del Blog en GitHub",
+            "url": "https://github.com/pythonpe/pythonpe-blog",
+            "icon": "fa-brands fa-github",
+        },
+        {
+            "name": "Python Perú",
+            "url": "https://python.pe",
+            "icon": "fa-brands fa-python",
+        },
+    ],
     "search_bar_text": "Buscar en el blog...",
     "article_footer_items": ["giscus.html"],
 }
