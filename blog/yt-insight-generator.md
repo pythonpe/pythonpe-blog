@@ -2,10 +2,10 @@
 blogpost: true
 date: Apr 3, 2024
 author: hellhound
-location: World
+location: Lima, Perú
 category: Scripts 
 tags: python, openai, gpt-4, gpt-4-turbo, youtube
-language: Spanish
+language: Español
 ---
 
 # Un Generador de Artículos para Blogs con formato Markdown usando GPT-4 Turbo

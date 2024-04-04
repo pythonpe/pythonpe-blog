@@ -2,10 +2,10 @@
 blogpost: true
 date: Apr 2, 2024
 author: soloidx
-location: World
+location: Lima, Perú
 category: Snippets
 tags: utilidades
-language: Spanish
+language: Español
 ---
 
 # Manejo de time zones en Python
