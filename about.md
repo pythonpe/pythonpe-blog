@@ -18,7 +18,7 @@ Damos la bienvenida a contribuciones de cualquier persona apasionada por Python 
 
 Una vez que hayas realizado tu contribución, crea una solicitud de extracción con un título descriptivo que resuma tu contribución. Nuestro equipo revisará tu artículo y trabajará contigo para finalizar cualquier edición o mejora.
 
-Para informarnos sobre tu contribución, puedes comunicarte con nuestra comunidad a través de nuestro grupo de WhatsApp o enviarnos un correo electrónico a blog@python.pe. Estamos emocionados de mostrar las diversas perspectivas y conocimientos de nuestros colaboradores y seguir construyendo un recurso rico para los entusiastas de Python.
+Para informarnos sobre tu contribución, puedes comunicarte con nuestra comunidad a través de nuestro grupo de [WhatsApp](https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk) o enviarnos un correo electrónico a [blog@python.pe](mailto:blog@python.pe). Estamos emocionados de mostrar las diversas perspectivas y conocimientos de nuestros colaboradores y seguir construyendo un recurso rico para los entusiastas de Python.
 
 Únete a nosotros en dar forma al blog de Python Perú y convertirlo en un recurso valioso para la comunidad y una plataforma para compartir tu pasión por la programación en Python.
 
