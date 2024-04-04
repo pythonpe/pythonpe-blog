@@ -14,9 +14,9 @@ En Python Perú, creemos en el poder de Python para transformar la forma en que 
 Ya sea que seas un desarrollador experimentado de Python o estés comenzando tu viaje en la programación, encontrarás recursos valiosos, discusiones interesantes y oportunidades para conectarte con personas afines en la comunidad de Python Perú.
 
 ## Únete
-Damos la bienvenida a contribuciones de cualquier persona apasionada por Python y ansiosa por compartir sus conocimientos con nuestra comunidad. Para contribuir a nuestro blog, simplemente clona o bifurca nuestro repositorio ubicado en [Repositorio del Blog de Python Perú](https://github.com/pythonpe/pythonpe-blog).
+Damos la bienvenida a contribuciones de cualquier persona apasionada por Python y ansiosa por compartir sus conocimientos con nuestra comunidad. Para contribuir a nuestro blog, simplemente clona o forkea nuestro repositorio ubicado en [Repositorio del Blog de Python Perú](https://github.com/pythonpe/pythonpe-blog).
 
-Una vez que hayas realizado tu contribución, crea una solicitud de extracción con un título descriptivo que resuma tu contribución. Nuestro equipo revisará tu artículo y trabajará contigo para finalizar cualquier edición o mejora.
+Una vez que hayas realizado tu contribución, crea una pull request con un título descriptivo que resuma tu contribución. Nuestro equipo revisará tu artículo y trabajará contigo para finalizar cualquier edición o mejora.
 
 Para informarnos sobre tu contribución, puedes comunicarte con nuestra comunidad a través de nuestro grupo de [WhatsApp](https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk) o enviarnos un correo electrónico a [blog@python.pe](mailto:blog@python.pe). Estamos emocionados de mostrar las diversas perspectivas y conocimientos de nuestros colaboradores y seguir construyendo un recurso rico para los entusiastas de Python.
 
