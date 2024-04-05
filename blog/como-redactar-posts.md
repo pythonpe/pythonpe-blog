@@ -8,7 +8,7 @@ tags: tutorial, git, pull-request, ablog, sphinx
 language: Español
 ---
 
-# Cómo Redactar Artículos en el Blog de Python Perú y no Morir en el Intento
+# Cómo Redactar Posts en el Blog de Python Perú y no Morir en el Intento
 
 Debo iniciar las líneas de este post dándoles la bienvenida a la comunidad de
 Python Perú y a este Blog que marca el inicio de una nueva etapa de la
@@ -26,7 +26,7 @@ comunidad.
 ```
 
 Cómo lo indicamos en la página [Acerca de Python Perú](/about.md), cualquier
-persona que esté interesada en publicar a través de nosotros un artículo sobre
+persona que esté interesada en publicar a través de nosotros un post sobre
 temas relacionados al lenguaje Python como pueden ser Meetups, la propia Pycon
 Perú o bien sobre herramientas y frameworks que utilicen el lenguaje Python,
 son bienvenidos a publicar en este Blog.
@@ -34,7 +34,7 @@ son bienvenidos a publicar en este Blog.
 
 ## Clonar el Repositorio de GitHub del Blog de Python Perú
 
-Ahora, para poder escribir un artículo, lo primero que debes hacer es clonar
+Ahora, para poder escribir un posts, lo primero que debes hacer es clonar
 el repositorio del Blog que está alojado en GitHub.
 
 ```{admonition} Nota
@@ -42,7 +42,7 @@ Todas las operaciones que usemos en este tutorial emplearán el comando `gh`
 por lo que te *recomendamos* descargarlo. [Link aquí](https://cli.github.com)
 ```
 
-Cómo muestra la imágen (marcalo en elípsis de color rojo), debes copiar el
+Cómo muestra la imágen (marcado en elípsis de color rojo), debes copiar el
 comando de GitHub CLI y luego ejecutarlo en la terminal.
 
 ![Clone GitHub repo](/_static/images/clone-github-repo.png)
@@ -59,8 +59,8 @@ línea de comandos de `gh` ejecutando: `gh auth login --help`.
 
 ## Crear el Branch Donde Irán tus Cambios
 
-Ahora que has clonado el repositorio, debes crear un branch donde colocar
-irán tus cambios y por su puesto tu nuevo artículo.
+Ahora que has clonado el repositorio, debes crear un branch donde irán
+tus cambios y por su puesto tu nuevo post.
 
 En la terminal, ejecuta el siguiente comando:
 
@@ -70,20 +70,20 @@ git checkout -b el-nombre-de-tu-branch main
 
 Debes reemplazar `el-nombre-de-tu-branch` por un nombre de branch. No tienes
 que preocuparte demasiado por pensar en un nombre creativo. Un ejemplo podría
-ser el nombre del artículo separado por guiones. Otro podría ser tu nickname.
+ser el nombre del post separado por guiones. Otro podría ser tu nickname.
 
 ```{admonition} Nota
 Si bien es cierto se menciona la utilización del comando `git`, se sobrentiende 
 que debe estar instalado en tu sistema ya que estamos utilizando GitHub. También
-se asume que debes tener una cuenta de GitHub creada. Además, aunque este
-artículo explica el flujo que debes seguir para crear un artículo, no es
-exhaustivo en como debes usar `git` u otras herramientas.
+se asume que debes tener una cuenta de GitHub creada. Además, aunque este post 
+explica el flujo que debes seguir para crear un post, no es exhaustivo en como 
+debes usar `git` u otras herramientas.
 ```
 
 
 ## Firma de Autor
 
-Este paso es escencial y preliminar a la edición de un artículo si es tu primera
+Este paso es escencial y preliminar a la edición de un post si es tu primera
 vez posteando en este Blog. Debes editar el archivo `AUTHORS` que se encuentra
 en la raíz del proyecto y poner tu nombre, tu nickname (este lo utilizarás para
 firmar los posts) y tu email.
@@ -97,28 +97,28 @@ que usas o por la que te conocen o te conocemos. joe.doe@example.com lo
 reemplazas por tu dirección de correo electrónico.
 
 
-## Creación del Artículo
+## Creación del Post 
 
-Ahora ya tienes todo preparado para iniciar la edición de tu artículo. Pero
+Ahora ya tienes todo preparado para iniciar la edición de tu Post. Pero
 existen ciertos pasos que debes seguir (que son opcionales) en caso de que
-desees correr el Blog localmente y ver como luciría tu artículo si estuviese
+desees correr el Blog localmente y ver como luciría tu post si estuviese
 publicado en el Blog.
 
-El artículo deberá estar en formato Markdown y deberá estar ubicado en el
+El post deberá estar en formato Markdown y deberá estar ubicado en el
 directorio `blog/`. La extensión del mismo será `.md`. Es texto plano, solo
 que Markdown utiliza una sintáxis especial para darle formato a la hora de
 mostrarlo en el explorador.
 
 El nombre del archivo deberá seguir esta nomenclatura:
 
-`nombre-del-articulo-de-manera-abreviada.md`
+`nombre-del-post-de-manera-abreviada.md`
 
 ```{admonition} Nota
 Puedes referirte a esta guía en Español de Markdown para informarte más
 sobre la sintáxis de este formato. [Link aquí](https://datosgobar.github.io/portal-andino/markdown-guide/)
 ```
 
-¡Ojo! Debes iniciar tus artículos con lo siguiente en Markdown:
+¡Ojo! Debes iniciar tus posts con lo siguiente en Markdown:
 
 ```markdown
 ---
@@ -133,8 +133,8 @@ language: Español
 ```
 
 Donde `blogpost` siempre será `true`. `date` tiene que tener ese formato de
-fecha, lamentamentablemente tiene que ser en inglés. Se escribe de la siguiente
-manera:
+fecha, lamentamentablemente tiene que ser escrita en inglés. Se escribe de la 
+siguiente manera:
 
 `Mes día, año`
 
@@ -155,13 +155,13 @@ El mes puede ser uno de los siguientes:
 `tags` tiene que ser una lista de etiquetas separadas por comas. si tienes una
 etiqueta que está comprendida por más de una palabra, únelas con guiones.
 
-`category` es el nombre de la categoría del artículo. Puede ser cualquier cosa
-que se te ocurra y puede estar comprendido por palabras separadas por espacios
-en blanco.
+`category` es el nombre de la categoría del post. Puede ser cualquier cosa
+que se te ocurra, mientras corresponda a lo que redactaste en el post,  y
+puede estar comprendido por palabras separadas por espacios en blanco.
 
 `language` siempre será "Español". Esto es debatible pero el público objetivo
 del Blog es hispanoparlante en su mayoría. Así que es obligatorio redactar en
-Español los artículos.
+Español los posts.
 
 
 ## Instalación Local del Blog y Ejecución del Mismo (Opcional)
@@ -204,7 +204,7 @@ versión 3.12 como mínimo.
 
 ## Creación del Pull Request
 
-Finalmente ya tienes tu artículo listo y deseas crear el pull request para ser
+Finalmente ya tienes tu post listo y deseas crear el pull request para ser
 revisado por {ref}`author-soloidx`, {ref}`author-hellhound` o {ref}`author-nefi`.
 
 Lo primero que debes hacer es ejecutar el siguiente comando especificando un
