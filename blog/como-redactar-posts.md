@@ -34,7 +34,7 @@ son bienvenidos a publicar en este Blog.
 
 ## Clonar el Repositorio de GitHub del Blog de Python Perú
 
-Ahora, para poder escribir un posts, lo primero que debes hacer es clonar
+Ahora, para poder escribir un post, lo primero que debes hacer es clonar
 el repositorio del Blog que está alojado en GitHub.
 
 ```{admonition} Nota
