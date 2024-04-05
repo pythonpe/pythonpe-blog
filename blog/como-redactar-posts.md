@@ -15,6 +15,7 @@ Python Perú y a este Blog que marca el inicio de una nueva etapa de la
 comunidad.
 
 ```{image} /_static/logo/logo.svg
+:class: markdown-body
 :alt: Python Perú
 :width: 200px
 :align: center
@@ -207,9 +208,14 @@ versión 3.12 como mínimo.
 Finalmente ya tienes tu post listo y deseas crear el pull request para ser
 revisado por {ref}`author-soloidx`, {ref}`author-hellhound` o {ref}`author-nefi`.
 
-Lo primero que debes hacer es ejecutar el siguiente comando especificando un
-título para tu PR y un cuerpo para el mismo. si no deseas poner un cuerpo solo
-obvia esa opción.
+Lo primero que debes hacer es avisar a {ref}`author-soloidx`, 
+{ref}`author-hellhound` o {ref}`author-nefi` sobre la redacción de tu post en el
+grupo de [WhatsApp](https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk).
+
+Una vez conseguida la autorización y que te hayan incluido al grupo de bloggers 
+de la organización Python Perú en GitHub, lo que debes hacer es ejecutar el
+siguiente comando especificando un título para tu PR y un cuerpo para el mismo.
+Ssi no deseas poner un cuerpo solo obvia esa opción.
 
 ```sh
 gh pr create --title "Aquí iría tu título del PR" --body "Aquí el cuerpo de tu PR"
@@ -226,10 +232,14 @@ git checkout tu-branch
 Una vez ejecutado el comando `gh` y siguiendo las indicaciones del mismo ¡Abrás
 creado satisfactoriamente el PR! Debes comunicar de su creación de inmediato
 a  {ref}`author-soloidx`, {ref}`author-hellhound` o {ref}`author-nefi` en el
-grupo de [WhatsApp](https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk).
+grupo de [WhatsApp](https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk) para que
+revisen tus cambios en el pull request y subsecuentemente hagan merge de estos
+en la rama `main`.
 
 
 Puedes ver tu PR creado yendo a [https://github.com/pythonpe/pythonpe-blog](https://github.com/pythonpe/pythonpe-blog)
 y luego seleccionando el tab "Pull Requests" como muestra en la imágen.
 
 ![Pull Requests](/_static/images/pull-requests-github.png)
+
+¡Y listo! Ya publicaste tu primer post.
