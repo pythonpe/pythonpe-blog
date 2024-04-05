@@ -1,10 +1,10 @@
 ---
 blogpost: true
 date: Apr 4, 2024
-author: soloidxjbolo
+author: jbolo
 location: Lima, Perú
 category: Snippets
-tags: utilidades
+tags: csv, pandas, utilidades
 language: Español
 ---
 
