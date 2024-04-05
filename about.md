@@ -23,3 +23,7 @@ Para informarnos sobre tu contribución, puedes comunicarte con nuestra comunida
 Únete a nosotros en dar forma al blog de Python Perú y convertirlo en un recurso valioso para la comunidad y una plataforma para compartir tu pasión por la programación en Python.
 
 Gracias por ser parte de nuestro viaje.
+
+```{admonition} Nota
+Si deseas contribuir con este Blog, puedes dar tus primeros pasos leyendo este [post](/blog/como-redactar-articulos.md).
+```
