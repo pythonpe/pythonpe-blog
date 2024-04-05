@@ -40,6 +40,7 @@ blog_baseurl = "blog.python.pe"
 blog_authors = {
     "hellhound": ("Jean Pierre Chauvel", None),
     "soloidx": ("Ider Delzo", None),
+    "jbolo": ("Jonathan Bolo", None),
 }
 
 
