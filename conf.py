@@ -8,15 +8,15 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import os
-import sys
-import ablog
 import alabaster
 import locale
 
 from authors import get_authors
 
-locale.setlocale(locale.LC_ALL, "es_ES.UTF-8")
+try:
+    locale.setlocale(locale.LC_ALL, "es_ES.UTF-8")
+except locale.Error:
+    pass
 
 # -- General ABlog Options ----------------------------------------------------
 
@@ -113,11 +113,14 @@ blog_authors = {
 # In addition, there are authors.html, languages.html, and locations.html
 # sidebars that link to author and location archive pages.
 html_sidebars = {
-    '**': [ 'ablog/postcard.html',
-            'ablog/recentposts.html', 'ablog/tagcloud.html',
-            'ablog/categories.html',  'ablog/archives.html',
-            'searchbox.html',
-            ],
+    '**': [
+        'ablog/postcard.html',
+        'ablog/recentposts.html',
+        'ablog/tagcloud.html',
+        'ablog/categories.html',
+        'ablog/archives.html',
+        'searchbox.html',
+    ],
 }
 
 # -- Blog Feed Options --------------------------------------------------------
