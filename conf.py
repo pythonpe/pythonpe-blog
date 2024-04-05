@@ -14,6 +14,8 @@ import ablog
 import alabaster
 import locale
 
+from authors import get_authors
+
 locale.setlocale(locale.LC_ALL, "es_ES.UTF-8")
 
 # -- General ABlog Options ----------------------------------------------------
@@ -38,9 +40,8 @@ blog_baseurl = "blog.python.pe"
 # links. Dictionary keys are what should be used in ``post`` directive
 # to refer to the author.  Default is ``{}``.
 blog_authors = {
-    "hellhound": ("Jean Pierre Chauvel", None),
-    "soloidx": ("Ider Delzo", None),
-    "jbolo": ("Jonathan Bolo", None),
+    nickname: (name, email_link)
+    for nickname, name, email_link in get_authors()
 }
 
 
