@@ -25,5 +25,5 @@ Para informarnos sobre tu contribución, puedes comunicarte con nuestra comunida
 Gracias por ser parte de nuestro viaje.
 
 ```{admonition} Nota
-Si deseas contribuir con este Blog, puedes dar tus primeros pasos leyendo este [post](/blog/como-redactar-articulos.md).
+Si deseas contribuir con este Blog, puedes dar tus primeros pasos leyendo este [post](/blog/como-redactar-posts.md).
 ```

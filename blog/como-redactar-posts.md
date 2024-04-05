@@ -34,8 +34,8 @@ son bienvenidos a publicar en este Blog.
 
 ## Clonar el Repositorio de GitHub del Blog de Python Perú
 
-Ahora, para poder escribir un post, lo primero que debes hacer es clonar el 
-repositorio del Blog que está alojado en GitHub.
+Ahora, para poder escribir un posts, lo primero que debes hacer es clonar
+el repositorio del Blog que está alojado en GitHub.
 
 ```{admonition} Nota
 Todas las operaciones que usemos en este tutorial emplearán el comando `gh`
@@ -60,7 +60,7 @@ línea de comandos de `gh` ejecutando: `gh auth login --help`.
 ## Crear el Branch Donde Irán tus Cambios
 
 Ahora que has clonado el repositorio, debes crear un branch donde irán
-tus cambios y por su puesto tu post nuevo.
+tus cambios y por su puesto tu nuevo post.
 
 En la terminal, ejecuta el siguiente comando:
 
@@ -92,9 +92,9 @@ Añade una línea al final del archivo con la siguiente nomenclatura:
 
 `Joe Doe(nickname) <joe.doe@example.com>`
 
-Donde "Joe Do"e lo reemplazas por tus nombres y apellido, nickname será la
-"chapa" que usas o por la que te conocen o te conocemos. "joe.doe@example.com"
-lo reemplazas por tu dirección de correo electrónico.
+Donde Joe Doe lo reemplazas por tus nombres y apellido, nickname será la "chapa"
+que usas o por la que te conocen o te conocemos. joe.doe@example.com lo
+reemplazas por tu dirección de correo electrónico.
 
 
 ## Creación del Post 
