@@ -28,7 +28,7 @@ blog_title = "Blog de Python Perú"
 
 # Base URL for the website, required for generating feeds.
 # e.g. blog_baseurl = "http://example.com/"
-blog_baseurl = "blog.python.pe"
+blog_baseurl = "https://blog.python.pe"
 
 # Choose to archive only post titles. Archiving only titles can speed
 # up project building.
