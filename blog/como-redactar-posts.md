@@ -14,7 +14,7 @@ Debo iniciar las líneas de este post dándoles la bienvenida a la comunidad de
 Python Perú y a este Blog que marca el inicio de una nueva etapa de la
 comunidad.
 
-![Pthon Perú Logo](/_static/logo/logo.svg){.markdown-body width=200px align=center}
+![Python Perú Logo](/_static/logo/logo.svg){.markdown-body width=200px align=center}
 
 ```{admonition} Repositorio de GitHub
 :class: sidebar note
