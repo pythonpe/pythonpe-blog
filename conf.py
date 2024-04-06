@@ -113,13 +113,13 @@ blog_authors = {
 # In addition, there are authors.html, languages.html, and locations.html
 # sidebars that link to author and location archive pages.
 html_sidebars = {
-    '**': [
-        'ablog/postcard.html',
-        'ablog/recentposts.html',
-        'ablog/tagcloud.html',
-        'ablog/categories.html',
-        'ablog/archives.html',
-        'searchbox.html',
+    "**": [
+        "ablog/postcard.html",
+        "ablog/recentposts.html",
+        "ablog/tagcloud.html",
+        "ablog/categories.html",
+        "ablog/archives.html",
+        "searchbox.html",
     ],
 }
 
@@ -200,12 +200,12 @@ needs_sphinx = '1.2'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.extlinks',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.todo',
-    'alabaster',
-    'ablog',
-    'myst_parser',
+    "sphinx.ext.extlinks",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.todo",
+    "alabaster",
+    "ablog",
+    "myst_parser",
     "sphinxcontrib.youtube",
 ]
 
@@ -237,8 +237,8 @@ master_doc = "index"
 
 # General information about the project.
 project = "Python Peru blog"
-copyright = "2024, Python Peru"
-author = "Python Peru"
+copyright = "2024, Python Perú"
+author = "Python Perú"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -289,7 +289,7 @@ exclude_patterns = [
 # show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = "sphinx"
 
 # A list of ignored prefixes for module index sorting.
 # modindex_common_prefix = []
@@ -305,7 +305,7 @@ todo_include_todos = False
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'pydata_sphinx_theme'
+html_theme = "pydata_sphinx_theme"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
