@@ -4,7 +4,7 @@ contain the root `toctree` directive."
 
 # Bienvenidos al Blog de Python Perú
 
-![Pthon Perú Logo](/_static/logo/logo.svg){.markdown-body width=300px align=center}
+![Python Perú Logo](/_static/logo/logo.svg){.markdown-body width=300px align=center}
 
 Encuentra más de nosotros [aquí](about.md).
 
