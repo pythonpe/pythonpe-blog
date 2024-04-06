@@ -2,7 +2,8 @@
 name = "pythonpe-blog"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Ider Delzo <soloidx@gmail.com>", "Jean-Pierre Chauvel <jean.pierre@chauvel.org>"]
+license = "Apache License, Version 2.0"
 readme = "README.md"
 
 [tool.poetry.dependencies]
