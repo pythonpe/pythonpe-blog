@@ -1,15 +1,20 @@
 {% if ablog %}
 <div class="ablog-sidebar-item ablog__recentposts">
 <h3>
-  <a href="{{ pathto(ablog.blog_path) }}">{{ gettext('Recent Posts') }}</a>
+  <a href="/{{ pathto(ablog.blog_path) }}">{{ gettext('Recent Posts') }}:</a>
 </h3>
 <ul>
   {% set pcount = 1 %}
   {% for recent in ablog.recent(5, pagename) %}
   <li>
-    <a href="{{ pathto(recent.docname) }}{{ anchor(recent) }}">
-      {{ recent.date.strftime(ablog.post_date_format_short) + " - " + recent.title }}
-    </a>
+      <a href="/{{ pathto(recent.docname) }}{{ anchor(recent) }}">
+          {{ recent.title }}
+      </a>
+      por
+      <a href="/{{ pathto(ablog.blog_path) }}author/{{ recent.author[0] | lower | replace(' ', '-')  }}/">
+        {{ recent.author[0] }}
+      </a>
+      el {{ recent.date.strftime(ablog.post_date_format) }}
     {% set ns = namespace(found_image=False) %}
     {% for excerpt in recent.excerpt %}
         {% for image in excerpt.traverse()  %}

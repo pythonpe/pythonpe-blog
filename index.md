@@ -8,7 +8,7 @@ contain the root `toctree` directive."
 
 Encuentra más de nosotros [aquí](about.md).
 
-## Posts recientes:
+## Entradas recientes:
 
 ```{postlist} 5
 ---
