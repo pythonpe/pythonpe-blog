@@ -1,7 +1,7 @@
 {% if ablog %}
 <div class="ablog-sidebar-item ablog__recentposts">
 <h3>
-  <a href="/{{ pathto(ablog.blog_path) }}">{{ gettext('Recent Posts') }}:</a>
+    <a href="{{ ablog.blog_baseurl}}/{{ pathto(ablog.blog_path) }}">{{ gettext('Recent Posts') }}:</a>
 </h3>
 <ul>
   {% set pcount = 1 %}
