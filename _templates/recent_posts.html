@@ -7,11 +7,11 @@
   {% set pcount = 1 %}
   {% for recent in ablog.recent(5, pagename) %}
   <li>
-      <a href="/{{ pathto(recent.docname) }}{{ anchor(recent) }}">
+      <a href="{{ ablog.blog_baseurl }}/{{ pathto(recent.docname) }}{{ anchor(recent) }}">
           {{ recent.title }}
       </a>
       por
-      <a href="/{{ pathto(ablog.blog_path) }}author/{{ recent.author[0] | lower | replace(' ', '-')  }}/">
+      <a href="{{ ablog.blog_baseurl }}/{{ pathto(ablog.blog_path) }}author/{{ recent.author[0] | lower | replace(' ', '-')  }}/">
         {{ recent.author[0] }}
       </a>
       el {{ recent.date.strftime(ablog.post_date_format) }}
@@ -21,7 +21,7 @@
             {% if not ns.found_image and image.tagname == 'image' %}
                 {% set ns.found_image = True %}
                 <p class="ablog-post-excerpt">
-                    <img src="/{{ image['uri'] }}" alt="{{ excerpt.astext() | safe }}">
+                    <img src="{{ ablog.blog_baseurl }}/{{ image['uri'] }}" alt="{{ excerpt.astext() | safe }}">
                 </p>
             {% endif %}
         {% endfor %}
