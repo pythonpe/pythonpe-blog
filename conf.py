@@ -378,7 +378,7 @@ templates_path = ["_templates"]
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
 html_additional_pages = {
-    "recent_posts": "ablog/recentposts.html",
+    "recent_posts": "recent_posts.html",
 }
 
 # If false, no module index is generated.
