@@ -10,19 +10,21 @@
     <a href="{{ pathto(recent.docname) }}{{ anchor(recent) }}">
       {{ recent.date.strftime(ablog.post_date_format_short) + " - " + recent.title }}
     </a>
+    {% set ns = namespace(found_image=False) %}
     {% for excerpt in recent.excerpt %}
-    {% for image in excerpt.traverse()  %}
-    {% if image.tagname == 'image' %}
-    <p class="ablog-post-excerpt">
-        <img src="/{{ image['uri'] }}" alt="{{ excerpt.astext() }}">
-    </p>
-    {% endif %}
-    {% endfor %}
-    {% if excerpt.tagname == 'paragraph' %}
-    <p class="ablog-post-excerpt">
-        {{ excerpt.astext() | safe }}
-    </p>
-    {% endif %}
+        {% for image in excerpt.traverse()  %}
+            {% if not ns.found_image and image.tagname == 'image' %}
+                {% set ns.found_image = True %}
+                <p class="ablog-post-excerpt">
+                    <img src="/{{ image['uri'] }}" alt="{{ excerpt.astext() | safe }}">
+                </p>
+            {% endif %}
+        {% endfor %}
+        {% if not ns.found_image and excerpt.tagname == 'paragraph' %}
+        <p class="ablog-post-excerpt">
+            {{ excerpt.astext() | safe }}
+        </p>
+        {% endif %}
     {% endfor %}
   </li>
   {% endfor %}
