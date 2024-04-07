@@ -1,1 +1,1 @@
-# Will be replaced by `ablog/recentposts.html`
+# Will be replaced by `recent_posts.html`

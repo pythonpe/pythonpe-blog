@@ -1,0 +1,31 @@
+{% if ablog %}
+<div class="ablog-sidebar-item ablog__recentposts">
+<h3>
+  <a href="{{ pathto(ablog.blog_path) }}">{{ gettext('Recent Posts') }}</a>
+</h3>
+<ul>
+  {% set pcount = 1 %}
+  {% for recent in ablog.recent(5, pagename) %}
+  <li>
+    <a href="{{ pathto(recent.docname) }}{{ anchor(recent) }}">
+      {{ recent.date.strftime(ablog.post_date_format_short) + " - " + recent.title }}
+      {% for excerpt in recent.excerpt %}
+      {% for image in excerpt.traverse()  %}
+      {% if image.tagname == 'image' %}
+      <p class="ablog-post-excerpt">
+          <img src="/{{ image['uri'] }}" alt="{{ excerpt.astext() }}">
+      </p>
+      {% endif %}
+      {% endfor %}
+      {% if excerpt.tagname == 'paragraph' %}
+      <p class="ablog-post-excerpt">
+          {{ excerpt.astext() | safe }}
+      </p>
+      {% endif %}
+      {% endfor %}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+</div>
+{% endif %}
