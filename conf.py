@@ -434,3 +434,7 @@ htmlhelp_basename = "PythonPeruBlog"
 
 # sphinx-sitemap URL scheme
 sitemap_url_scheme = "{link}"
+
+# A list of paths that contain extra files not directly related to the
+# documentation.
+html_extra_path = ["_extra"]
