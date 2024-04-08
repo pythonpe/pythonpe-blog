@@ -24,7 +24,7 @@ except locale.Error:
 # blog_path = 'blog'
 
 # The "title" for the blog, used in active pages.  Default is ``'Blog'``.
-blog_title = "Blog de Python Perú"
+blog_title = "Blog de Python Perú | Aprende y explora"
 
 # Base URL for the website, required for generating feeds.
 # e.g. blog_baseurl = "http://example.com/"
