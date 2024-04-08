@@ -21,7 +21,7 @@
             {% if not ns.found_image and image.tagname == 'image' %}
                 {% set ns.found_image = True %}
                 <p class="ablog-post-excerpt">
-                    <img src="{{ ablog.blog_baseurl }}/{{ image['uri'] }}" alt="{{ excerpt.astext() | safe }}">
+                    <img src="{{ ablog.blog_baseurl }}/{{ image['uri'] }}"{%if image.attributes.get('align') %} align="{{ image.attributes.get('align') }}"{% endif %}{%if image.attributes.get('width') %} width="{{ image.attributes.get('width') }}"{% endif %}{%if image.attributes.get('height') %} height="{{ image.attributes.get('height') }}"{% endif %} alt="{{ excerpt.astext() | safe }}">
                 </p>
             {% endif %}
         {% endfor %}
