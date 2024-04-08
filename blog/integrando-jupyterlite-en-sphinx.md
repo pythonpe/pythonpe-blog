@@ -124,7 +124,7 @@ color del prompt:
 
 En conclusión, experimentar con JupyterLite e integrarlo en mi blog de Sphinx
 usando la extensión jupyterlite-sphinx ha sido una experiencia gratificante.
-La capacidad de integrar de manera fluida notebooks nteractivos de Jupyter y
+La capacidad de integrar de manera fluida notebooks interactivos de Jupyter y
 consolas REPL en mi documentación ha añadido un nuevo nivel de interactividad y
 compromiso para mis lectores. Siguiendo los pasos de instalación y las opciones
 de configuración proporcionadas por jupyterlite-sphinx, es fácil mejorar tu blog
