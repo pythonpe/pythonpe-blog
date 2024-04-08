@@ -1,6 +1,9 @@
-[//]: # "Python Peru blog index file, created by `ablog start` on Fri Mar 29 18:14:52 2024.
-You can adapt this file completely to your liking, but it should at least
-contain the root `toctree` directive."
+---
+myst:
+  html_meta:
+   "description": "Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú."
+   "keywords": "Python, Perú, programación, blog, desarrollo, código, comunidad, lenguaje, tutoriales, proyectos, Machine Learnig, Inteligencia Artificial, IA, Frameworks"
+---
 
 # Bienvenidos al Blog de Python Perú
 
@@ -28,3 +31,4 @@ expand: Read more ...
    about.md
 
 ```
+
