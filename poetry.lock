@@ -758,6 +758,20 @@ lint = ["docutils-stubs", "flake8 (>=3.5.0)", "flake8-simplify", "isort", "mypy 
 test = ["cython (>=3.0)", "filelock", "html5lib", "pytest (>=4.6)", "setuptools (>=67.0)"]
 
 [[package]]
+name = "sphinx-sitemap"
+version = "2.5.1"
+description = "Sitemap generator for Sphinx"
+optional = false
+python-versions = "*"
+files = [
+    {file = "sphinx-sitemap-2.5.1.tar.gz", hash = "sha256:984bef068bbdbc26cfae209a8b61392e9681abc9191b477cd30da406e3a60ee5"},
+    {file = "sphinx_sitemap-2.5.1-py3-none-any.whl", hash = "sha256:0b7bce2835f287687f75584d7695e4eb8efaec028e5e7b36e9f791de3c344686"},
+]
+
+[package.dependencies]
+sphinx = ">=1.2"
+
+[[package]]
 name = "sphinxcontrib-applehelp"
 version = "1.0.8"
 description = "sphinxcontrib-applehelp is a Sphinx extension which outputs Apple help books"
@@ -957,4 +971,4 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "414aab39b3c1409bb8050bbb03bb5c94d20776f5558349e21f26d625108638b1"
+content-hash = "d294336d850650e240bd158d74e8b99d7269c6a9f8fd0b2c7ee54301cae22074"
