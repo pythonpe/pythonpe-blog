@@ -30,6 +30,10 @@ blog_title = "Blog de Python Perú"
 # e.g. blog_baseurl = "http://example.com/"
 blog_baseurl = "https://blog.python.pe"
 
+# Base URL for sphinx-sitemap
+html_baseurl = "https://blog.python.pe/"
+
+
 # Choose to archive only post titles. Archiving only titles can speed
 # up project building.
 # blog_archive_titles = False
@@ -208,6 +212,7 @@ extensions = [
     "ablog",
     "myst_parser",
     "sphinxcontrib.youtube",
+    "sphinx_sitemap",
 ]
 
 myst_enable_extensions = [
@@ -256,6 +261,9 @@ release = ""
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
 language = "es"
+
+# sphinx-sitemap locales
+sitemap_locales = [None]
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
@@ -423,3 +431,6 @@ html_search_language = "es"
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = "PythonPeruBlog"
+
+# sphinx-sitemap URL scheme
+sitemap_url_scheme = "{link}"
