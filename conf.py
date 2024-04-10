@@ -136,10 +136,13 @@ html_sidebars = {
 blog_feed_archives = True
 
 # Choose to display full text in blog feeds, default is ``False``.
-# blog_feed_fulltext = False
+blog_feed_fulltext = False
 
 # Blog feed subtitle, default is ``None``.
-# blog_feed_subtitle = None
+blog_feed_subtitle = (
+    "Explora artículos sobre Python, desarrollo web y más con"
+    " la comunidad de Python Perú."
+)
 
 # Choose to feed only post titles, default is ``False``.
 # blog_feed_titles = False
@@ -332,9 +335,19 @@ html_theme_options = {
             "icon": "fa-brands fa-github",
         },
         {
+            "name": "Meetup",
+            "url": "https://www.meetup.com/pythonperu/",
+            "icon": "fa-brands fa-meetup",
+        },
+        {
             "name": "Python Perú",
             "url": "https://python.pe",
             "icon": "fa-brands fa-python",
+        },
+        {
+            "name": "RSS feed",
+            "url": "https://blog.python.pe/blog/atom.xml",
+            "icon": "fa-solid fa-rss",
         },
     ],
     "search_bar_text": "Buscar en el blog...",
