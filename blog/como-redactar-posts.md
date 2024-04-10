@@ -18,7 +18,7 @@ comunidad.
 
 ```{admonition} Repositorio de GitHub
 :class: sidebar note
-[Link aquí](https://github.com/pythonpe/pythonpe-blog)
+[https://github.com/pythonpe/pythonpe-blog](https://github.com/pythonpe/pythonpe-blog)
 ```
 
 Cómo lo indicamos en la página [Acerca de Python Perú](/about.md), cualquier
