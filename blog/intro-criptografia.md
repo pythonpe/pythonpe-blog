@@ -142,7 +142,7 @@ Es asi, que por ejemplo, a pesar de que el nombre MD5 aún suena y es popular, h
 
 ### Computando el hash de una simple cadenita de texto
 
-La librería estándar de Python incluye implementaciones para las principales funciones hash en el [módulo hashlib]().
+La librería estándar de Python incluye implementaciones para las principales funciones hash en el [módulo hashlib](https://docs.python.org/es/3/library/hashlib.html).
 
 A continuación una pequeña demo de como usar estas funciones:
 
@@ -480,7 +480,7 @@ class sha256(object):
         return copy.deepcopy(self)
 ```
 
-Este código [ha sido tomado](https://github.com/thomdixon/pysha2/blob/master/sha2/sha256.py) el repositorio [https://github.com/thomdixon/pysha2] de [](https://github.com/thomdixon).
+Este código [ha sido tomado](https://github.com/thomdixon/pysha2/blob/master/sha2/sha256.py) el repositorio [https://github.com/thomdixon/pysha2] de [Thom Dixon](https://github.com/thomdixon).
 
 Como puedes ver, no es una implementación trivial. Por lo general -y siguiendo con el ejemplo de MD5-, en el mundo de la seguridad informática,
 estos algortimos son presentados en congresos académicos como [CRYPTO 1991](https://www.iacr.org/cryptodb/data/conf.php?year=1991&venue=crypto)
@@ -493,6 +493,23 @@ ya empezaron a aparecer [varios](https://link.springer.com/content/pdf/10.1007/3
 señalando las vulnerabilidades y como implementar ataques.
 
 Contar con implementaciones de código abierto de funciones criptográficas y herramientas de seguridad es importante ya que, a pesar de que pueden [ser explotadas](https://nvd.nist.gov/vuln/detail/CVE-2020-22916) ingeniosamente por atacantes que incluyen código malicioso en proyectos infiltrándose en el equipo de mantenedores como pasó como [las herramientas XZ](https://es.wikipedia.org/wiki/XZ_Utils), es la propia naturaleza abierta y la capacidad de escrutinio del opensource lo que permitió a [Andrés Freund](https://www.linkedin.com/in/andres-freund/), un desarrollador alemán del equipo de [Postgres](https://www.postgresql.org/) y empleado de Microsoft a [descubrir la puerta trasera](https://en.wikipedia.org/wiki/XZ_Utils_backdoor) que había sido implantada años antes y que podría haber facilitado muy serios ciberataques de escala global como lo reportó la prensa [internacional](https://arstechnica.com/security/2024/04/what-we-know-about-the-xz-utils-backdoor-that-almost-infected-the-world/) y [nacional](https://elcomercio.pe/tecnologia/ciberseguridad/como-un-ingeniero-evito-un-ciberataque-global-al-notar-que-un-programa-demoraba-medio-segundo-mas-en-cargar-linux-seguridad-informatica-vulnerabilidad-noticia/).
+
+## Ejercicio propuesto
+
+¿Quieres aplicar tu nuevo conocimiento sobre las funciones de hashing a un problema concreto? ¡Intenta resolver este reto!
+
+Diseña un programa en Python que encuentre y reporte archivos contenido duplicado en una carpeta y todas sus subcarpetas.
+
+Aquí algunas sugerencias:
+
+* Emplee una función de hashing como SHA-256 para computar el hash del contenido de cada archivo.
+* Utiliza estos hashes como las llaves de un diccionario que mantenga listas con las rutas absolutas de los archivos que tienen
+el mismo contenido.
+* Reporta aquellas listas que tengan dos o más archivos, es decir, donde existan archivos con contenido duplicado.
+* Utiliza la función [glob](https://docs.python.org/es/3/library/hashlib.html) para iterar sobre todos los archivos presentes
+en la carpeta actual y sus subcarpetas.
+* Apóyate en herramientas de inteligencia artificial generativa como ChatGPT, Gemini o Claude para general el código o depurarlo
+si te quedas atorado o tienes problemas para depurarlo.
 
 ## Repaso, conclusiones y cierre
 
