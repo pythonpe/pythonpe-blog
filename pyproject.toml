@@ -16,6 +16,13 @@ sphinxcontrib-youtube = "^1.4.1"
 sphinx-sitemap = "^2.5.1"
 
 
+[tool.poetry.group.dev.dependencies]
+isort = "^5.13.2"
+black = "^24.3.0"
+
+[tool.black]
+line-length = 79
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

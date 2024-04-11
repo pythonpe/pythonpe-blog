@@ -8,8 +8,9 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import alabaster
 import locale
+
+import alabaster
 
 from authors import get_authors
 
@@ -202,7 +203,7 @@ blog_feed_subtitle = (
 # -- Sphinx Options -----------------------------------------------------------
 
 # If your project needs a minimal Sphinx version, state it here.
-needs_sphinx = '1.2'
+needs_sphinx = "1.2"
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
