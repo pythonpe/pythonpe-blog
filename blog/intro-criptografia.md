@@ -516,6 +516,3 @@ Si no conocías mucho de estos temas o si ya te estabas olvidando de lo que apre
 En un siguiente artículo explicaremos como emplear funciones hash para almacenar contraseñas en bases de datos con un nivel de seguridad adecuada.
 
 **SPOILER:** No es tan sencillo como computar directamente una de estas funciones y ya sino que hay que combinarlas con otras técnicas y aplicarlas cientos o miles de veces sobre la salida de ellas mismas para aumentar el costo computacional de un eventual ataque por fuerza bruta.
-
-
-
