@@ -1,5 +1,5 @@
-from typing import Tuple
 import os
+from typing import Tuple
 
 AUTHORS_FILENAME = "AUTHORS"
 AUTHORS_FILEPATH = os.path.join(os.path.dirname(__file__), AUTHORS_FILENAME)
