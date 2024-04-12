@@ -5,11 +5,11 @@ myst:
    "keywords": "Python, Perú, programación, blog, desarrollo, código, comunidad, lenguaje, tutoriales, proyectos, Machine Learnig, Inteligencia Artificial, IA, Frameworks"
 ---
 
-# Bienvenidos al Blog de Python Perú
+```{rst-class} main-title
+# Blog de Python Perú
+```
 
-![Python Perú Logo](/_static/logo/logo.svg){.markdown-body width=300px align=center}
-
-Encuentra más de nosotros [aquí](about.md).
+![Python developer reading](/_static/images/developer-reading.png){.markdown-body width=300px align=center}
 
 ## Entradas recientes:
 
