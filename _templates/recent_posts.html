@@ -32,6 +32,11 @@
         </p>
         {% endif %}
     {% endfor %}
+    <p class="ablog-post-expand">
+        <a class="reference internal" href="{{ ablog.blog_baseurl }}/{{ pathto(recent.docname) }}{{ anchor(recent) }}">
+            <em>Leer más ...</em>
+        </a>
+    </p>
   </li>
   {% endfor %}
 </ul>

@@ -11,7 +11,9 @@ myst:
 
 ![Python developer reading](/_static/images/developer-reading.png){.markdown-body width=300px align=center}
 
-## Entradas recientes:
+```{raw} html
+<h2>Entradas recientes:</h2>
+```
 
 ```{postlist} 5
 ---
@@ -19,7 +21,7 @@ date: "%A, %B %d, %Y"
 format: "{title} por {author} el {date}"
 list-style: circle
 excerpts:
-expand: Read more ...
+expand: Leer más ...
 ---
 ```
 
