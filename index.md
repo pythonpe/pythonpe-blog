@@ -5,15 +5,12 @@ myst:
    "keywords": "Python, Perú, programación, blog, desarrollo, código, comunidad, lenguaje, tutoriales, proyectos, Machine Learnig, Inteligencia Artificial, IA, Frameworks"
 ---
 
-```{rst-class} main-title
+{.main-title}
 # Blog de Python Perú
-```
 
 ![Python developer reading](/_static/images/developer-reading.png){.markdown-body width=300px align=center}
 
-```{raw} html
-<h2>Entradas recientes:</h2>
-```
+## Entradas recientes:
 
 ```{postlist} 5
 ---
