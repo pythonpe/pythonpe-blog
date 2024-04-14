@@ -248,7 +248,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "Python Peru blog"
+project = "Blog de Python Perú"
 copyright = "2024, Python Perú"
 author = "Python Perú"
 
