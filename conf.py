@@ -217,6 +217,7 @@ extensions = [
     "myst_parser",
     "sphinxcontrib.youtube",
     "sphinx_sitemap",
+    "sphinxext.opengraph",
 ]
 
 myst_enable_extensions = [
@@ -453,3 +454,11 @@ sitemap_url_scheme = "{link}"
 # A list of paths that contain extra files not directly related to the
 # documentation.
 html_extra_path = ["_extra"]
+
+# OpenGraph options
+ogp_site_url = "https://blog.python.pe"
+ogp_enable_meta_description = True
+ogp_social_cards = {
+    "line_color": "#4078c0",
+    "image": "_static/logo/logo.png",
+}
