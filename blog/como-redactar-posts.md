@@ -238,3 +238,7 @@ y luego seleccionando el tab "Pull Requests" como muestra en la imágen.
 ![Pull Requests](/_static/images/pull-requests-github.png)
 
 ¡Y listo! Ya publicaste tu primer post.
+
+```{admonition} Nota
+Nuevo post que explica como hacer lo mismo pero con forks [aquí](/blog/como-redactar-posts-con-fork.md)
+```
