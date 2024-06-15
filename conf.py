@@ -328,11 +328,6 @@ html_theme = "pydata_sphinx_theme"
 html_theme_options = {
     "icon_links": [
         {
-            "name": "Grupo de WhatsApp",
-            "url": "https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk",
-            "icon": "fa-brands fa-whatsapp",
-        },
-        {
             "name": "Repositorio del Blog en GitHub",
             "url": "https://github.com/pythonpe/pythonpe-blog",
             "icon": "fa-brands fa-github",
@@ -341,6 +336,16 @@ html_theme_options = {
             "name": "Meetup",
             "url": "https://www.meetup.com/pythonperu/",
             "icon": "fa-brands fa-meetup",
+        },
+        {
+            "name": "Grupo de WhatsApp",
+            "url": "https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk",
+            "icon": "fa-brands fa-whatsapp",
+        },
+        {
+            "name": "Twitch",
+            "url": "https://www.twitch.tv/pythonperu",
+            "icon": "fa-brands fa-twitch",
         },
         {
             "name": "Python Perú",
