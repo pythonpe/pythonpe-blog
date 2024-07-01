@@ -127,8 +127,36 @@ flet --version
 
 # Conceptos Básicos de flet
 
-  - ahsuahsuahua
-  - ashuauhs
+# 1. Widgets:
+### Los widgets son los elementos básicos de la interfaz de usuario en Flet. Hay una gran variedad de widgets disponibles, como botones, etiquetas, campos de entrada, imágenes, listas, etc. Cada widget tiene sus propias propiedades y métodos que puedes usar para personalizar su apariencia y comportamiento.
+
+# 2. Diseño de la interfaz de usuario:
+### Flet utiliza un sistema de diseño declarativo para crear interfaces de usuario. Esto significa que describes la estructura y el diseño de tu interfaz de usuario en código Python, y Flet se encarga de generar el HTML, CSS y JavaScript necesarios para que funcione en diferentes plataformas.
+
+# 3. Eventos:
+### Los eventos son acciones que ocurren en la interfaz de usuario, como clics del mouse, pulsaciones de teclas o cambios en el valor de un campo de entrada. Puedes asociar funciones a los eventos para que se ejecuten cuando ocurran.
+
+# 4. Rutas:
+### Las rutas te permiten navegar entre diferentes pantallas de tu aplicación. Puedes definir diferentes rutas y asociarlas a diferentes widgets o acciones.
+
+# 5. Estado:
+### El estado de tu aplicación se almacena en variables. Puedes acceder y modificar el estado desde tu código Python.
+
+# 6. API:
+### Flet proporciona una API completa que te permite acceder a las funciones y funcionalidades del framework. La API está bien documentada y es fácil de usar.
+
+# 7. Comunidad:
+### Flet tiene una comunidad de desarrolladores en crecimiento que está siempre dispuesta a ayudar. Puedes encontrar ayuda en el foro de la comunidad, en los canales de redes sociales o en los repositorios de GitHub de Flet.
+
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/74038190/212744287-14f66c13-5458-40dc-9244-8ff533fc8f4a.gif" width="1000">
+</p>
+
+> [!TIP]
+> (Opcional) Complemente la información  anterior con este video:
+
+[![Video Title](https://img.youtube.com/vi/bRqbHpXklPU/0.jpg)](https://www.youtube.com/watch?v=bRqbHpXklPU)
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
