@@ -1,7 +1,7 @@
 ---
 blogpost: true
 date: Jul 01, 2024
-author: Less
+author: Daniel Gómez
 location: Paipa, Colombia
 category: Tutorial
 tags: flet, flutter, python, app, multiplatform
