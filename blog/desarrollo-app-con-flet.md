@@ -29,10 +29,8 @@ width="1000" height="300">
 1. [`Qué es flet`](#que-es-flet)
   
    1.1 [Por qué usar flet](#Por-que-usar-flet)
-   
-   1.2 [Cómo instalar flet](#Como-instalar-flet)
     
-   1.3 [Configuración de nuestro entorno de desarrollo](#configuracion-de-nuestro-entorno-de-desarrollo)
+   1.2 [Configuración de nuestro entorno de desarrollo](#configuracion-de-nuestro-entorno-de-desarrollo)
 
 2. [`Conceptos Básicos de flet`](#conceptos-básicos-de-flet)
    
@@ -63,20 +61,65 @@ width="1000" height="300">
     <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
 </p>
 
- 
-# Como instalar flet
-
-  - ahsuahsuahua
-  - ashuauhs
-
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
-</p>
 
 # Configuracion de nuestro entorno de desarrollo
 
-  - ahsuahsuahua
-  - ashuauhs
+   ## Linux/Ubuntu
+1. Crea un entorno virtual: Abre una terminal y navega hasta el directorio donde deseas instalar Flet. Luego, crea un entorno virtual ejecutando el siguiente comando:
+    ```
+   python3 -m venv .venv 
+    ```
+
+2. Activa el entorno virtual: Para activar el entorno virtual, ejecuta el siguiente comando:
+   ```
+   source .venv/bin/activate
+   ```
+3. Instala Flet: Una vez activado el entorno virtual, puedes instalar Flet ejecutando el siguiente comando:
+   ```
+   pip install flet
+   ```
+
+4. Verifica la instalación: Para verificar que Flet se haya instalado correctamente, ejecuta el siguiente comando:
+   ```
+   flet --version
+   ```
+
+  ## MacOs
+ 1. Crea un entorno virtual: Sigue los mismos pasos que para la instalación en Linux, utilizando el comando ```python3 -m venv .venv``` para crear un entorno virtual.
+
+2. Activa el entorno virtual: Activa el entorno virtual ejecutando el comando 
+```
+source .venv/bin/activate
+```
+
+3. Instala Flet: Instala Flet utilizando el comando 
+```
+pip install flet
+```
+
+4. Verifica la instalación: Verifica la instalación ejecutando el comando 
+```
+flet --version
+```
+
+   ## Windows
+
+
+1. Crea un entorno virtual: Sigue los mismos pasos que para la instalación en Linux y macOS, utilizando el comando ```python3 -m venv .venv ``` para crear un entorno virtual
+
+2. Activa el entorno virtual: Activa el entorno virtual ejecutando el comando source .venv/bin/activate
+
+3. Instala Flet: Instala Flet utilizando el comando 
+```
+pip install flet
+```
+
+4. Verifica la instalación: Verifica la instalación ejecutando el comando 
+```
+flet --version
+```
+
+
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
@@ -99,3 +142,6 @@ width="1000" height="300">
 <p align="center">
     <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
 </p>
+
+
+#### by: [Less](https://github.com/less-dev/)
