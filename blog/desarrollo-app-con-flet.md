@@ -1,6 +1,6 @@
 ---
 blogpost: true
-date: Jul 02, 2024
+date: Jul 01, 2024
 author: Less
 location: Paipa, Colombia
 category: Tutorial
@@ -36,6 +36,8 @@ width="1000" height="300">
 2. [`Conceptos Básicos de flet`](#conceptos-basicos-de-flet)
    
    2.1[Primera aplicación con flet](#primera-aplicacion-con-flet)
+
+3.[Conclusión](#conclusion)
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="1000">
@@ -167,12 +169,40 @@ flet --version
 
 # Primera aplicación con flet
 
-  - ahsuahsuahua
-  - ashuauhs
+### 1. Para este curso cree esta estructura de archivos que mantendremos vigente en todos los proyectos.
+
+![image](https://github.com/compose-projects/socialLocal/assets/124411052/ceb5303d-a880-4d5a-8953-371cc1dce450)
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
 </p>
+
+### 2.Importe flet a su proyecto para poder usarlo:
+![image](https://github.com/compose-projects/socialLocal/assets/124411052/20be3308-9cf2-4474-8a37-f7040e12b1a0)
+
+### 3. Declare una función main y conozca el método `page` el cual es de suma importancia comprender, porque será usado en todo el curso.
+
+![image](https://github.com/compose-projects/socialLocal/assets/124411052/dd271347-5b8e-4814-aa8e-cc6552e6bd01)
+
+### 4. Para nuestra primera aplicación con flet haremos un contador simple, para ello agregue la siiguiente lógica dentro de su función main. PD: Flet es hijo de flutter y sus componentes tambien, entonces si conoce de flutter va a comprender flet.
+![image](https://github.com/compose-projects/socialLocal/assets/124411052/e89cbb4e-c0cd-4b2a-9bde-17509d9ec56b)
+
+### 5. Por último cree la aplicación: 
+![image](https://github.com/compose-projects/socialLocal/assets/124411052/2eb9046c-a631-45a7-8f6a-fc0b3199874f)
+
+ ### 6. Abra su terminal y ejecute:
+![image](https://github.com/compose-projects/socialLocal/assets/124411052/c9b189ce-afc1-4da7-96dc-5aff660a7a65)
+
+
+### Resultado: 
+[Grabación de pantalla desde 01-07-24 06:53:38.webm](https://github.com/compose-projects/socialLocal/assets/124411052/ba564751-c414-4666-922f-c6c25c36bb06)
+
+
+# Conclusion:
+### Flet pese al poco tiempo de su creación es un framework que tiene mucho potencial para ser realmente utilizado por grandes masas, gracias a su fácil uso con python. Esta fue una pequeña introducción a flet [1/3] Espero que haya sido de su agrado,
+
+- ult vez 01 jul 06:58
+
 
 
 #### by: [Less](https://github.com/less-dev/)
