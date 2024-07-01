@@ -38,37 +38,64 @@ width="1000" height="300">
    
    2.1[Primera aplicación con flet](#primera-aplicación-con-flet)
 
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="1000">
+</p>
+
 # Que es flet
+  ### **[Flet](https://flet.dev/docs/) es un framework de desarrollo de aplicaciones multiplataforma que utiliza Python. Te permite crear aplicaciones web, de escritorio y móviles sin necesidad de experiencia previa en desarrollo frontend.**
 
-  - ahsuahsuahua
-  - ashuauhs
+### **Piensa en [Flet](https://flet.dev/docs/) como una herramienta que te facilita la construcción de interfaces de usuario (UI) atractivas y funcionales para tus aplicaciones.  Flet se encarga de la parte visual de la aplicación, mientras que tú te concentras en la lógica y funcionalidad usando código Python.**
 
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
+</p>
 
 # Por que usar flet
 
-  - ahsuahsuahua
-  - ashuauhs
+  ### 1.  Si conoces Python, puedes comenzar a usar Flet de inmediato. No necesitas aprender lenguajes web como HTML, CSS o JavaScript.
+  ### 2. Flet te permite crear interfaces de usuario de forma rápida y sencilla, gracias a sus widgets declarativos y su sistema de diseño flexible.
+  ### 3.  Con Flet, puedes escribir menos código para lograr el mismo resultado que con otros frameworks. Esto se traduce en un desarrollo más rápido y eficiente.
+  ### 4. Flet proporciona herramientas de depuración integradas que te facilitan encontrar y solucionar problemas en tu código.
+  ### 5. Flet te permite ver los cambios en tu código al instante sin necesidad de reiniciar la aplicación. Esto te ayuda a ahorrar tiempo y ser más productivo.
+
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
+</p>
+
  
 # Como instalar flet
 
   - ahsuahsuahua
   - ashuauhs
 
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
+</p>
+
 # Configuracion de nuestro entorno de desarrollo
 
   - ahsuahsuahua
   - ashuauhs
+
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
+</p>
 
 # Conceptos Básicos de flet
 
   - ahsuahsuahua
   - ashuauhs
 
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
+</p>
+
 # Primera aplicación con flet
 
   - ahsuahsuahua
   - ashuauhs
 
-
-#### by: [Less](https://github.com/less-dev/)
-
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
+</p>
