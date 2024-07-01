@@ -1,7 +1,7 @@
 ---
 blogpost: true
 date: Jul 01, 2024
-author: Daniel Gómez
+author: Less
 location: Paipa, Colombia
 category: Tutorial
 tags: flet, flutter, python, app, multiplatform
@@ -201,7 +201,7 @@ flet --version
 # Conclusion:
 ### Flet pese al poco tiempo de su creación es un framework que tiene mucho potencial para ser realmente utilizado por grandes masas, gracias a su fácil uso con python. Esta fue una pequeña introducción a flet [1/3] Espero que haya sido de su agrado,
 
-- ult vez 01 jul 06:58
+- ult vez 01 jul 18:13
 
 
 
