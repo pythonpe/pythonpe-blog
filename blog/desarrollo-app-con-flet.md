@@ -14,10 +14,11 @@ width="1000" height="300">
 </p>
 
 
-<h2 align="center">Desarrollano una pequeña aplicación con flet</h2>
+# Desarrollando una pequeña aplicación con flet
 <p align="center">
     <img src="https://github.com/Less-dev/gitLearn/assets/166412593/3f8dd67d-23c3-490e-b8de-16018a562b75" width="150">
 </p>
+
 
 <h3 align="center"> Más que un framework</h3>
 
@@ -28,13 +29,13 @@ width="1000" height="300">
 
 1. [`Qué es flet`](#que-es-flet)
   
-   1.1 [Por qué usar flet](#Por-que-usar-flet)
+   1.1 [Por qué usar flet](#por-que-usar-flet)
     
    1.2 [Configuración de nuestro entorno de desarrollo](#configuracion-de-nuestro-entorno-de-desarrollo)
 
-2. [`Conceptos Básicos de flet`](#conceptos-básicos-de-flet)
+2. [`Conceptos Básicos de flet`](#conceptos-basicos-de-flet)
    
-   2.1[Primera aplicación con flet](#primera-aplicación-con-flet)
+   2.1[Primera aplicación con flet](#primera-aplicacion-con-flet)
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="1000">
@@ -153,10 +154,12 @@ flet --version
 <img src="https://user-images.githubusercontent.com/74038190/212744287-14f66c13-5458-40dc-9244-8ff533fc8f4a.gif" width="1000">
 </p>
 
-> [!TIP]
+
 > (Opcional) Complemente la información  anterior con este video:
 
-[![Video Title](https://img.youtube.com/vi/bRqbHpXklPU/0.jpg)](https://www.youtube.com/watch?v=bRqbHpXklPU)
+```{youtube} bRqbHpXklPU
+```
+
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
