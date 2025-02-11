@@ -360,6 +360,9 @@ html_theme_options = {
     ],
     "search_bar_text": "Buscar en el blog...",
     "article_footer_items": ["giscus.html"],
+    "analytics": {
+        "google_analytics_id": "G-NZ0W1CL2L1"
+    }
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
