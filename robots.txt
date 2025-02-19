@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /recent_posts/
+
+Sitemap: https://blog.python.pe/sitemap.xml
