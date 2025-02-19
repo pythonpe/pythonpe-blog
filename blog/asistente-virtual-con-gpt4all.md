@@ -1,3 +1,13 @@
+---
+blogpost: true
+date: Feb 18, 2025
+author: soloidx
+location: Lima, Perú
+category: Tutorial
+tags: AI, chatbots, ollama, gpt4all, llm, llama, chat
+language: Español
+---
+
 # Python y GPT4All, Creando tu asistente de IA personal con 5 líneas
 
 Cuando buscamos tutoriales sobre asistentes virtuales, a menudo encontramos recursos que involucran integraciones con APIs externas como OpenAI, Claude o Gemini. Si bien estas soluciones son poderosas, nos enfrentamos a dos limitaciones significativas: la dependencia de una conexión a internet y los costos asociados con el uso de APIs de terceros. Es aquí donde herramientas como GPT4All y Ollama brillan, permitiéndonos ejecutar modelos de lenguaje directamente en nuestro hardware local, lo que no solo elimina la necesidad de una conexión constante a internet, sino que también nos libera de los costos recurrentes asociados con servicios en la nube, haciendo que la inteligencia artificial sea más accesible para desarrolladores, investigadores y entusiastas por igual.
@@ -114,6 +124,6 @@ with model.chat_session():
 Y con esto tenemos nuestro asistente de IA de bolsillo.
 
 ## Notas:
-- Una de las desventajas de GPT4All es que no disponemos de todos los modelos disponibles en Huggingface (a la fecha de este artículo intente correr deepseek-r1 pero me encontré con errores pendientes en nuevas releases)
+- Una de las desventajas de GPT4All es que no disponemos de todos los modelos disponibles en Hugging Face (a la fecha de este artículo intente correr deepseek-r1 pero me encontré con errores pendientes en nuevas releases)
 - GPT4All ofrece algunas herramientas para hacer embeddings pero aun tiene ciertas limitaciones
 - Encontré la lista de modelos disponibles desde el repositorio de [GPT4All-chat](https://github.com/nomic-ai/gpt4all/tree/29f29773af72abefd114f119a6632837263e1896/gpt4all-chat/metadata) no todos los modelos están soportados por la SDK de Python pero puedes ir viendo y probando el mejor modelo que se acomode a las especificaciones de tu ordenador.
