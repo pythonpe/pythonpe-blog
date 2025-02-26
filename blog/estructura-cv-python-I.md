@@ -227,6 +227,8 @@ En esta parte final:
 
 Puedes revisar el resultado final en [este archivo](https://raw.githubusercontent.com/soloidx/cv_improver_poc/refs/heads/main/output/structured_cv_hybrid.json)
 
+Puedes revisar el código en este proyecto: [cv_improver_poc](https://github.com/soloidx/cv_improver_poc)
+
 ## Conclusión
 
 ¡Y eso es todo! Con solo unas pocas líneas de código Python, he creado una herramienta que puede transformar mi CV de un PDF estático a un formato JSON flexible y estructurado. Ahora puedo pasar a otra etapa en donde analyzaré las ofertas de empleo y generaré tanto CVs como cartas de presentaíon a medidas para cada empresa.
