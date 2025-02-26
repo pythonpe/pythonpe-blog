@@ -10,7 +10,7 @@ language: Español
 
 # Potencia tu CV con Python y OpenAI (I): De PDF a Datos Estructurados en Minutos
 
-Últimamente he estado pensando en cómo mejorar mi proceso de solicitud de empleo. ¿Sabes lo frustrante que es tener que reformatear constantemente tu CV para diferentes ofertas? Con cada empresa tenía que adaptar para que mi CV haga tenga el mejor fit para el puesto de trabajo. Estaba cansado de editar manualmente la misma información una y otra vez.
+Últimamente he estado pensando en cómo mejorar mi proceso de solicitud de empleo. ¿Sabes lo frustrante que es tener que reformatear constantemente tu CV para diferentes ofertas? Con cada empresa tenía que adaptar mi CV para tener el mejor fit para el puesto de trabajo. Estaba cansado de editar manualmente la misma información una y otra vez.
 
 ![Python developer](/_static/images/CV-python-openai.png)
 
@@ -231,4 +231,4 @@ Puedes revisar el código en este proyecto: [cv_improver_poc](https://github.com
 
 ## Conclusión
 
-¡Y eso es todo! Con solo unas pocas líneas de código Python, he creado una herramienta que puede transformar mi CV de un PDF estático a un formato JSON flexible y estructurado. Ahora puedo pasar a otra etapa en donde analyzaré las ofertas de empleo y generaré tanto CVs como cartas de presentaíon a medidas para cada empresa.
+¡Y eso es todo! Con solo unas pocas líneas de código Python, he creado una herramienta que puede transformar mi CV de un PDF estático a un formato JSON flexible y estructurado. Ahora puedo pasar a otra etapa en donde analizaré las ofertas de empleo y generaré tanto CVs como cartas de presentaíon a medidas para cada empresa.
