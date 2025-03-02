@@ -338,9 +338,14 @@ html_theme_options = {
             "icon": "fa-brands fa-meetup",
         },
         {
-            "name": "Grupo de WhatsApp",
+            "name": "Comunidad de WhatsApp",
             "url": "https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk",
             "icon": "fa-brands fa-whatsapp",
+        },
+        {
+            "name": "Canal de Telegram",
+            "url": "https://t.me/pythonperu",
+            "icon": "fa-brands fa-telegram",
         },
         {
             "name": "Twitch",
