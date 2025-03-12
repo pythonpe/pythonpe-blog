@@ -86,8 +86,7 @@ entrada de usuario, envuelto en CSS simple para estilizar la apariencia. La
 configuración de Pyodide es gestionada por un archivo JavaScript que
 exploraremos a continuación.
 
-### JavaScript: Inicialización de Pyodide y Conexión del Frontend con el
-Backend
+### JavaScript: Inicialización de Pyodide y Conexión del Frontend con el Backend
 
 Se emplea JavaScript para configurar el entorno Pyodide y conectar la interfaz
 de usuario del frontend con el backend de Python. Aquí está el archivo de
