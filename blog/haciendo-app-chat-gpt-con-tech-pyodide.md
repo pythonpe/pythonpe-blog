@@ -7,7 +7,7 @@ category: Tutorial
 tags: pyodide, openai, gpt, httpx, python
 language: Español
 ---
-# Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-3.5 Turbo: Un Concepto de Prueba
+# Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-3.5 Turbo: Una Prueba de Concepto
 
 ![OpenAI](/_static/images/openai.png){ align=center width=400px }
 
@@ -26,7 +26,7 @@ bibliotecas basadas en Python directamente a las aplicaciones del lado del
 cliente. Esto incluye aplicaciones que pueden beneficiarse de estar cerca de los
 usuarios, como herramientas interactivas y tableros de visualización de datos.
 
-Este concepto de prueba integra Pyodide con el modelo GPT-3.5 Turbo de OpenAI,
+Esta prueba de concepto integra Pyodide con el modelo GPT-3.5 Turbo de OpenAI,
 que proporciona la capacidad de simular una conversación similar a la humana. A
 continuación, te guiaré a través de cada componente de esta aplicación,
 explicando su funcionalidad, técnicas de integración y la razón detrás de
@@ -318,7 +318,7 @@ Esta solución permite mayor flexibilidad y compatibilidad dentro del entorno
 web en el que opera Pyodide.
 
 - **Diseño de la Interfaz Interactiva**: Aunque la interfaz de usuario permanece
-  minimalista en este concepto de prueba, cumple con los objetivos actuales
+  minimalista en esta prueba de concepto, cumple con los objetivos actuales
 mientras deja espacio para mejorar con interacciones más ricas, estilo o
 soporte multicliente.
 
