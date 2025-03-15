@@ -21,7 +21,7 @@ matplotlib = "^3.8.4"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^6.0.1"
-black = "^24.3.0"
+black = "^25.1.0"
 
 [tool.poetry.requires-plugins]
 poetry-plugin-export = ">=1.8"
