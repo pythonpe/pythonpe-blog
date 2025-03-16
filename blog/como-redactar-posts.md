@@ -164,16 +164,15 @@ Español los posts.
 
 ### Instalación
 
-1. Instalemos poetry:
-
-```sh
-pip install -U poetry
-```
+1. Instalamos `uv`, sigue las instrucciones en su documentación
+   https://docs.astral.sh/uv/getting-started/installation/, `uv` manejarátodas
+las dependencias y también la instalación de python. De forma tal que no
+necesitamos instalar `python` de manera separada.
 
 2. Estando en la raíz del repositorio, instalemos las dependencias del Blog:
 
 ```sh
-poetry install
+uv sync
 ```
 
 ### Construcción de las Páginas HTML
@@ -181,7 +180,7 @@ poetry install
 Estando en la raíz del repositorio:
 
 ```sh
-poetry run ablog build
+uv run ablog build
 ```
 
 ### Ejecución del Blog
@@ -189,7 +188,7 @@ poetry run ablog build
 Estando en la raíz del repositorio:
 
 ```sh
-poetry run ablog serve
+uv run ablog serve
 ```
 
 ```{admonition} Nota
@@ -241,4 +240,8 @@ y luego seleccionando el tab "Pull Requests" como muestra en la imágen.
 
 ```{admonition} Nota
 Nuevo post que explica como hacer lo mismo pero con forks [aquí](/blog/como-redactar-posts-con-fork.md)
+```
+
+```{admonition} Nota
+Actualizado al 16/03/2025 para hacer uso de `uv` en lugar de `poetry`
 ```
