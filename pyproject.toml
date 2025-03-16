@@ -1,34 +1,31 @@
-[tool.poetry]
+[project]
+authors = [
+    {name = "Ider Delzo", email = "soloidx@gmail.com"},
+    {name = "Jean-Pierre Chauvel", email = "jean.pierre@chauvel.org"},
+]
+license = {text = "Apache License, Version 2.0"}
+requires-python = "<4.0,>=3.13"
+dependencies = [
+    "Sphinx<8.0.0,>=7.2.6",
+    "ablog<1.0.0,>=0.11.6",
+    "pydata-sphinx-theme<1.0.0,>=0.15.2",
+    "myst-parser[linkify]<3.0.0,>=2.0.0",
+    "sphinxcontrib-youtube<2.0.0,>=1.4.1",
+    "sphinx-sitemap<3.0.0,>=2.5.1",
+    "sphinxext-opengraph<1.0.0,>=0.9.1",
+    "matplotlib<4.0.0,>=3.8.4",
+]
 name = "pythonpe-blog"
 version = "0.1.0"
 description = ""
-authors = ["Ider Delzo <soloidx@gmail.com>", "Jean-Pierre Chauvel <jean.pierre@chauvel.org>"]
-license = "Apache License, Version 2.0"
 readme = "README.md"
 package-mode = false
 
-[tool.poetry.dependencies]
-python = "^3.13"
-Sphinx = "^7.2.6"
-ablog = "^0.11.6"
-pydata-sphinx-theme = "^0.15.2"
-myst-parser = {extras = ["linkify"], version = "^2.0.0"}
-sphinxcontrib-youtube = "^1.4.1"
-sphinx-sitemap = "^2.5.1"
-sphinxext-opengraph = "^0.9.1"
-matplotlib = "^3.8.4"
-
-
-[tool.poetry.group.dev.dependencies]
-isort = "^6.0.1"
-black = "^25.1.0"
-
-[tool.poetry.requires-plugins]
-poetry-plugin-export = ">=1.8"
+[dependency-groups]
+dev = [
+    "isort<7.0.0,>=6.0.1",
+    "black<26.0.0,>=25.1.0",
+]
 
 [tool.black]
 line-length = 79
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"

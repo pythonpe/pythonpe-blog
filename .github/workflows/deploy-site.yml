@@ -1,4 +1,4 @@
-name: Deploy Blog to GitHub Pages
+name: Deploy Python Perú's Blog to GitHub Pages
 
 on:
   push:
@@ -10,12 +10,13 @@ permissions:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.13' 
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
       - name: Set Locale
         run: |
           sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen es_ES.UTF-8
@@ -27,12 +28,15 @@ jobs:
           locale
           locale -c -k LC_NUMERIC
           localectl status
+
       - name: Install Dependencies
         run: |
-          pip install -r requirements.txt
+          uv sync
+
       - name: Build Blog
         run: |
-          ablog build
+          uv run ablog build
+
       - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
