@@ -8,7 +8,7 @@ tags: AI, openai, GPT, PyMuPDF, llm, PDF
 language: Español
 ---
 
-# Potencia tu CV con Python y OpenAI (I): De PDF a Datos Estructurados en Minutos
+# Potencia tu CV con Python (I): De PDF a Datos Estructurados en Minutos con OpenAI
 
 Últimamente he estado pensando en cómo mejorar mi proceso de solicitud de empleo. ¿Sabes lo frustrante que es tener que reformatear constantemente tu CV para diferentes ofertas? Con cada empresa tenía que adaptar mi CV para tener el mejor fit para el puesto de trabajo. Estaba cansado de editar manualmente la misma información una y otra vez.
 
@@ -227,7 +227,7 @@ En esta parte final:
 
 Puedes revisar el resultado final en [este archivo](https://raw.githubusercontent.com/soloidx/cv_improver_poc/refs/heads/main/output/structured_cv_hybrid.json)
 
-Puedes revisar el código en este proyecto: [cv_improver_poc](https://github.com/soloidx/cv_improver_poc)
+Puedes revisar el código en este proyecto: [cv_improver_poc](https://github.com/soloidx/cv_improver_poc/blob/main/src/01_create_relevant_information.py)
 
 ## Conclusión
 
