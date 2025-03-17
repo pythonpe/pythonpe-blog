@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora - Entradas etiquetadas criptografia</title>
+  <updated>2025-03-17T16:28:48.392176+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/tag/criptografia/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/intro-criptografia/</id>
+    <title>Introducción a la criptografía con Python</title>
+    <updated>2024-04-11T00:00:00+00:00</updated>
+    <author>
+      <name>Antonio Ognio</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Para poder implementar correctamente las medidas mínimas de seguridad en tus proyectos con Python,
+en particular las aplicaciones web, iremos desarrollando una serie de artículos en donde el objetivo
+no es simplemente decirte que paquetes utilizar y que te vueltas un experto en copiar y pegar sino
+que, por el contrario, entiendas los conceptos más básicos que te permitan apreciar y evaluar de
+forma más efectiva y ¿porque no decirlo? profesional el nivel de seguridad de tu código.&lt;/p&gt;
+&lt;p&gt;Es la disciplina que estudia las técnicas para transformar la información desde su formato original
+a otro que permita protegerla del acceso por parte de usuarios no autorizados de forma que se pueda
+prevenir cualquier adulteración y certificar su procedencia.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/intro-criptografia/"/>
+    <summary>Para poder implementar correctamente las medidas mínimas de seguridad en tus proyectos con Python,
+en particular las aplicaciones web, iremos desarrollando una serie de artículos en donde el objetivo
+no es simplemente decirte que paquetes utilizar y que te vueltas un experto en copiar y pegar sino
+que, por el contrario, entiendas los conceptos más básicos que te permitan apreciar y evaluar de
+forma más efectiva y ¿porque no decirlo? profesional el nivel de seguridad de tu código.Es la disciplina que estudia las técnicas para transformar la información desde su formato original
+a otro que permita protegerla del acceso por parte de usuarios no autorizados de forma que se pueda
+prevenir cualquier adulteración y certificar su procedencia.</summary>
+    <category term="criptografia" label="criptografia"/>
+    <category term="principiantes" label="principiantes"/>
+    <category term="seguridad" label="seguridad"/>
+    <category term="tutorial" label="tutorial"/>
+    <published>2024-04-11T00:00:00+00:00</published>
+  </entry>
+</feed>

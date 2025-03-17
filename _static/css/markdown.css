@@ -1,0 +1,15 @@
+.markdown-body img { background: none !important }
+
+section.main-title h1 {
+    text-align: center;
+}
+
+section ul li>p.ablog-post-excerpt img {
+    width: unset !important;
+    height: unset !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 200px !important;
+    max-height: 200px !important;
+}

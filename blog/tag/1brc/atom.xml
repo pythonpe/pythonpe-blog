@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora - Entradas etiquetadas 1brc</title>
+  <updated>2025-03-17T16:28:48.364041+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/tag/1brc/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/puede-python-analizar-mil-millones-de-filas-rapidamente/</id>
+    <title>Explorando el Desafío de Mil Millón de Filas en Python</title>
+    <updated>2024-04-15T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;El desafío de procesar mil millón de filas de datos es una tarea intimidante que pone a prueba la
+capacidad de cualquier lenguaje de programación, incluido Python. En este artículo, exploraremos
+cómo Python, con su naturaleza interpretada, se compara ante este reto colossal, adoptando
+estrategias ingeniosas y aprovechando la potencia de las librerías disponibles para manejar una tarea
+de procesamiento de datos de tal magnitud.&lt;/p&gt;
+&lt;p&gt;Este recorrido comienza con una implementación simple en Python puro, utilizando diccionarios para
+agrupar mediciones por ciudad y calcular valores mínimos, máximos y promedios de temperatura. Esta
+aproximación tomó 9 minutos y 28 segundos para ejecutarse en un archivo de texto de 13GB, una
+diferencia notable frente a la implementación base en Java que corre en 3 minutos y 12 segundos.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/puede-python-analizar-mil-millones-de-filas-rapidamente/"/>
+    <summary>El desafío de procesar mil millón de filas de datos es una tarea intimidante que pone a prueba la
+capacidad de cualquier lenguaje de programación, incluido Python. En este artículo, exploraremos
+cómo Python, con su naturaleza interpretada, se compara ante este reto colossal, adoptando
+estrategias ingeniosas y aprovechando la potencia de las librerías disponibles para manejar una tarea
+de procesamiento de datos de tal magnitud.Este recorrido comienza con una implementación simple en Python puro, utilizando diccionarios para
+agrupar mediciones por ciudad y calcular valores mínimos, máximos y promedios de temperatura. Esta
+aproximación tomó 9 minutos y 28 segundos para ejecutarse en un archivo de texto de 13GB, una
+diferencia notable frente a la implementación base en Java que corre en 3 minutos y 12 segundos.</summary>
+    <category term="1brc" label="1brc"/>
+    <category term="ai-generated" label="ai-generated"/>
+    <category term="python" label="python"/>
+    <published>2024-04-15T00:00:00+00:00</published>
+  </entry>
+</feed>

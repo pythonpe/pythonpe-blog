@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora - Entradas por Jonathan Bolo</title>
+  <updated>2025-03-17T16:28:48.241709+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/author/jonathan-bolo/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/scraping-requests-bs/</id>
+    <title>Scraping con Python utilizando la biblioteca requests</title>
+    <updated>2024-04-08T00:00:00+00:00</updated>
+    <author>
+      <name>Jonathan Bolo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/scraping-requests.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;El scraping web es una técnica poderosa para extraer datos de páginas web de manera automatizada. Python, con su amplio ecosistema de bibliotecas, proporciona herramientas robustas para realizar scraping de manera eficiente. En este artículo, exploraremos cómo utilizar la biblioteca &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;requests&lt;/span&gt;&lt;/code&gt; de Python para realizar scraping básico.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/scraping-requests-bs/"/>
+    <summary>Python developerEl scraping web es una técnica poderosa para extraer datos de páginas web de manera automatizada. Python, con su amplio ecosistema de bibliotecas, proporciona herramientas robustas para realizar scraping de manera eficiente. En este artículo, exploraremos cómo utilizar la biblioteca requests de Python para realizar scraping básico.</summary>
+    <category term="beautifulsoup4" label="beautifulsoup4"/>
+    <category term="requests" label="requests"/>
+    <category term="scraping" label="scraping"/>
+    <category term="utilidades" label="utilidades"/>
+    <published>2024-04-08T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/leyendo-csv-pandas-python/</id>
+    <title>Leyendo archivos CSV con Pandas</title>
+    <updated>2024-04-04T00:00:00+00:00</updated>
+    <author>
+      <name>Jonathan Bolo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;En esta publicación, discutiremos cómo leer archivos CSV usando pandas, una biblioteca básica para el manejo de datos escritos en Python.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/biblioteca_pandas.jpg" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/leyendo-csv-pandas-python/"/>
+    <summary>En esta publicación, discutiremos cómo leer archivos CSV usando pandas, una biblioteca básica para el manejo de datos escritos en Python.Python developer</summary>
+    <category term="csv" label="csv"/>
+    <category term="pandas" label="pandas"/>
+    <category term="utilidades" label="utilidades"/>
+    <published>2024-04-04T00:00:00+00:00</published>
+  </entry>
+</feed>

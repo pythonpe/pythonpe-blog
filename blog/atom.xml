@@ -1,0 +1,441 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora</title>
+  <updated>2025-03-17T16:28:48.201508+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/estructura-cv-python-II/</id>
+    <title>Potencia tu CV con Python (II): Usando NLP para hacer match con ofertas</title>
+    <updated>2025-03-17T00:00:00+00:00</updated>
+    <author>
+      <name>Ider Delzo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;¡Hola de nuevo! En este &lt;a class="reference external" href="https://blog.python.pe/blog/estructura-cv-python-I/"&gt;artículo anterior&lt;/a&gt; les conté cómo desarrollé un sistema para estructurar y analizar mi CV utilizando inteligencia artificial. Hoy quiero compartir la segunda parte de este proyecto: el análisis de compatibilidad entre mi CV y las ofertas laborales.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/CV-python-openai.png" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/estructura-cv-python-II/"/>
+    <summary>¡Hola de nuevo! En este artículo anterior les conté cómo desarrollé un sistema para estructurar y analizar mi CV utilizando inteligencia artificial. Hoy quiero compartir la segunda parte de este proyecto: el análisis de compatibilidad entre mi CV y las ofertas laborales.Python developer</summary>
+    <category term="AI" label="AI"/>
+    <category term="DataScience" label="Data Science"/>
+    <category term="ML" label="ML"/>
+    <category term="NLP" label="NLP"/>
+    <category term="Spacy" label="Spacy"/>
+    <published>2025-03-17T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/haciendo-app-chat-gpt-con-tech-pyodide/</id>
+    <title>Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-3.5 Turbo: Una Prueba de Concepto</title>
+    <updated>2025-03-12T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;img alt="OpenAI" class="align-center" src="https://blog.python.pe/_images/openai.png" style="width: 400px;" /&gt;&lt;/p&gt;
+&lt;p&gt;Construir una aplicación basada en la web que aproveche tanto el entorno de
+Python como el modelo de lenguaje GPT-3.5 Turbo de OpenAI puede ser una empresa
+emocionante. Este artículo explica la creación de una aplicación de chat como
+prueba de concepto utilizando Pyodide, una herramienta que permite ejecutar
+Python en el navegador web, e integrarla con GPT-3.5 Turbo para simular un
+agente conversacional inteligente.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/haciendo-app-chat-gpt-con-tech-pyodide/"/>
+    <summary>OpenAIConstruir una aplicación basada en la web que aproveche tanto el entorno de
+Python como el modelo de lenguaje GPT-3.5 Turbo de OpenAI puede ser una empresa
+emocionante. Este artículo explica la creación de una aplicación de chat como
+prueba de concepto utilizando Pyodide, una herramienta que permite ejecutar
+Python en el navegador web, e integrarla con GPT-3.5 Turbo para simular un
+agente conversacional inteligente.</summary>
+    <category term="gpt" label="gpt"/>
+    <category term="httpx" label="httpx"/>
+    <category term="openai" label="openai"/>
+    <category term="pyodide" label="pyodide"/>
+    <category term="python" label="python"/>
+    <published>2025-03-12T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/estructura-cv-python-I/</id>
+    <title>Potencia tu CV con Python (I): De PDF a Datos Estructurados en Minutos con OpenAI</title>
+    <updated>2025-02-26T00:00:00+00:00</updated>
+    <author>
+      <name>Ider Delzo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Últimamente he estado pensando en cómo mejorar mi proceso de solicitud de empleo. ¿Sabes lo frustrante que es tener que reformatear constantemente tu CV para diferentes ofertas? Con cada empresa tenía que adaptar mi CV para tener el mejor fit para el puesto de trabajo. Estaba cansado de editar manualmente la misma información una y otra vez.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/CV-python-openai.png" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/estructura-cv-python-I/"/>
+    <summary>Últimamente he estado pensando en cómo mejorar mi proceso de solicitud de empleo. ¿Sabes lo frustrante que es tener que reformatear constantemente tu CV para diferentes ofertas? Con cada empresa tenía que adaptar mi CV para tener el mejor fit para el puesto de trabajo. Estaba cansado de editar manualmente la misma información una y otra vez.Python developer</summary>
+    <category term="AI" label="AI"/>
+    <category term="GPT" label="GPT"/>
+    <category term="PDF" label="PDF"/>
+    <category term="PyMuPDF" label="PyMuPDF"/>
+    <category term="llm" label="llm"/>
+    <category term="openai" label="openai"/>
+    <published>2025-02-26T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/asistente-virtual-con-gpt4all/</id>
+    <title>Python y GPT4All, Creando tu asistente de IA personal con 5 líneas</title>
+    <updated>2025-02-18T00:00:00+00:00</updated>
+    <author>
+      <name>Ider Delzo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Cuando buscamos tutoriales sobre asistentes virtuales, a menudo encontramos recursos que involucran integraciones con APIs externas como OpenAI, Claude o Gemini. Si bien estas soluciones son poderosas, nos enfrentamos a dos limitaciones significativas: la dependencia de una conexión a internet y los costos asociados con el uso de APIs de terceros. Es aquí donde herramientas como GPT4All y Ollama brillan, permitiéndonos ejecutar modelos de lenguaje directamente en nuestro hardware local, lo que no solo elimina la necesidad de una conexión constante a internet, sino que también nos libera de los costos recurrentes asociados con servicios en la nube, haciendo que la inteligencia artificial sea más accesible para desarrolladores, investigadores y entusiastas por igual.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/gpt4all.png" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/asistente-virtual-con-gpt4all/"/>
+    <summary>Cuando buscamos tutoriales sobre asistentes virtuales, a menudo encontramos recursos que involucran integraciones con APIs externas como OpenAI, Claude o Gemini. Si bien estas soluciones son poderosas, nos enfrentamos a dos limitaciones significativas: la dependencia de una conexión a internet y los costos asociados con el uso de APIs de terceros. Es aquí donde herramientas como GPT4All y Ollama brillan, permitiéndonos ejecutar modelos de lenguaje directamente en nuestro hardware local, lo que no solo elimina la necesidad de una conexión constante a internet, sino que también nos libera de los costos recurrentes asociados con servicios en la nube, haciendo que la inteligencia artificial sea más accesible para desarrolladores, investigadores y entusiastas por igual.Python developer</summary>
+    <category term="AI" label="AI"/>
+    <category term="chat" label="chat"/>
+    <category term="chatbots" label="chatbots"/>
+    <category term="gpt4all" label="gpt4all"/>
+    <category term="llama" label="llama"/>
+    <category term="llm" label="llm"/>
+    <category term="ollama" label="ollama"/>
+    <published>2025-02-18T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/Introduccion-a-DuckDB/</id>
+    <title>Introducción a DuckDB: Una alternativa ligera y poderosa para análisis de datos</title>
+    <updated>2025-02-10T00:00:00+00:00</updated>
+    <author>
+      <name>Ider Delzo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Cuando pensamos en base de datos normalmente se nos ocurre Oracle, PostgreSQL o hasta Redis y MongoDB, pensamos en servidores dentro de arquitecturas con múltiples nodos y clientes que se comunican por la red. Sin embargo no todas las aplicaciones requieren ser tan complejas,  tenemos por ejemplo a SQLite, que es ligero y embebido (se integra directamente en la aplicación y no requiere de un servidor) y por eso suele ser la solución perfecta para muchas aplicaciones móviles y web.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/introduction_duckdb.png" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/Introduccion-a-DuckDB/"/>
+    <summary>Cuando pensamos en base de datos normalmente se nos ocurre Oracle, PostgreSQL o hasta Redis y MongoDB, pensamos en servidores dentro de arquitecturas con múltiples nodos y clientes que se comunican por la red. Sin embargo no todas las aplicaciones requieren ser tan complejas,  tenemos por ejemplo a SQLite, que es ligero y embebido (se integra directamente en la aplicación y no requiere de un servidor) y por eso suele ser la solución perfecta para muchas aplicaciones móviles y web.Python developer</summary>
+    <category term="csv" label="csv"/>
+    <category term="pandas" label="pandas"/>
+    <category term="python" label="python"/>
+    <published>2025-02-10T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/desarrollo-app-con-flet/</id>
+    <title>Desarrollando una pequeña aplicación con flet</title>
+    <updated>2024-07-01T00:00:00+00:00</updated>
+    <author>
+      <name>Daniel Gómez</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;a class="reference internal" href="#que-es-flet"&gt;&lt;span class="xref myst"&gt;&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;Qué&lt;/span&gt; &lt;span class="pre"&gt;es&lt;/span&gt; &lt;span class="pre"&gt;flet&lt;/span&gt;&lt;/code&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;1.1 &lt;a class="reference internal" href="#por-que-usar-flet"&gt;&lt;span class="xref myst"&gt;Por qué usar flet&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/desarrollo-app-con-flet/"/>
+    <summary>Qué es flet1.1 Por qué usar flet</summary>
+    <category term="app" label="app"/>
+    <category term="flet" label="flet"/>
+    <category term="flutter" label="flutter"/>
+    <category term="multiplatform" label="multiplatform"/>
+    <category term="python" label="python"/>
+    <category term="python-flutter" label="python-flutter"/>
+    <published>2024-07-01T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/scraping-con-playwright-y-asyncio/</id>
+    <title>Desarrollando un Bot de Scraping Evasivo</title>
+    <updated>2024-06-02T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;En el mundo del scraping, enfrentamos constantemente la batalla contra
+mecanismos de defensa diseñados para detectar y bloquear nuestros bots. Hoy,
+quiero compartirles un proyecto personal que busca no solo sortear estas
+defensas, sino hacerlo de manera eficiente y escalable.&lt;/p&gt;
+&lt;p&gt;Al intentar extraer datos de un sitio web que utiliza Radware, un servicio
+avanzado contra bots de scraping, me vi en la necesidad de crear una solución
+que pudiera superar estos obstáculos. Aquí les presento cómo logré desarrollar
+un bot de scraping que no solo logra su cometido sino que evita ser detectado
+por mecanismos de anti-bots.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/scraping-con-playwright-y-asyncio/"/>
+    <summary>En el mundo del scraping, enfrentamos constantemente la batalla contra
+mecanismos de defensa diseñados para detectar y bloquear nuestros bots. Hoy,
+quiero compartirles un proyecto personal que busca no solo sortear estas
+defensas, sino hacerlo de manera eficiente y escalable.Al intentar extraer datos de un sitio web que utiliza Radware, un servicio
+avanzado contra bots de scraping, me vi en la necesidad de crear una solución
+que pudiera superar estos obstáculos. Aquí les presento cómo logré desarrollar
+un bot de scraping que no solo logra su cometido sino que evita ser detectado
+por mecanismos de anti-bots.</summary>
+    <category term="asyncio" label="asyncio"/>
+    <category term="playwright" label="playwright"/>
+    <category term="python" label="python"/>
+    <category term="scraping" label="scraping"/>
+    <published>2024-06-02T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/puede-python-analizar-mil-millones-de-filas-rapidamente/</id>
+    <title>Explorando el Desafío de Mil Millón de Filas en Python</title>
+    <updated>2024-04-15T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;El desafío de procesar mil millón de filas de datos es una tarea intimidante que pone a prueba la
+capacidad de cualquier lenguaje de programación, incluido Python. En este artículo, exploraremos
+cómo Python, con su naturaleza interpretada, se compara ante este reto colossal, adoptando
+estrategias ingeniosas y aprovechando la potencia de las librerías disponibles para manejar una tarea
+de procesamiento de datos de tal magnitud.&lt;/p&gt;
+&lt;p&gt;Este recorrido comienza con una implementación simple en Python puro, utilizando diccionarios para
+agrupar mediciones por ciudad y calcular valores mínimos, máximos y promedios de temperatura. Esta
+aproximación tomó 9 minutos y 28 segundos para ejecutarse en un archivo de texto de 13GB, una
+diferencia notable frente a la implementación base en Java que corre en 3 minutos y 12 segundos.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/puede-python-analizar-mil-millones-de-filas-rapidamente/"/>
+    <summary>El desafío de procesar mil millón de filas de datos es una tarea intimidante que pone a prueba la
+capacidad de cualquier lenguaje de programación, incluido Python. En este artículo, exploraremos
+cómo Python, con su naturaleza interpretada, se compara ante este reto colossal, adoptando
+estrategias ingeniosas y aprovechando la potencia de las librerías disponibles para manejar una tarea
+de procesamiento de datos de tal magnitud.Este recorrido comienza con una implementación simple en Python puro, utilizando diccionarios para
+agrupar mediciones por ciudad y calcular valores mínimos, máximos y promedios de temperatura. Esta
+aproximación tomó 9 minutos y 28 segundos para ejecutarse en un archivo de texto de 13GB, una
+diferencia notable frente a la implementación base en Java que corre en 3 minutos y 12 segundos.</summary>
+    <category term="1brc" label="1brc"/>
+    <category term="ai-generated" label="ai-generated"/>
+    <category term="python" label="python"/>
+    <published>2024-04-15T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/como-redactar-posts-con-fork/</id>
+    <title>Cómo Hacer Fork y Pull Request en el Blog de Python Perú</title>
+    <updated>2024-04-14T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Bienvenidos a la comunidad de Python Perú y a este Blog que marca el inicio de
+una nueva etapa de la comunidad.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python Perú Logo" class="markdown-body align-center" src="https://blog.python.pe/_images/logo.svg" style="width: 200px;" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/como-redactar-posts-con-fork/"/>
+    <summary>Bienvenidos a la comunidad de Python Perú y a este Blog que marca el inicio de
+una nueva etapa de la comunidad.Python Perú Logo</summary>
+    <category term="ablog" label="ablog"/>
+    <category term="fork" label="fork"/>
+    <category term="git" label="git"/>
+    <category term="pull-request" label="pull-request"/>
+    <category term="sphinx" label="sphinx"/>
+    <category term="tutorial" label="tutorial"/>
+    <published>2024-04-14T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/intro-criptografia/</id>
+    <title>Introducción a la criptografía con Python</title>
+    <updated>2024-04-11T00:00:00+00:00</updated>
+    <author>
+      <name>Antonio Ognio</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Para poder implementar correctamente las medidas mínimas de seguridad en tus proyectos con Python,
+en particular las aplicaciones web, iremos desarrollando una serie de artículos en donde el objetivo
+no es simplemente decirte que paquetes utilizar y que te vueltas un experto en copiar y pegar sino
+que, por el contrario, entiendas los conceptos más básicos que te permitan apreciar y evaluar de
+forma más efectiva y ¿porque no decirlo? profesional el nivel de seguridad de tu código.&lt;/p&gt;
+&lt;p&gt;Es la disciplina que estudia las técnicas para transformar la información desde su formato original
+a otro que permita protegerla del acceso por parte de usuarios no autorizados de forma que se pueda
+prevenir cualquier adulteración y certificar su procedencia.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/intro-criptografia/"/>
+    <summary>Para poder implementar correctamente las medidas mínimas de seguridad en tus proyectos con Python,
+en particular las aplicaciones web, iremos desarrollando una serie de artículos en donde el objetivo
+no es simplemente decirte que paquetes utilizar y que te vueltas un experto en copiar y pegar sino
+que, por el contrario, entiendas los conceptos más básicos que te permitan apreciar y evaluar de
+forma más efectiva y ¿porque no decirlo? profesional el nivel de seguridad de tu código.Es la disciplina que estudia las técnicas para transformar la información desde su formato original
+a otro que permita protegerla del acceso por parte de usuarios no autorizados de forma que se pueda
+prevenir cualquier adulteración y certificar su procedencia.</summary>
+    <category term="criptografia" label="criptografia"/>
+    <category term="principiantes" label="principiantes"/>
+    <category term="seguridad" label="seguridad"/>
+    <category term="tutorial" label="tutorial"/>
+    <published>2024-04-11T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/scraping-requests-bs/</id>
+    <title>Scraping con Python utilizando la biblioteca requests</title>
+    <updated>2024-04-08T00:00:00+00:00</updated>
+    <author>
+      <name>Jonathan Bolo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/scraping-requests.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;El scraping web es una técnica poderosa para extraer datos de páginas web de manera automatizada. Python, con su amplio ecosistema de bibliotecas, proporciona herramientas robustas para realizar scraping de manera eficiente. En este artículo, exploraremos cómo utilizar la biblioteca &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;requests&lt;/span&gt;&lt;/code&gt; de Python para realizar scraping básico.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/scraping-requests-bs/"/>
+    <summary>Python developerEl scraping web es una técnica poderosa para extraer datos de páginas web de manera automatizada. Python, con su amplio ecosistema de bibliotecas, proporciona herramientas robustas para realizar scraping de manera eficiente. En este artículo, exploraremos cómo utilizar la biblioteca requests de Python para realizar scraping básico.</summary>
+    <category term="beautifulsoup4" label="beautifulsoup4"/>
+    <category term="requests" label="requests"/>
+    <category term="scraping" label="scraping"/>
+    <category term="utilidades" label="utilidades"/>
+    <published>2024-04-08T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/integrando-jupyterlite-en-sphinx/</id>
+    <title>Explorando JupyterLite e integrándolo en tu blog de Sphinx</title>
+    <updated>2024-04-08T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;img alt="JupyterLite" class="align-center" src="https://blog.python.pe/_images/jupyterlite.png" style="height: 300px;" /&gt;&lt;/p&gt;
+&lt;p&gt;Como desarrollador y entusiasta de data, siempre me encuentro explorando nuevas
+tecnologías y herramientas para mejorar mis proyectos y documentación.
+Recientemente, mi curiosidad me llevó a descubrir JupyterLite, una
+implementación ligera de JupyterLab que se ejecuta completamente en el navegador
+sin necesidad de un servidor. Intrigado por sus capacidades, decidí experimentar
+con la integración de JupyterLite en mi blog de Sphinx utilizando la extensión
+jupyterlite-sphinx. En esta publicación, compartiré mi experiencia de integrar
+JupyterLite en mi documentación y los pasos que tomé para hacer que funcione sin
+problemas con mi blog construido con Sphinx.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/integrando-jupyterlite-en-sphinx/"/>
+    <summary>JupyterLiteComo desarrollador y entusiasta de data, siempre me encuentro explorando nuevas
+tecnologías y herramientas para mejorar mis proyectos y documentación.
+Recientemente, mi curiosidad me llevó a descubrir JupyterLite, una
+implementación ligera de JupyterLab que se ejecuta completamente en el navegador
+sin necesidad de un servidor. Intrigado por sus capacidades, decidí experimentar
+con la integración de JupyterLite en mi blog de Sphinx utilizando la extensión
+jupyterlite-sphinx. En esta publicación, compartiré mi experiencia de integrar
+JupyterLite en mi documentación y los pasos que tomé para hacer que funcione sin
+problemas con mi blog construido con Sphinx.</summary>
+    <category term="jupyterlite" label="jupyterlite"/>
+    <category term="sphinx" label="sphinx"/>
+    <published>2024-04-08T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/python-ulid/</id>
+    <title>ULID para la generación de identificadores únicos en Python</title>
+    <updated>2024-04-06T00:00:00+00:00</updated>
+    <author>
+      <name>Sergio Infante</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;En el universo de la programación moderna, la generación de identificadores únicos es esencial para una amplia variedad de aplicaciones, desde sistemas de bases de datos distribuidas hasta plataformas de gestión de usuarios.&lt;/p&gt;
+&lt;p&gt;ULID, que significa “Universally Unique Lexicographically Sortable Identifier”, es un tipo de identificador único diseñado para ser ordenado lexicográficamente y garantizar seguridad para la concurrencia. Su estructura combina un timestamp en milisegundos con una porción aleatoria, lo que garantiza su unicidad y permite su ordenación cronológica. Estas características lo hacen especialmente útil en aplicaciones que requieren una alta eficiencia en la generación y gestión de identificadores únicos, especialmente en entornos distribuidos.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/python-ulid/"/>
+    <summary>En el universo de la programación moderna, la generación de identificadores únicos es esencial para una amplia variedad de aplicaciones, desde sistemas de bases de datos distribuidas hasta plataformas de gestión de usuarios.ULID, que significa “Universally Unique Lexicographically Sortable Identifier”, es un tipo de identificador único diseñado para ser ordenado lexicográficamente y garantizar seguridad para la concurrencia. Su estructura combina un timestamp en milisegundos con una porción aleatoria, lo que garantiza su unicidad y permite su ordenación cronológica. Estas características lo hacen especialmente útil en aplicaciones que requieren una alta eficiencia en la generación y gestión de identificadores únicos, especialmente en entornos distribuidos.</summary>
+    <category term="python-ulid" label="python-ulid"/>
+    <category term="ulid" label="ulid"/>
+    <category term="uuid" label="uuid"/>
+    <published>2024-04-06T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/leyendo-csv-pandas-python/</id>
+    <title>Leyendo archivos CSV con Pandas</title>
+    <updated>2024-04-04T00:00:00+00:00</updated>
+    <author>
+      <name>Jonathan Bolo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;En esta publicación, discutiremos cómo leer archivos CSV usando pandas, una biblioteca básica para el manejo de datos escritos en Python.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/biblioteca_pandas.jpg" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/leyendo-csv-pandas-python/"/>
+    <summary>En esta publicación, discutiremos cómo leer archivos CSV usando pandas, una biblioteca básica para el manejo de datos escritos en Python.Python developer</summary>
+    <category term="csv" label="csv"/>
+    <category term="pandas" label="pandas"/>
+    <category term="utilidades" label="utilidades"/>
+    <published>2024-04-04T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/como-redactar-posts/</id>
+    <title>Cómo Redactar Posts en el Blog de Python Perú y no Morir en el Intento</title>
+    <updated>2024-04-04T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Debo iniciar las líneas de este post dándoles la bienvenida a la comunidad de
+Python Perú y a este Blog que marca el inicio de una nueva etapa de la
+comunidad.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python Perú Logo" class="markdown-body align-center" src="https://blog.python.pe/_images/logo.svg" style="width: 200px;" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/como-redactar-posts/"/>
+    <summary>Debo iniciar las líneas de este post dándoles la bienvenida a la comunidad de
+Python Perú y a este Blog que marca el inicio de una nueva etapa de la
+comunidad.Python Perú Logo</summary>
+    <category term="ablog" label="ablog"/>
+    <category term="git" label="git"/>
+    <category term="pull-request" label="pull-request"/>
+    <category term="sphinx" label="sphinx"/>
+    <category term="tutorial" label="tutorial"/>
+    <published>2024-04-04T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/yt-insight-generator/</id>
+    <title>Un Generador de Artículos para Blogs con formato Markdown usando GPT-4 Turbo</title>
+    <updated>2024-04-03T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;img alt="openai" src="https://blog.python.pe/_images/openai.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Hace poco se me ocurrió, en vista a que &lt;a class="reference internal" href="author/ider-delzo/" title="Ider Delzo"&gt;&lt;em&gt;Ider Delzo&lt;/em&gt;&lt;/a&gt; y yo decidimos crear este blog, crear un script en Python para que autogenere un review de un video en YouTube usando nada menos que el API de GPT-4 Turbo de OpenAI.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/yt-insight-generator/"/>
+    <summary>openaiHace poco se me ocurrió, en vista a que author-soloidx y yo decidimos crear este blog, crear un script en Python para que autogenere un review de un video en YouTube usando nada menos que el API de GPT-4 Turbo de OpenAI.</summary>
+    <category term="gpt-4" label="gpt-4"/>
+    <category term="gpt-4-turbo" label="gpt-4-turbo"/>
+    <category term="openai" label="openai"/>
+    <category term="python" label="python"/>
+    <category term="youtube" label="youtube"/>
+    <published>2024-04-03T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/mojo-alternativa-a-python/</id>
+    <title>Mojo: El Nuevo Lenguaje de Programación que Promete Revolucionar Python</title>
+    <updated>2024-04-02T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Es 4 de mayo de 2023 y los desarrolladores en todo el mundo están a punto de
+experimentar una revolución en la programación productiva con la llegada de
+Mojo. Concebido como una superposición de Python, este nuevo lenguaje promete
+ser hasta 35,000 veces más rápido, un hito significativo considerando la
+pervivencia de Python como el lenguaje dominante en inteligencia artificial.&lt;/p&gt;
+&lt;p&gt;Sin embargo, es bien sabido que Python, a pesar de su popularidad, batalla con
+la velocidad de ejecución. Situación que ha dado ventaja a lenguajes como Rust
+y C++ en tareas que demandan un alto rendimiento. Pero ¿Qué hace a Mojo tan
+especial y cómo logra estas impresionantes cifras de rendimiento?&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/mojo-alternativa-a-python/"/>
+    <summary>Es 4 de mayo de 2023 y los desarrolladores en todo el mundo están a punto de
+experimentar una revolución en la programación productiva con la llegada de
+Mojo. Concebido como una superposición de Python, este nuevo lenguaje promete
+ser hasta 35,000 veces más rápido, un hito significativo considerando la
+pervivencia de Python como el lenguaje dominante en inteligencia artificial.Sin embargo, es bien sabido que Python, a pesar de su popularidad, batalla con
+la velocidad de ejecución. Situación que ha dado ventaja a lenguajes como Rust
+y C++ en tareas que demandan un alto rendimiento. Pero ¿Qué hace a Mojo tan
+especial y cómo logra estas impresionantes cifras de rendimiento?</summary>
+    <category term="ai-generated" label="ai-generated"/>
+    <category term="mojo" label="mojo"/>
+    <category term="python" label="python"/>
+    <published>2024-04-02T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/manejo-timezones-python/</id>
+    <title>Manejo de time zones en Python</title>
+    <updated>2024-04-02T00:00:00+00:00</updated>
+    <author>
+      <name>Ider Delzo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Una de las tareas muy frecuentes para un desarrollador es el manejo de fechas, y siempre es un dolor de cabeza manejar los time zones, si bien, actualmente existen librerías que nos ayudan enormemente en este proceso podemos repasar básicamente cómo implementar time zones por nosotros mismos.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/ia_developer_datetime.jpg" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/manejo-timezones-python/"/>
+    <summary>Una de las tareas muy frecuentes para un desarrollador es el manejo de fechas, y siempre es un dolor de cabeza manejar los time zones, si bien, actualmente existen librerías que nos ayudan enormemente en este proceso podemos repasar básicamente cómo implementar time zones por nosotros mismos.Python developer</summary>
+    <category term="utilidades" label="utilidades"/>
+    <published>2024-04-02T00:00:00+00:00</published>
+  </entry>
+</feed>

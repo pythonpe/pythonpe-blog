@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora - Entradas por Sergio Infante</title>
+  <updated>2025-03-17T16:28:48.244110+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/author/sergio-infante/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/python-ulid/</id>
+    <title>ULID para la generación de identificadores únicos en Python</title>
+    <updated>2024-04-06T00:00:00+00:00</updated>
+    <author>
+      <name>Sergio Infante</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;En el universo de la programación moderna, la generación de identificadores únicos es esencial para una amplia variedad de aplicaciones, desde sistemas de bases de datos distribuidas hasta plataformas de gestión de usuarios.&lt;/p&gt;
+&lt;p&gt;ULID, que significa “Universally Unique Lexicographically Sortable Identifier”, es un tipo de identificador único diseñado para ser ordenado lexicográficamente y garantizar seguridad para la concurrencia. Su estructura combina un timestamp en milisegundos con una porción aleatoria, lo que garantiza su unicidad y permite su ordenación cronológica. Estas características lo hacen especialmente útil en aplicaciones que requieren una alta eficiencia en la generación y gestión de identificadores únicos, especialmente en entornos distribuidos.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/python-ulid/"/>
+    <summary>En el universo de la programación moderna, la generación de identificadores únicos es esencial para una amplia variedad de aplicaciones, desde sistemas de bases de datos distribuidas hasta plataformas de gestión de usuarios.ULID, que significa “Universally Unique Lexicographically Sortable Identifier”, es un tipo de identificador único diseñado para ser ordenado lexicográficamente y garantizar seguridad para la concurrencia. Su estructura combina un timestamp en milisegundos con una porción aleatoria, lo que garantiza su unicidad y permite su ordenación cronológica. Estas características lo hacen especialmente útil en aplicaciones que requieren una alta eficiencia en la generación y gestión de identificadores únicos, especialmente en entornos distribuidos.</summary>
+    <category term="python-ulid" label="python-ulid"/>
+    <category term="ulid" label="ulid"/>
+    <category term="uuid" label="uuid"/>
+    <published>2024-04-06T00:00:00+00:00</published>
+  </entry>
+</feed>

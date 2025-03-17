@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora - Entradas etiquetadas app</title>
+  <updated>2025-03-17T16:28:48.383573+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/tag/app/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/desarrollo-app-con-flet/</id>
+    <title>Desarrollando una pequeña aplicación con flet</title>
+    <updated>2024-07-01T00:00:00+00:00</updated>
+    <author>
+      <name>Daniel Gómez</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;a class="reference internal" href="#que-es-flet"&gt;&lt;span class="xref myst"&gt;&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;Qué&lt;/span&gt; &lt;span class="pre"&gt;es&lt;/span&gt; &lt;span class="pre"&gt;flet&lt;/span&gt;&lt;/code&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;1.1 &lt;a class="reference internal" href="#por-que-usar-flet"&gt;&lt;span class="xref myst"&gt;Por qué usar flet&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/desarrollo-app-con-flet/"/>
+    <summary>Qué es flet1.1 Por qué usar flet</summary>
+    <category term="app" label="app"/>
+    <category term="flet" label="flet"/>
+    <category term="flutter" label="flutter"/>
+    <category term="multiplatform" label="multiplatform"/>
+    <category term="python" label="python"/>
+    <category term="python-flutter" label="python-flutter"/>
+    <published>2024-07-01T00:00:00+00:00</published>
+  </entry>
+</feed>

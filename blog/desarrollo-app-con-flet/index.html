@@ -1,0 +1,1483 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Desarrollando una pequeña aplicación con flet" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://blog.python.pe/blog/desarrollo-app-con-flet/" />
+<meta property="og:site_name" content="Blog de Python Perú" />
+<meta property="og:description" content="Qué es flet 1.1 Por qué usar flet 1.2 Configuración de nuestro entorno de desarrollo, Conceptos Básicos de flet 2.1 Primera aplicación con flet. 3. Conclusión Que es flet: Flet es un framework de d..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://blog.python.pe/_images/social_previews/summary_blog_desarrollo-app-con-flet_d84e7fb8.png" />
+<meta property="og:image:alt" content="Qué es flet 1.1 Por qué usar flet 1.2 Configuración de nuestro entorno de desarrollo, Conceptos Básicos de flet 2.1 Primera aplicación con flet. 3. Conclusió..." />
+<meta name="description" content="Qué es flet 1.1 Por qué usar flet 1.2 Configuración de nuestro entorno de desarrollo, Conceptos Básicos de flet 2.1 Primera aplicación con flet. 3. Conclusión Que es flet: Flet es un framework de d..." />
+<meta name="twitter:card" content="summary_large_image" />
+
+    <title>Desarrollando una pequeña aplicación con flet &#8212; Blog de Python Perú</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/markdown.css?v=dc714126" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=a20647df"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=d190bf04"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-NZ0W1CL2L1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-NZ0W1CL2L1');
+            </script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-NZ0W1CL2L1');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/desarrollo-app-con-flet';</script>
+    <link rel="canonical" href="https://blog.python.pe/blog/desarrollo-app-con-flet/" />
+    <link rel="icon" href="../../_static/favicon-48x48.png"/>
+    <link rel="author" title="Sobre este documento" href="../../about/" />
+    <link rel="index" title="Índice" href="../../genindex/" />
+    <link rel="search" title="Búsqueda" href="../../search/" />
+<meta name="robots" content="follow, index">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" /> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="Blog de Python Perú | Aprende y explora"
+/>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Buscar en el blog..."
+         aria-label="Buscar en el blog..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.svg" class="logo__image only-light" alt="Blog de Python Perú - Home"/>
+    <img src="../../_static/logo.svg" class="logo__image only-dark pst-js-only" alt="Blog de Python Perú - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/">
+    Acerca de Python Perú
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pythonpe/pythonpe-blog" title="Repositorio del Blog en GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Repositorio del Blog en GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.meetup.com/pythonperu/" title="Meetup" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-meetup fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Meetup</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk" title="Comunidad de WhatsApp" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-whatsapp fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Comunidad de WhatsApp</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://t.me/pythonperu" title="Canal de Telegram" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-telegram fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Canal de Telegram</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.twitch.tv/pythonperu" title="Twitch" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitch fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitch</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://python.pe" title="Python Perú" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Python Perú</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://blog.python.pe/blog/atom.xml" title="RSS feed" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS feed</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/">
+    Acerca de Python Perú
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pythonpe/pythonpe-blog" title="Repositorio del Blog en GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Repositorio del Blog en GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.meetup.com/pythonperu/" title="Meetup" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-meetup fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Meetup</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk" title="Comunidad de WhatsApp" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-whatsapp fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Comunidad de WhatsApp</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://t.me/pythonperu" title="Canal de Telegram" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-telegram fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Canal de Telegram</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.twitch.tv/pythonperu" title="Twitch" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitch fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitch</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://python.pe" title="Python Perú" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Python Perú</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://blog.python.pe/blog/atom.xml" title="RSS feed" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS feed</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__postcard">
+   
+  <h2>
+     
+    <i class="fa fa-calendar"></i>
+    
+    <span>01 julio 2024</span>
+    
+  </h2>
+  <ul>
+    <div class="ablog-sidebar-item ablog__postcard2">
+   
+  <li id="ablog-sidebar-item author ablog__author">
+    <span>
+      
+      <i class="fa-fw fa fa-user"></i>
+      
+    </span>
+     
+    <a href="../author/daniel-gomez/">Daniel Gómez</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item location ablog__location">
+    <span>
+      
+      <i class="fa-fw fa fa-location-arrow"></i>
+      
+    </span>
+     
+    <a href="../location/paipa/">Paipa</a>
+     ,    
+    <a href="../location/colombia/">Colombia</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item language ablog__language">
+    <span>
+      
+      <i class="fa-fw fa fa-language"></i>
+      
+    </span>
+     
+    <a href="../language/espanol/">Español</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item category ablog__category">
+    <span>
+      
+      <i class="fa-fw fa fa-folder-open"></i>
+      
+    </span>
+     
+    <a href="../category/tutorial/">Tutorial</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item tags ablog__tags">
+    <span>
+       
+      <i class="fa-fw fa fa-tags"></i>
+       
+    </span>
+     
+    <a href="../tag/flet/">flet</a>
+        
+    <a href="../tag/flutter/">flutter</a>
+        
+    <a href="../tag/python/">python</a>
+        
+    <a href="../tag/app/">app</a>
+        
+    <a href="../tag/multiplatform/">multiplatform</a>
+        
+    <a href="../tag/python-flutter/">python-flutter</a>
+      
+  </li>
+   
+</div>
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__recentposts">
+  <h3>
+    <a href="../">Entradas recientes</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../estructura-cv-python-II/">
+        17 marzo - Potencia tu CV con Python (II): Usando NLP para hacer match con ofertas
+      </a>
+    </li>
+    
+    <li>
+      <a href="../haciendo-app-chat-gpt-con-tech-pyodide/">
+        12 marzo - Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-3.5 Turbo: Una Prueba de Concepto
+      </a>
+    </li>
+    
+    <li>
+      <a href="../estructura-cv-python-I/">
+        26 febrero - Potencia tu CV con Python (I): De PDF a Datos Estructurados en Minutos con OpenAI
+      </a>
+    </li>
+    
+    <li>
+      <a href="../asistente-virtual-con-gpt4all/">
+        18 febrero - Python y GPT4All, Creando tu asistente de IA personal con 5 líneas
+      </a>
+    </li>
+    
+    <li>
+      <a href="../Introduccion-a-DuckDB/">
+        10 febrero - Introducción a DuckDB: Una alternativa ligera y poderosa para análisis de datos
+      </a>
+    </li>
+    
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__tagcloud">
+  <link
+    rel="stylesheet"
+    href="../../_static/ablog/tagcloud.css"
+    type="text/css"
+  />
+  <h3><a href="../tag/">Etiquetas</a></h3>
+  <ul class="ablog-cloud">
+     
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/1brc/">1brc</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/ai/">AI</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/data-science/">Data Science</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt/">GPT</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ml/">ML</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/nlp/">NLP</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pdf/">PDF</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pymupdf/">PyMuPDF</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/spacy/">Spacy</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ablog/">ablog</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ai-generated/">ai-generated</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/app/">app</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/asyncio/">asyncio</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/beautifulsoup4/">beautifulsoup4</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/chat/">chat</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/chatbots/">chatbots</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/criptografia/">criptografia</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/csv/">csv</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/flet/">flet</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/flutter/">flutter</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/fork/">fork</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/git/">git</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt/">gpt</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt-4/">gpt-4</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt-4-turbo/">gpt-4-turbo</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt4all/">gpt4all</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/httpx/">httpx</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/jupyterlite/">jupyterlite</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/llama/">llama</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/llm/">llm</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/mojo/">mojo</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/multiplatform/">multiplatform</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ollama/">ollama</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/openai/">openai</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pandas/">pandas</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/playwright/">playwright</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/principiantes/">principiantes</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pull-request/">pull-request</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pyodide/">pyodide</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-5">
+      <a href="../tag/python/">python</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/python-flutter/">python-flutter</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/python-ulid/">python-ulid</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/requests/">requests</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/scraping/">scraping</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/seguridad/">seguridad</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/sphinx/">sphinx</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/tutorial/">tutorial</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ulid/">ulid</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/utilidades/">utilidades</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/uuid/">uuid</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/youtube/">youtube</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__categories">
+  <h3>
+    <a href="../category/">Categorías</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../category/data-science/">Data science (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/desafio-de-mil-millon-de-filas/">Desafío de Mil Millón de Filas (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/jupyterlite/">JupyterLite (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/lenguaje/">Lenguaje (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/scraping/">Scraping (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/scripts/">Scripts (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/snippets/">Snippets (3)</a>
+    </li>
+      
+    <li>
+      <a href="../category/tutorial/">Tutorial (9)</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__archives">
+  <h3>
+    <a href="../archive/">Archivos</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../2025/">2025 (5)</a>
+    </li>
+      
+    <li>
+      <a href="../2024/">2024 (13)</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div id="searchbox"></div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Miga de pan" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../" class="nav-link" aria-label="Inicio">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Desarrollando una pequeña aplicación con flet</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <p align="center">
+    <img src="https://github.com/Less-dev/gitLearn/assets/166412593/ab475342-26b4-431e-9aae-f302e0f3fc57"
+width="1000" height="300">
+</p>
+<section class="tex2jax_ignore mathjax_ignore" id="desarrollando-una-pequena-aplicacion-con-flet">
+<h1>Desarrollando una pequeña aplicación con flet<a class="headerlink" href="#desarrollando-una-pequena-aplicacion-con-flet" title="Link to this heading">#</a></h1>
+<p align="center">
+    <img src="https://github.com/Less-dev/gitLearn/assets/166412593/3f8dd67d-23c3-490e-b8de-16018a562b75" width="150">
+</p>
+<h3 align="center"> Más que un framework</h3>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/74038190/212744287-14f66c13-5458-40dc-9244-8ff533fc8f4a.gif" width="1000">
+</p>
+<ol class="arabic">
+<li><p><a class="reference internal" href="#que-es-flet"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">Qué</span> <span class="pre">es</span> <span class="pre">flet</span></code></span></a></p>
+<p>1.1 <a class="reference internal" href="#por-que-usar-flet"><span class="xref myst">Por qué usar flet</span></a></p>
+<p>1.2 <a class="reference internal" href="#configuracion-de-nuestro-entorno-de-desarrollo"><span class="xref myst">Configuración de nuestro entorno de desarrollo</span></a></p>
+</li>
+<li><p><a class="reference internal" href="#conceptos-basicos-de-flet"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">Conceptos</span> <span class="pre">Básicos</span> <span class="pre">de</span> <span class="pre">flet</span></code></span></a></p>
+<p>2.1<a class="reference internal" href="#primera-aplicacion-con-flet"><span class="xref myst">Primera aplicación con flet</span></a></p>
+</li>
+</ol>
+<p>3.<a class="reference internal" href="#conclusion"><span class="xref myst">Conclusión</span></a></p>
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="1000">
+</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="que-es-flet">
+<h1>Que es flet<a class="headerlink" href="#que-es-flet" title="Link to this heading">#</a></h1>
+<section id="flet-es-un-framework-de-desarrollo-de-aplicaciones-multiplataforma-que-utiliza-python-te-permite-crear-aplicaciones-web-de-escritorio-y-moviles-sin-necesidad-de-experiencia-previa-en-desarrollo-frontend">
+<h2><strong><a class="reference external" href="https://flet.dev/docs/">Flet</a> es un framework de desarrollo de aplicaciones multiplataforma que utiliza Python. Te permite crear aplicaciones web, de escritorio y móviles sin necesidad de experiencia previa en desarrollo frontend.</strong><a class="headerlink" href="#flet-es-un-framework-de-desarrollo-de-aplicaciones-multiplataforma-que-utiliza-python-te-permite-crear-aplicaciones-web-de-escritorio-y-moviles-sin-necesidad-de-experiencia-previa-en-desarrollo-frontend" title="Link to this heading">#</a></h2>
+</section>
+<section id="piensa-en-flet-como-una-herramienta-que-te-facilita-la-construccion-de-interfaces-de-usuario-ui-atractivas-y-funcionales-para-tus-aplicaciones-flet-se-encarga-de-la-parte-visual-de-la-aplicacion-mientras-que-tu-te-concentras-en-la-logica-y-funcionalidad-usando-codigo-python">
+<h2><strong>Piensa en <a class="reference external" href="https://flet.dev/docs/">Flet</a> como una herramienta que te facilita la construcción de interfaces de usuario (UI) atractivas y funcionales para tus aplicaciones.  Flet se encarga de la parte visual de la aplicación, mientras que tú te concentras en la lógica y funcionalidad usando código Python.</strong><a class="headerlink" href="#piensa-en-flet-como-una-herramienta-que-te-facilita-la-construccion-de-interfaces-de-usuario-ui-atractivas-y-funcionales-para-tus-aplicaciones-flet-se-encarga-de-la-parte-visual-de-la-aplicacion-mientras-que-tu-te-concentras-en-la-logica-y-funcionalidad-usando-codigo-python" title="Link to this heading">#</a></h2>
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
+</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="por-que-usar-flet">
+<h1>Por que usar flet<a class="headerlink" href="#por-que-usar-flet" title="Link to this heading">#</a></h1>
+<section id="si-conoces-python-puedes-comenzar-a-usar-flet-de-inmediato-no-necesitas-aprender-lenguajes-web-como-html-css-o-javascript">
+<h2>1.  Si conoces Python, puedes comenzar a usar Flet de inmediato. No necesitas aprender lenguajes web como HTML, CSS o JavaScript.<a class="headerlink" href="#si-conoces-python-puedes-comenzar-a-usar-flet-de-inmediato-no-necesitas-aprender-lenguajes-web-como-html-css-o-javascript" title="Link to this heading">#</a></h2>
+</section>
+<section id="flet-te-permite-crear-interfaces-de-usuario-de-forma-rapida-y-sencilla-gracias-a-sus-widgets-declarativos-y-su-sistema-de-diseno-flexible">
+<h2>2. Flet te permite crear interfaces de usuario de forma rápida y sencilla, gracias a sus widgets declarativos y su sistema de diseño flexible.<a class="headerlink" href="#flet-te-permite-crear-interfaces-de-usuario-de-forma-rapida-y-sencilla-gracias-a-sus-widgets-declarativos-y-su-sistema-de-diseno-flexible" title="Link to this heading">#</a></h2>
+</section>
+<section id="con-flet-puedes-escribir-menos-codigo-para-lograr-el-mismo-resultado-que-con-otros-frameworks-esto-se-traduce-en-un-desarrollo-mas-rapido-y-eficiente">
+<h2>3.  Con Flet, puedes escribir menos código para lograr el mismo resultado que con otros frameworks. Esto se traduce en un desarrollo más rápido y eficiente.<a class="headerlink" href="#con-flet-puedes-escribir-menos-codigo-para-lograr-el-mismo-resultado-que-con-otros-frameworks-esto-se-traduce-en-un-desarrollo-mas-rapido-y-eficiente" title="Link to this heading">#</a></h2>
+</section>
+<section id="flet-proporciona-herramientas-de-depuracion-integradas-que-te-facilitan-encontrar-y-solucionar-problemas-en-tu-codigo">
+<h2>4. Flet proporciona herramientas de depuración integradas que te facilitan encontrar y solucionar problemas en tu código.<a class="headerlink" href="#flet-proporciona-herramientas-de-depuracion-integradas-que-te-facilitan-encontrar-y-solucionar-problemas-en-tu-codigo" title="Link to this heading">#</a></h2>
+</section>
+<section id="flet-te-permite-ver-los-cambios-en-tu-codigo-al-instante-sin-necesidad-de-reiniciar-la-aplicacion-esto-te-ayuda-a-ahorrar-tiempo-y-ser-mas-productivo">
+<h2>5. Flet te permite ver los cambios en tu código al instante sin necesidad de reiniciar la aplicación. Esto te ayuda a ahorrar tiempo y ser más productivo.<a class="headerlink" href="#flet-te-permite-ver-los-cambios-en-tu-codigo-al-instante-sin-necesidad-de-reiniciar-la-aplicacion-esto-te-ayuda-a-ahorrar-tiempo-y-ser-mas-productivo" title="Link to this heading">#</a></h2>
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
+</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="configuracion-de-nuestro-entorno-de-desarrollo">
+<h1>Configuracion de nuestro entorno de desarrollo<a class="headerlink" href="#configuracion-de-nuestro-entorno-de-desarrollo" title="Link to this heading">#</a></h1>
+<section id="linux-ubuntu">
+<h2>Linux/Ubuntu<a class="headerlink" href="#linux-ubuntu" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Crea un entorno virtual: Abre una terminal y navega hasta el directorio donde deseas instalar Flet. Luego, crea un entorno virtual ejecutando el siguiente comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">.</span><span class="n">venv</span> 
+</pre></div>
+</div>
+</li>
+<li><p>Activa el entorno virtual: Para activar el entorno virtual, ejecuta el siguiente comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">.</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+</li>
+<li><p>Instala Flet: Una vez activado el entorno virtual, puedes instalar Flet ejecutando el siguiente comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">flet</span>
+</pre></div>
+</div>
+</li>
+<li><p>Verifica la instalación: Para verificar que Flet se haya instalado correctamente, ejecuta el siguiente comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flet</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="macos">
+<h2>MacOs<a class="headerlink" href="#macos" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Crea un entorno virtual: Sigue los mismos pasos que para la instalación en Linux, utilizando el comando <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">.venv</span></code> para crear un entorno virtual.</p></li>
+<li><p>Activa el entorno virtual: Activa el entorno virtual ejecutando el comando</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">.</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Instala Flet: Instala Flet utilizando el comando</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">flet</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Verifica la instalación: Verifica la instalación ejecutando el comando</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flet</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+</section>
+<section id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Crea un entorno virtual: Sigue los mismos pasos que para la instalación en Linux y macOS, utilizando el comando <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">.venv</span> </code> para crear un entorno virtual</p></li>
+<li><p>Activa el entorno virtual: Activa el entorno virtual ejecutando el comando source .venv/bin/activate</p></li>
+<li><p>Instala Flet: Instala Flet utilizando el comando</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">flet</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Verifica la instalación: Verifica la instalación ejecutando el comando</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flet</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
+</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conceptos-basicos-de-flet">
+<h1>Conceptos Básicos de flet<a class="headerlink" href="#conceptos-basicos-de-flet" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="widgets">
+<h1>1. Widgets:<a class="headerlink" href="#widgets" title="Link to this heading">#</a></h1>
+<section id="los-widgets-son-los-elementos-basicos-de-la-interfaz-de-usuario-en-flet-hay-una-gran-variedad-de-widgets-disponibles-como-botones-etiquetas-campos-de-entrada-imagenes-listas-etc-cada-widget-tiene-sus-propias-propiedades-y-metodos-que-puedes-usar-para-personalizar-su-apariencia-y-comportamiento">
+<h2>Los widgets son los elementos básicos de la interfaz de usuario en Flet. Hay una gran variedad de widgets disponibles, como botones, etiquetas, campos de entrada, imágenes, listas, etc. Cada widget tiene sus propias propiedades y métodos que puedes usar para personalizar su apariencia y comportamiento.<a class="headerlink" href="#los-widgets-son-los-elementos-basicos-de-la-interfaz-de-usuario-en-flet-hay-una-gran-variedad-de-widgets-disponibles-como-botones-etiquetas-campos-de-entrada-imagenes-listas-etc-cada-widget-tiene-sus-propias-propiedades-y-metodos-que-puedes-usar-para-personalizar-su-apariencia-y-comportamiento" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="diseno-de-la-interfaz-de-usuario">
+<h1>2. Diseño de la interfaz de usuario:<a class="headerlink" href="#diseno-de-la-interfaz-de-usuario" title="Link to this heading">#</a></h1>
+<section id="flet-utiliza-un-sistema-de-diseno-declarativo-para-crear-interfaces-de-usuario-esto-significa-que-describes-la-estructura-y-el-diseno-de-tu-interfaz-de-usuario-en-codigo-python-y-flet-se-encarga-de-generar-el-html-css-y-javascript-necesarios-para-que-funcione-en-diferentes-plataformas">
+<h2>Flet utiliza un sistema de diseño declarativo para crear interfaces de usuario. Esto significa que describes la estructura y el diseño de tu interfaz de usuario en código Python, y Flet se encarga de generar el HTML, CSS y JavaScript necesarios para que funcione en diferentes plataformas.<a class="headerlink" href="#flet-utiliza-un-sistema-de-diseno-declarativo-para-crear-interfaces-de-usuario-esto-significa-que-describes-la-estructura-y-el-diseno-de-tu-interfaz-de-usuario-en-codigo-python-y-flet-se-encarga-de-generar-el-html-css-y-javascript-necesarios-para-que-funcione-en-diferentes-plataformas" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="eventos">
+<h1>3. Eventos:<a class="headerlink" href="#eventos" title="Link to this heading">#</a></h1>
+<section id="los-eventos-son-acciones-que-ocurren-en-la-interfaz-de-usuario-como-clics-del-mouse-pulsaciones-de-teclas-o-cambios-en-el-valor-de-un-campo-de-entrada-puedes-asociar-funciones-a-los-eventos-para-que-se-ejecuten-cuando-ocurran">
+<h2>Los eventos son acciones que ocurren en la interfaz de usuario, como clics del mouse, pulsaciones de teclas o cambios en el valor de un campo de entrada. Puedes asociar funciones a los eventos para que se ejecuten cuando ocurran.<a class="headerlink" href="#los-eventos-son-acciones-que-ocurren-en-la-interfaz-de-usuario-como-clics-del-mouse-pulsaciones-de-teclas-o-cambios-en-el-valor-de-un-campo-de-entrada-puedes-asociar-funciones-a-los-eventos-para-que-se-ejecuten-cuando-ocurran" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="rutas">
+<h1>4. Rutas:<a class="headerlink" href="#rutas" title="Link to this heading">#</a></h1>
+<section id="las-rutas-te-permiten-navegar-entre-diferentes-pantallas-de-tu-aplicacion-puedes-definir-diferentes-rutas-y-asociarlas-a-diferentes-widgets-o-acciones">
+<h2>Las rutas te permiten navegar entre diferentes pantallas de tu aplicación. Puedes definir diferentes rutas y asociarlas a diferentes widgets o acciones.<a class="headerlink" href="#las-rutas-te-permiten-navegar-entre-diferentes-pantallas-de-tu-aplicacion-puedes-definir-diferentes-rutas-y-asociarlas-a-diferentes-widgets-o-acciones" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="estado">
+<h1>5. Estado:<a class="headerlink" href="#estado" title="Link to this heading">#</a></h1>
+<section id="el-estado-de-tu-aplicacion-se-almacena-en-variables-puedes-acceder-y-modificar-el-estado-desde-tu-codigo-python">
+<h2>El estado de tu aplicación se almacena en variables. Puedes acceder y modificar el estado desde tu código Python.<a class="headerlink" href="#el-estado-de-tu-aplicacion-se-almacena-en-variables-puedes-acceder-y-modificar-el-estado-desde-tu-codigo-python" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="api">
+<h1>6. API:<a class="headerlink" href="#api" title="Link to this heading">#</a></h1>
+<section id="flet-proporciona-una-api-completa-que-te-permite-acceder-a-las-funciones-y-funcionalidades-del-framework-la-api-esta-bien-documentada-y-es-facil-de-usar">
+<h2>Flet proporciona una API completa que te permite acceder a las funciones y funcionalidades del framework. La API está bien documentada y es fácil de usar.<a class="headerlink" href="#flet-proporciona-una-api-completa-que-te-permite-acceder-a-las-funciones-y-funcionalidades-del-framework-la-api-esta-bien-documentada-y-es-facil-de-usar" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="comunidad">
+<h1>7. Comunidad:<a class="headerlink" href="#comunidad" title="Link to this heading">#</a></h1>
+<section id="flet-tiene-una-comunidad-de-desarrolladores-en-crecimiento-que-esta-siempre-dispuesta-a-ayudar-puedes-encontrar-ayuda-en-el-foro-de-la-comunidad-en-los-canales-de-redes-sociales-o-en-los-repositorios-de-github-de-flet">
+<h2>Flet tiene una comunidad de desarrolladores en crecimiento que está siempre dispuesta a ayudar. Puedes encontrar ayuda en el foro de la comunidad, en los canales de redes sociales o en los repositorios de GitHub de Flet.<a class="headerlink" href="#flet-tiene-una-comunidad-de-desarrolladores-en-crecimiento-que-esta-siempre-dispuesta-a-ayudar-puedes-encontrar-ayuda-en-el-foro-de-la-comunidad-en-los-canales-de-redes-sociales-o-en-los-repositorios-de-github-de-flet" title="Link to this heading">#</a></h2>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/74038190/212744287-14f66c13-5458-40dc-9244-8ff533fc8f4a.gif" width="1000">
+</p>
+<blockquote>
+<div><p>(Opcional) Complemente la información  anterior con este video:</p>
+</div></blockquote>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/bRqbHpXklPU" style="border: 0; height: 345px; width: 560px">
+</iframe></div><p align="center">
+    <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
+</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="primera-aplicacion-con-flet">
+<h1>Primera aplicación con flet<a class="headerlink" href="#primera-aplicacion-con-flet" title="Link to this heading">#</a></h1>
+<section id="para-este-curso-cree-esta-estructura-de-archivos-que-mantendremos-vigente-en-todos-los-proyectos">
+<h2>1. Para este curso cree esta estructura de archivos que mantendremos vigente en todos los proyectos.<a class="headerlink" href="#para-este-curso-cree-esta-estructura-de-archivos-que-mantendremos-vigente-en-todos-los-proyectos" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="https://github.com/compose-projects/socialLocal/assets/124411052/ceb5303d-a880-4d5a-8953-371cc1dce450" /></p>
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000" height="2">
+</p>
+</section>
+<section id="importe-flet-a-su-proyecto-para-poder-usarlo">
+<h2>2.Importe flet a su proyecto para poder usarlo:<a class="headerlink" href="#importe-flet-a-su-proyecto-para-poder-usarlo" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="https://github.com/compose-projects/socialLocal/assets/124411052/20be3308-9cf2-4474-8a37-f7040e12b1a0" /></p>
+</section>
+<section id="declare-una-funcion-main-y-conozca-el-metodo-page-el-cual-es-de-suma-importancia-comprender-porque-sera-usado-en-todo-el-curso">
+<h2>3. Declare una función main y conozca el método <code class="docutils literal notranslate"><span class="pre">page</span></code> el cual es de suma importancia comprender, porque será usado en todo el curso.<a class="headerlink" href="#declare-una-funcion-main-y-conozca-el-metodo-page-el-cual-es-de-suma-importancia-comprender-porque-sera-usado-en-todo-el-curso" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="https://github.com/compose-projects/socialLocal/assets/124411052/dd271347-5b8e-4814-aa8e-cc6552e6bd01" /></p>
+</section>
+<section id="para-nuestra-primera-aplicacion-con-flet-haremos-un-contador-simple-para-ello-agregue-la-siiguiente-logica-dentro-de-su-funcion-main-pd-flet-es-hijo-de-flutter-y-sus-componentes-tambien-entonces-si-conoce-de-flutter-va-a-comprender-flet">
+<h2>4. Para nuestra primera aplicación con flet haremos un contador simple, para ello agregue la siiguiente lógica dentro de su función main. PD: Flet es hijo de flutter y sus componentes tambien, entonces si conoce de flutter va a comprender flet.<a class="headerlink" href="#para-nuestra-primera-aplicacion-con-flet-haremos-un-contador-simple-para-ello-agregue-la-siiguiente-logica-dentro-de-su-funcion-main-pd-flet-es-hijo-de-flutter-y-sus-componentes-tambien-entonces-si-conoce-de-flutter-va-a-comprender-flet" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="https://github.com/compose-projects/socialLocal/assets/124411052/e89cbb4e-c0cd-4b2a-9bde-17509d9ec56b" /></p>
+</section>
+<section id="por-ultimo-cree-la-aplicacion">
+<h2>5. Por último cree la aplicación:<a class="headerlink" href="#por-ultimo-cree-la-aplicacion" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="https://github.com/compose-projects/socialLocal/assets/124411052/2eb9046c-a631-45a7-8f6a-fc0b3199874f" /></p>
+</section>
+<section id="abra-su-terminal-y-ejecute">
+<h2>6. Abra su terminal y ejecute:<a class="headerlink" href="#abra-su-terminal-y-ejecute" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="https://github.com/compose-projects/socialLocal/assets/124411052/c9b189ce-afc1-4da7-96dc-5aff660a7a65" /></p>
+</section>
+<section id="resultado">
+<h2>Resultado:<a class="headerlink" href="#resultado" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/compose-projects/socialLocal/assets/124411052/ba564751-c414-4666-922f-c6c25c36bb06">Grabación de pantalla desde 01-07-24 06:53:38.webm</a></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1>Conclusion:<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h1>
+<section id="flet-pese-al-poco-tiempo-de-su-creacion-es-un-framework-que-tiene-mucho-potencial-para-ser-realmente-utilizado-por-grandes-masas-gracias-a-su-facil-uso-con-python-esta-fue-una-pequena-introduccion-a-flet-1-3-espero-que-haya-sido-de-su-agrado">
+<h2>Flet pese al poco tiempo de su creación es un framework que tiene mucho potencial para ser realmente utilizado por grandes masas, gracias a su fácil uso con python. Esta fue una pequeña introducción a flet [1/3] Espero que haya sido de su agrado,<a class="headerlink" href="#flet-pese-al-poco-tiempo-de-su-creacion-es-un-framework-que-tiene-mucho-potencial-para-ser-realmente-utilizado-por-grandes-masas-gracias-a-su-facil-uso-con-python-esta-fue-una-pequena-introduccion-a-flet-1-3-espero-que-haya-sido-de-su-agrado" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>ult vez 01 jul 18:13</p></li>
+</ul>
+<section id="by-less">
+<h3>by: <a class="reference external" href="https://github.com/less-dev/">Less</a><a class="headerlink" href="#by-less" title="Link to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+     
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+     
+    <a href="../scraping-con-playwright-y-asyncio/">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>Desarrollando un Bot de Scraping Evasivo</span>
+    </a>
+    
+  </span>
+  <span class="ablog__spacer">&nbsp;</span>
+  <span class="ablog__next">
+     
+    <a href="../Introduccion-a-DuckDB/">
+      <span>Introducción a DuckDB: Una alternativa ligera y poderosa para análisis de datos</span>
+      
+      <i class="fa fa-arrow-circle-right"></i>
+      
+    </a>
+    
+  </span>
+</div>
+  
+</div>
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+
+
+
+<script>
+class ModeToggle {
+    static get MODE_KEY()
+    {
+        return "mode";
+    }
+    static get DARK_MODE()
+    {
+        return "dark";
+    }
+    static get LIGHT_MODE()
+    {
+        return "light";
+    }
+    static get AUTO_MODE()
+    {
+        return "auto";
+    }
+    static get ID()
+    {
+        return "mode-toggle";
+    }
+    constructor()
+    {
+        let self = this; /* always follow the system prefers */
+        this.sysDarkPrefers.forEach((el) => {
+            el.addEventListener("click", () => {
+                self.notify();
+            });
+        });
+    } /* constructor() */
+    get sysDarkPrefers()
+    {
+        return document.querySelectorAll(".theme-switch-button");
+    }
+    get isSysDarkPrefer()
+    {
+        return this.sysDarkPrefers.matches;
+    }
+    get isDarkMode()
+    {
+        return this.mode === ModeToggle.DARK_MODE;
+    }
+    get isLightMode()
+    {
+        return this.mode === ModeToggle.LIGHT_MODE;
+    }
+    get hasMode()
+    {
+        return this.mode != null;
+    }
+    get mode()
+    {
+        return localStorage.getItem(ModeToggle.MODE_KEY);
+    } /* get the current mode on screen */
+    get modeStatus()
+    {
+        if (this.isLightMode || (!this.hasMode && this.isSysDarkPrefer)) {
+            return ModeToggle.LIGHT_MODE;
+        } else {
+            return this.mode;
+        }
+    }
+    flip()
+    {
+        if (this.modeStatus === ModeToggle.LIGHT_MODE) {
+            return ModeToggle.AUTO_MODE;
+        } else if (this.modeStatus == ModeToggle.AUTO_MODE) {
+            return ModeToggle.DARK_MODE;
+        } else {
+            return ModeToggle.LIGHT_MODE;
+        }
+    }
+    notify()
+    {
+        window.postMessage({
+            direction: ModeToggle.ID,
+            message: this.flip()
+        }, "*");
+    }
+} /* ModeToggle */
+const toggle = new ModeToggle();
+</script>
+<script>
+    $(function() {
+        const origin = "https://giscus.app";
+        const iframe = "iframe.giscus-frame";
+        const lightTheme = "light";
+        const darkTheme = "dark";
+        let initTheme = lightTheme;
+        if ($("html[data-mode=dark]").length > 0 || ($("html[data-mode]").length == 0 && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            initTheme = darkTheme;
+        }
+        let giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "pythonpe/pythonpe-blog",
+            "data-repo-id": "R_kgDOLnXH7w",
+            "data-category": "Blog comments",
+            "data-category-id": "DIC_kwDOLnXH784CeaCq",
+            "data-mapping": "pathname",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-theme": initTheme,
+            "data-input-position": "bottom",
+            "data-lang": "es",
+            "crossorigin": "anonymous",
+            "async": ""
+        };
+        let giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("tail-wrapper").appendChild(giscusScript);
+        addEventListener("message", (event) => {
+            if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
+                /* global theme mode changed */
+                const mode = event.data.message;
+                const theme = (mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme);
+                const message = {
+                    setConfig: {
+                        theme: theme
+                    }
+                };
+                const giscus = document.querySelector(iframe).contentWindow;
+                giscus.postMessage({
+                    giscus: message
+                }, origin);
+            }
+        });
+    });
+</script>
+<div id="tail-wrapper">
+</div>
+
+</div>
+  
+</div>
+                </footer>
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> En esta página
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Desarrollando una pequeña aplicación con flet</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-flet">Que es flet</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flet-es-un-framework-de-desarrollo-de-aplicaciones-multiplataforma-que-utiliza-python-te-permite-crear-aplicaciones-web-de-escritorio-y-moviles-sin-necesidad-de-experiencia-previa-en-desarrollo-frontend"><strong>Flet es un framework de desarrollo de aplicaciones multiplataforma que utiliza Python. Te permite crear aplicaciones web, de escritorio y móviles sin necesidad de experiencia previa en desarrollo frontend.</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#piensa-en-flet-como-una-herramienta-que-te-facilita-la-construccion-de-interfaces-de-usuario-ui-atractivas-y-funcionales-para-tus-aplicaciones-flet-se-encarga-de-la-parte-visual-de-la-aplicacion-mientras-que-tu-te-concentras-en-la-logica-y-funcionalidad-usando-codigo-python"><strong>Piensa en Flet como una herramienta que te facilita la construcción de interfaces de usuario (UI) atractivas y funcionales para tus aplicaciones.  Flet se encarga de la parte visual de la aplicación, mientras que tú te concentras en la lógica y funcionalidad usando código Python.</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-usar-flet">Por que usar flet</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#si-conoces-python-puedes-comenzar-a-usar-flet-de-inmediato-no-necesitas-aprender-lenguajes-web-como-html-css-o-javascript">1.  Si conoces Python, puedes comenzar a usar Flet de inmediato. No necesitas aprender lenguajes web como HTML, CSS o JavaScript.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flet-te-permite-crear-interfaces-de-usuario-de-forma-rapida-y-sencilla-gracias-a-sus-widgets-declarativos-y-su-sistema-de-diseno-flexible">2. Flet te permite crear interfaces de usuario de forma rápida y sencilla, gracias a sus widgets declarativos y su sistema de diseño flexible.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#con-flet-puedes-escribir-menos-codigo-para-lograr-el-mismo-resultado-que-con-otros-frameworks-esto-se-traduce-en-un-desarrollo-mas-rapido-y-eficiente">3.  Con Flet, puedes escribir menos código para lograr el mismo resultado que con otros frameworks. Esto se traduce en un desarrollo más rápido y eficiente.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flet-proporciona-herramientas-de-depuracion-integradas-que-te-facilitan-encontrar-y-solucionar-problemas-en-tu-codigo">4. Flet proporciona herramientas de depuración integradas que te facilitan encontrar y solucionar problemas en tu código.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flet-te-permite-ver-los-cambios-en-tu-codigo-al-instante-sin-necesidad-de-reiniciar-la-aplicacion-esto-te-ayuda-a-ahorrar-tiempo-y-ser-mas-productivo">5. Flet te permite ver los cambios en tu código al instante sin necesidad de reiniciar la aplicación. Esto te ayuda a ahorrar tiempo y ser más productivo.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-de-nuestro-entorno-de-desarrollo">Configuracion de nuestro entorno de desarrollo</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-ubuntu">Linux/Ubuntu</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">MacOs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-basicos-de-flet">Conceptos Básicos de flet</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets">1. Widgets:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#los-widgets-son-los-elementos-basicos-de-la-interfaz-de-usuario-en-flet-hay-una-gran-variedad-de-widgets-disponibles-como-botones-etiquetas-campos-de-entrada-imagenes-listas-etc-cada-widget-tiene-sus-propias-propiedades-y-metodos-que-puedes-usar-para-personalizar-su-apariencia-y-comportamiento">Los widgets son los elementos básicos de la interfaz de usuario en Flet. Hay una gran variedad de widgets disponibles, como botones, etiquetas, campos de entrada, imágenes, listas, etc. Cada widget tiene sus propias propiedades y métodos que puedes usar para personalizar su apariencia y comportamiento.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#diseno-de-la-interfaz-de-usuario">2. Diseño de la interfaz de usuario:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flet-utiliza-un-sistema-de-diseno-declarativo-para-crear-interfaces-de-usuario-esto-significa-que-describes-la-estructura-y-el-diseno-de-tu-interfaz-de-usuario-en-codigo-python-y-flet-se-encarga-de-generar-el-html-css-y-javascript-necesarios-para-que-funcione-en-diferentes-plataformas">Flet utiliza un sistema de diseño declarativo para crear interfaces de usuario. Esto significa que describes la estructura y el diseño de tu interfaz de usuario en código Python, y Flet se encarga de generar el HTML, CSS y JavaScript necesarios para que funcione en diferentes plataformas.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eventos">3. Eventos:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#los-eventos-son-acciones-que-ocurren-en-la-interfaz-de-usuario-como-clics-del-mouse-pulsaciones-de-teclas-o-cambios-en-el-valor-de-un-campo-de-entrada-puedes-asociar-funciones-a-los-eventos-para-que-se-ejecuten-cuando-ocurran">Los eventos son acciones que ocurren en la interfaz de usuario, como clics del mouse, pulsaciones de teclas o cambios en el valor de un campo de entrada. Puedes asociar funciones a los eventos para que se ejecuten cuando ocurran.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rutas">4. Rutas:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#las-rutas-te-permiten-navegar-entre-diferentes-pantallas-de-tu-aplicacion-puedes-definir-diferentes-rutas-y-asociarlas-a-diferentes-widgets-o-acciones">Las rutas te permiten navegar entre diferentes pantallas de tu aplicación. Puedes definir diferentes rutas y asociarlas a diferentes widgets o acciones.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#estado">5. Estado:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-estado-de-tu-aplicacion-se-almacena-en-variables-puedes-acceder-y-modificar-el-estado-desde-tu-codigo-python">El estado de tu aplicación se almacena en variables. Puedes acceder y modificar el estado desde tu código Python.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api">6. API:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flet-proporciona-una-api-completa-que-te-permite-acceder-a-las-funciones-y-funcionalidades-del-framework-la-api-esta-bien-documentada-y-es-facil-de-usar">Flet proporciona una API completa que te permite acceder a las funciones y funcionalidades del framework. La API está bien documentada y es fácil de usar.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#comunidad">7. Comunidad:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flet-tiene-una-comunidad-de-desarrolladores-en-crecimiento-que-esta-siempre-dispuesta-a-ayudar-puedes-encontrar-ayuda-en-el-foro-de-la-comunidad-en-los-canales-de-redes-sociales-o-en-los-repositorios-de-github-de-flet">Flet tiene una comunidad de desarrolladores en crecimiento que está siempre dispuesta a ayudar. Puedes encontrar ayuda en el foro de la comunidad, en los canales de redes sociales o en los repositorios de GitHub de Flet.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#primera-aplicacion-con-flet">Primera aplicación con flet</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#para-este-curso-cree-esta-estructura-de-archivos-que-mantendremos-vigente-en-todos-los-proyectos">1. Para este curso cree esta estructura de archivos que mantendremos vigente en todos los proyectos.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importe-flet-a-su-proyecto-para-poder-usarlo">2.Importe flet a su proyecto para poder usarlo:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-una-funcion-main-y-conozca-el-metodo-page-el-cual-es-de-suma-importancia-comprender-porque-sera-usado-en-todo-el-curso">3. Declare una función main y conozca el método <code class="docutils literal notranslate"><span class="pre">page</span></code> el cual es de suma importancia comprender, porque será usado en todo el curso.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#para-nuestra-primera-aplicacion-con-flet-haremos-un-contador-simple-para-ello-agregue-la-siiguiente-logica-dentro-de-su-funcion-main-pd-flet-es-hijo-de-flutter-y-sus-componentes-tambien-entonces-si-conoce-de-flutter-va-a-comprender-flet">4. Para nuestra primera aplicación con flet haremos un contador simple, para ello agregue la siiguiente lógica dentro de su función main. PD: Flet es hijo de flutter y sus componentes tambien, entonces si conoce de flutter va a comprender flet.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#por-ultimo-cree-la-aplicacion">5. Por último cree la aplicación:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abra-su-terminal-y-ejecute">6. Abra su terminal y ejecute:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resultado">Resultado:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flet-pese-al-poco-tiempo-de-su-creacion-es-un-framework-que-tiene-mucho-potencial-para-ser-realmente-utilizado-por-grandes-masas-gracias-a-su-facil-uso-con-python-esta-fue-una-pequena-introduccion-a-flet-1-3-espero-que-haya-sido-de-su-agrado">Flet pese al poco tiempo de su creación es un framework que tiene mucho potencial para ser realmente utilizado por grandes masas, gracias a su fácil uso con python. Esta fue una pequeña introducción a flet [1/3] Espero que haya sido de su agrado,</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#by-less">by: Less</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/blog/desarrollo-app-con-flet.md.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Python Perú.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Construido con el <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html"> Tema PyData Sphinx </a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

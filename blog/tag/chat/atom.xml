@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora - Entradas etiquetadas chat</title>
+  <updated>2025-03-17T16:28:48.389566+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/tag/chat/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/asistente-virtual-con-gpt4all/</id>
+    <title>Python y GPT4All, Creando tu asistente de IA personal con 5 líneas</title>
+    <updated>2025-02-18T00:00:00+00:00</updated>
+    <author>
+      <name>Ider Delzo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Cuando buscamos tutoriales sobre asistentes virtuales, a menudo encontramos recursos que involucran integraciones con APIs externas como OpenAI, Claude o Gemini. Si bien estas soluciones son poderosas, nos enfrentamos a dos limitaciones significativas: la dependencia de una conexión a internet y los costos asociados con el uso de APIs de terceros. Es aquí donde herramientas como GPT4All y Ollama brillan, permitiéndonos ejecutar modelos de lenguaje directamente en nuestro hardware local, lo que no solo elimina la necesidad de una conexión constante a internet, sino que también nos libera de los costos recurrentes asociados con servicios en la nube, haciendo que la inteligencia artificial sea más accesible para desarrolladores, investigadores y entusiastas por igual.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/gpt4all.png" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/asistente-virtual-con-gpt4all/"/>
+    <summary>Cuando buscamos tutoriales sobre asistentes virtuales, a menudo encontramos recursos que involucran integraciones con APIs externas como OpenAI, Claude o Gemini. Si bien estas soluciones son poderosas, nos enfrentamos a dos limitaciones significativas: la dependencia de una conexión a internet y los costos asociados con el uso de APIs de terceros. Es aquí donde herramientas como GPT4All y Ollama brillan, permitiéndonos ejecutar modelos de lenguaje directamente en nuestro hardware local, lo que no solo elimina la necesidad de una conexión constante a internet, sino que también nos libera de los costos recurrentes asociados con servicios en la nube, haciendo que la inteligencia artificial sea más accesible para desarrolladores, investigadores y entusiastas por igual.Python developer</summary>
+    <category term="AI" label="AI"/>
+    <category term="chat" label="chat"/>
+    <category term="chatbots" label="chatbots"/>
+    <category term="gpt4all" label="gpt4all"/>
+    <category term="llama" label="llama"/>
+    <category term="llm" label="llm"/>
+    <category term="ollama" label="ollama"/>
+    <published>2025-02-18T00:00:00+00:00</published>
+  </entry>
+</feed>

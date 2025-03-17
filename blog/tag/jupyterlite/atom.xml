@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora - Entradas etiquetadas jupyterlite</title>
+  <updated>2025-03-17T16:28:48.413326+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/tag/jupyterlite/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/integrando-jupyterlite-en-sphinx/</id>
+    <title>Explorando JupyterLite e integrándolo en tu blog de Sphinx</title>
+    <updated>2024-04-08T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;img alt="JupyterLite" class="align-center" src="https://blog.python.pe/_images/jupyterlite.png" style="height: 300px;" /&gt;&lt;/p&gt;
+&lt;p&gt;Como desarrollador y entusiasta de data, siempre me encuentro explorando nuevas
+tecnologías y herramientas para mejorar mis proyectos y documentación.
+Recientemente, mi curiosidad me llevó a descubrir JupyterLite, una
+implementación ligera de JupyterLab que se ejecuta completamente en el navegador
+sin necesidad de un servidor. Intrigado por sus capacidades, decidí experimentar
+con la integración de JupyterLite en mi blog de Sphinx utilizando la extensión
+jupyterlite-sphinx. En esta publicación, compartiré mi experiencia de integrar
+JupyterLite en mi documentación y los pasos que tomé para hacer que funcione sin
+problemas con mi blog construido con Sphinx.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/integrando-jupyterlite-en-sphinx/"/>
+    <summary>JupyterLiteComo desarrollador y entusiasta de data, siempre me encuentro explorando nuevas
+tecnologías y herramientas para mejorar mis proyectos y documentación.
+Recientemente, mi curiosidad me llevó a descubrir JupyterLite, una
+implementación ligera de JupyterLab que se ejecuta completamente en el navegador
+sin necesidad de un servidor. Intrigado por sus capacidades, decidí experimentar
+con la integración de JupyterLite en mi blog de Sphinx utilizando la extensión
+jupyterlite-sphinx. En esta publicación, compartiré mi experiencia de integrar
+JupyterLite en mi documentación y los pasos que tomé para hacer que funcione sin
+problemas con mi blog construido con Sphinx.</summary>
+    <category term="jupyterlite" label="jupyterlite"/>
+    <category term="sphinx" label="sphinx"/>
+    <published>2024-04-08T00:00:00+00:00</published>
+  </entry>
+</feed>

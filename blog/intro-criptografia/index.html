@@ -1,0 +1,1703 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Introducción a la criptografía con Python" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://blog.python.pe/blog/intro-criptografia/" />
+<meta property="og:site_name" content="Blog de Python Perú" />
+<meta property="og:description" content="Motivación de este artículo: Para poder implementar correctamente las medidas mínimas de seguridad en tus proyectos con Python, en particular las aplicaciones web, iremos desarrollando una serie de..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://blog.python.pe/_images/social_previews/summary_blog_intro-criptografia_7f8a3097.png" />
+<meta property="og:image:alt" content="Motivación de este artículo: Para poder implementar correctamente las medidas mínimas de seguridad en tus proyectos con Python, en particular las aplicacione..." />
+<meta name="description" content="Motivación de este artículo: Para poder implementar correctamente las medidas mínimas de seguridad en tus proyectos con Python, en particular las aplicaciones web, iremos desarrollando una serie de..." />
+<meta name="twitter:card" content="summary_large_image" />
+
+    <title>Introducción a la criptografía con Python &#8212; Blog de Python Perú</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/markdown.css?v=dc714126" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=a20647df"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=d190bf04"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-NZ0W1CL2L1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-NZ0W1CL2L1');
+            </script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-NZ0W1CL2L1');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/intro-criptografia';</script>
+    <link rel="canonical" href="https://blog.python.pe/blog/intro-criptografia/" />
+    <link rel="icon" href="../../_static/favicon-48x48.png"/>
+    <link rel="author" title="Sobre este documento" href="../../about/" />
+    <link rel="index" title="Índice" href="../../genindex/" />
+    <link rel="search" title="Búsqueda" href="../../search/" />
+<meta name="robots" content="follow, index">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" /> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="Blog de Python Perú | Aprende y explora"
+/>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Buscar en el blog..."
+         aria-label="Buscar en el blog..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.svg" class="logo__image only-light" alt="Blog de Python Perú - Home"/>
+    <img src="../../_static/logo.svg" class="logo__image only-dark pst-js-only" alt="Blog de Python Perú - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/">
+    Acerca de Python Perú
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pythonpe/pythonpe-blog" title="Repositorio del Blog en GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Repositorio del Blog en GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.meetup.com/pythonperu/" title="Meetup" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-meetup fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Meetup</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk" title="Comunidad de WhatsApp" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-whatsapp fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Comunidad de WhatsApp</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://t.me/pythonperu" title="Canal de Telegram" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-telegram fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Canal de Telegram</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.twitch.tv/pythonperu" title="Twitch" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitch fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitch</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://python.pe" title="Python Perú" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Python Perú</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://blog.python.pe/blog/atom.xml" title="RSS feed" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS feed</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/">
+    Acerca de Python Perú
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pythonpe/pythonpe-blog" title="Repositorio del Blog en GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Repositorio del Blog en GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.meetup.com/pythonperu/" title="Meetup" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-meetup fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Meetup</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk" title="Comunidad de WhatsApp" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-whatsapp fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Comunidad de WhatsApp</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://t.me/pythonperu" title="Canal de Telegram" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-telegram fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Canal de Telegram</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.twitch.tv/pythonperu" title="Twitch" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitch fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitch</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://python.pe" title="Python Perú" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Python Perú</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://blog.python.pe/blog/atom.xml" title="RSS feed" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS feed</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__postcard">
+   
+  <h2>
+     
+    <i class="fa fa-calendar"></i>
+    
+    <span>11 abril 2024</span>
+    
+  </h2>
+  <ul>
+    <div class="ablog-sidebar-item ablog__postcard2">
+   
+  <li id="ablog-sidebar-item author ablog__author">
+    <span>
+      
+      <i class="fa-fw fa fa-user"></i>
+      
+    </span>
+     
+    <a href="../author/antonio-ognio/">Antonio Ognio</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item location ablog__location">
+    <span>
+      
+      <i class="fa-fw fa fa-location-arrow"></i>
+      
+    </span>
+     
+    <a href="../location/lima/">Lima</a>
+     ,    
+    <a href="../location/peru/">Perú</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item language ablog__language">
+    <span>
+      
+      <i class="fa-fw fa fa-language"></i>
+      
+    </span>
+     
+    <a href="../language/espanol/">Español</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item category ablog__category">
+    <span>
+      
+      <i class="fa-fw fa fa-folder-open"></i>
+      
+    </span>
+     
+    <a href="../category/tutorial/">Tutorial</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item tags ablog__tags">
+    <span>
+       
+      <i class="fa-fw fa fa-tags"></i>
+       
+    </span>
+     
+    <a href="../tag/tutorial/">tutorial</a>
+        
+    <a href="../tag/criptografia/">criptografia</a>
+        
+    <a href="../tag/seguridad/">seguridad</a>
+        
+    <a href="../tag/principiantes/">principiantes</a>
+      
+  </li>
+   
+</div>
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__recentposts">
+  <h3>
+    <a href="../">Entradas recientes</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../estructura-cv-python-II/">
+        17 marzo - Potencia tu CV con Python (II): Usando NLP para hacer match con ofertas
+      </a>
+    </li>
+    
+    <li>
+      <a href="../haciendo-app-chat-gpt-con-tech-pyodide/">
+        12 marzo - Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-3.5 Turbo: Una Prueba de Concepto
+      </a>
+    </li>
+    
+    <li>
+      <a href="../estructura-cv-python-I/">
+        26 febrero - Potencia tu CV con Python (I): De PDF a Datos Estructurados en Minutos con OpenAI
+      </a>
+    </li>
+    
+    <li>
+      <a href="../asistente-virtual-con-gpt4all/">
+        18 febrero - Python y GPT4All, Creando tu asistente de IA personal con 5 líneas
+      </a>
+    </li>
+    
+    <li>
+      <a href="../Introduccion-a-DuckDB/">
+        10 febrero - Introducción a DuckDB: Una alternativa ligera y poderosa para análisis de datos
+      </a>
+    </li>
+    
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__tagcloud">
+  <link
+    rel="stylesheet"
+    href="../../_static/ablog/tagcloud.css"
+    type="text/css"
+  />
+  <h3><a href="../tag/">Etiquetas</a></h3>
+  <ul class="ablog-cloud">
+     
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/1brc/">1brc</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/ai/">AI</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/data-science/">Data Science</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt/">GPT</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ml/">ML</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/nlp/">NLP</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pdf/">PDF</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pymupdf/">PyMuPDF</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/spacy/">Spacy</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ablog/">ablog</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ai-generated/">ai-generated</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/app/">app</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/asyncio/">asyncio</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/beautifulsoup4/">beautifulsoup4</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/chat/">chat</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/chatbots/">chatbots</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/criptografia/">criptografia</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/csv/">csv</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/flet/">flet</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/flutter/">flutter</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/fork/">fork</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/git/">git</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt/">gpt</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt-4/">gpt-4</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt-4-turbo/">gpt-4-turbo</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt4all/">gpt4all</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/httpx/">httpx</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/jupyterlite/">jupyterlite</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/llama/">llama</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/llm/">llm</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/mojo/">mojo</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/multiplatform/">multiplatform</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ollama/">ollama</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/openai/">openai</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pandas/">pandas</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/playwright/">playwright</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/principiantes/">principiantes</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pull-request/">pull-request</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pyodide/">pyodide</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-5">
+      <a href="../tag/python/">python</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/python-flutter/">python-flutter</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/python-ulid/">python-ulid</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/requests/">requests</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/scraping/">scraping</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/seguridad/">seguridad</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/sphinx/">sphinx</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/tutorial/">tutorial</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ulid/">ulid</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/utilidades/">utilidades</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/uuid/">uuid</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/youtube/">youtube</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__categories">
+  <h3>
+    <a href="../category/">Categorías</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../category/data-science/">Data science (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/desafio-de-mil-millon-de-filas/">Desafío de Mil Millón de Filas (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/jupyterlite/">JupyterLite (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/lenguaje/">Lenguaje (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/scraping/">Scraping (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/scripts/">Scripts (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/snippets/">Snippets (3)</a>
+    </li>
+      
+    <li>
+      <a href="../category/tutorial/">Tutorial (9)</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__archives">
+  <h3>
+    <a href="../archive/">Archivos</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../2025/">2025 (5)</a>
+    </li>
+      
+    <li>
+      <a href="../2024/">2024 (13)</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div id="searchbox"></div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Miga de pan" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../" class="nav-link" aria-label="Inicio">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Introducción a la criptografía con Python</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section class="tex2jax_ignore mathjax_ignore" id="introduccion-a-la-criptografia-con-python">
+<h1>Introducción a la criptografía con Python<a class="headerlink" href="#introduccion-a-la-criptografia-con-python" title="Link to this heading">#</a></h1>
+<section id="motivacion-de-este-articulo">
+<h2>Motivación de este artículo<a class="headerlink" href="#motivacion-de-este-articulo" title="Link to this heading">#</a></h2>
+<p>Para poder implementar correctamente las medidas mínimas de seguridad en tus proyectos con Python,
+en particular las aplicaciones web, iremos desarrollando una serie de artículos en donde el objetivo
+no es simplemente decirte que paquetes utilizar y que te vueltas un experto en copiar y pegar sino
+que, por el contrario, entiendas los conceptos más básicos que te permitan apreciar y evaluar de
+forma más efectiva y ¿porque no decirlo? profesional el nivel de seguridad de tu código.</p>
+</section>
+<section id="algunos-conceptos-basicos-y-un-poco-de-contexto">
+<h2>Algunos conceptos básicos y un poco de contexto<a class="headerlink" href="#algunos-conceptos-basicos-y-un-poco-de-contexto" title="Link to this heading">#</a></h2>
+<section id="que-es-la-criptografia-version-para-desarrolladores-apurados">
+<h3>¿Qué es la criptografía? (versión para desarrolladores apurados)<a class="headerlink" href="#que-es-la-criptografia-version-para-desarrolladores-apurados" title="Link to this heading">#</a></h3>
+<p>Es la disciplina que estudia las técnicas para transformar la información desde su formato original
+a otro que permita protegerla del acceso por parte de usuarios no autorizados de forma que se pueda
+prevenir cualquier adulteración y certificar su procedencia.</p>
+</section>
+<section id="que-objetivos-buscamos-con-el-uso-de-la-criptografia">
+<h3>¿Qué objetivos buscamos con el uso de la criptografía?<a class="headerlink" href="#que-objetivos-buscamos-con-el-uso-de-la-criptografia" title="Link to this heading">#</a></h3>
+<p>Por lo general buscamos lograr 3 cosas con la criptografía:</p>
+<ul class="simple">
+<li><p><strong>Confidencialidad:</strong> Asegurar que la información sea consultada y utilizada solo por aquellas
+personas que deban poder hacerlo según la voluntad del propietario o creador de la misma.</p></li>
+<li><p><strong>Integridad:</strong> Garantizar que la información no sea alterada sin autorización.</p></li>
+<li><p><strong>Irrenunciabilidad:</strong> Comprobar que las partes que participan en una trasacción son efectivamente
+aquellas que dicen serlo y al mismo tiempo evitar que puedan negarlo.</p></li>
+</ul>
+</section>
+<section id="principales-aplicaciones">
+<h3>Principales aplicaciones<a class="headerlink" href="#principales-aplicaciones" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Seguridad informática:</strong> Proteger datos de usuarios almacenandándo de forma cifrada (encriptada) en
+medios sistemas de archivos o bases de datos, proteger las comunicaciones en comunicaciones en línea,
+como el tráfico de la web o los correo electrónicos, etc.</p></li>
+<li><p><strong>Comercio electrónico y finanzas en línea:</strong> Protección de las transacciones en línea, en particular cuando
+tienen que ver con dinero: compras, ventas, préstamos, cambio de divisas, etc.</p></li>
+<li><p><strong>Firma digital:</strong>  Verificación de la autenticidad de documentos electrónicos de manera digital, algo que
+en el Perú ya tiene valor legal desde que entró en vigencia la <a class="reference external" href="https://www.gob.pe/institucion/congreso-de-la-republica/normas-legales/292289-27269">Ley 27269: Ley de Firmas y Certificados Digitales</a></p></li>
+<li><p><strong>Criptomonedas y cadenas de bloques:</strong> Las monedas digitales que utilizan la criptografía para garantizar
+la seguridad y transparencia de las transacciones pero la tecnología subyacente de <a class="reference external" href="https://es.wikipedia.org/wiki/Cadena_de_bloques?useskin=vector">cadena de bloques</a>
+se utiliza justamente para asegurar la integridad e irrenunciabilidad de información legal, industrial y
+comercial, algo que <a class="reference external" href="https://andina.pe/agencia/noticia-minsur-utiliza-blockchain-para-hacer-trazable-toda-su-produccion-estano-955107.aspx">ya</a> <a class="reference external" href="https://gestion.pe/economia/empresas/minera-poderosa-incorpora-blockchain-para-abordar-conflictos-sociales-minera-poderosa-incorpora-blockchain-blockchain-noticia/">empieza</a>
+<a class="reference external" href="https://es.cointelegraph.com/news/peruvian-vanilla-farm-adopts-blockchain-to-improve-traceability-and-quality">a</a> <a class="reference external" href="https://medium.com/&#64;stamping.io/certificado-de-vacunaci%C3%B3n-covid-del-per%C3%BA-utilizastamping-io-para-evidencias-blockchain-9b57dee42228">ocurrir</a>
+en el Perú, sobretodo en los sectores mineros, agroindustriales y salud soportando procesos de trazabilidad de documentos y transacciones.</p></li>
+</ul>
+</section>
+<section id="regulaciones-y-normas-legales-que-exigen-el-uso-de-la-criptografia-en-el-peru">
+<h3>Regulaciones y normas legales que exigen el uso de la criptografía en el Perú<a class="headerlink" href="#regulaciones-y-normas-legales-que-exigen-el-uso-de-la-criptografia-en-el-peru" title="Link to this heading">#</a></h3>
+<p>Como la mayoría de paises del mundo, el Perú ya tiene en vigencia regulaciones y leyes que exigen el uso
+de la criptografía en las aplicaciones y por lo tanto afectan nuestro trabajo diario.</p>
+<p>La principal es la <a class="reference external" href="https://www.gob.pe/institucion/congreso-de-la-republica/normas-legales/243470-29733">Ley 29733: Ley de Protección de Datos Personales</a>
+que ya entró en vigor hace más de 10 años y que en sus artículos 39 al 41 se ocupa de detalles como la implementación
+de controles de acceso (inicio de sesión, gestión de privilegios) y el empleo de cifrado, firmas digitales y sumas de
+verificación, en particular para el almacenamiento y transferencia de datos personales de ciudadanos peruanos entre
+distintas organizaciones.</p>
+<p>Esta misma ley hace referencia a la norma técnica peruana <a class="reference external" href="https://spij.minjus.gob.pe/Graficos/Peru/2007/agosto/25/RM-246-2007-PCM_25-08-07.pdf">NTP-ISO/IEC 17799</a>
+del 2007 que no solo menciona técnicas criptográficas como las que estamos buscando hacer más conocidas en este artículo
+sino también buenas prácticas sobre otros aspectos de la seguridad informática y la continuidad del negocio como la
+gestión de las brechas de seguridad, el reporte de vulnerabilidades y el análisis de riesgos.</p>
+</section>
+<section id="como-te-impacta-como-desarrollador">
+<h3>¿Cómo te impacta como desarrollador?<a class="headerlink" href="#como-te-impacta-como-desarrollador" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Requiriendo que sepas implementar correctamente mecanismos de autenticación y autorización.</p></li>
+<li><p>Requiriendo que sepas como almacenar adecuadamente contraseñas y otros secretos en bases de datos.</p></li>
+<li><p>Requiriendo que sepas como inyectar secretos en tu código en tiempo de ejecución y durante el despliegue
+sin que los mismos sean parte de tu código fuente y mucho menos sean incluidos en repositorios bajo
+control de versiones.</p></li>
+<li><p>Requiriendo que puedas utilizar sumas de verificación y firmas digitales en tus procesos de IT para
+garantizar la integridad y no repudio de los datos.</p></li>
+</ul>
+</section>
+<section id="tipos-de-criptografia-que-nos-interesan">
+<h3>Tipos de criptografía que nos interesan<a class="headerlink" href="#tipos-de-criptografia-que-nos-interesan" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Criptografía de clave simétrica:</strong> Se utiliza una única clave para cifrar y descifrar la información.
+Es eficiente para comunicaciones donde las partes confían entre sí.</p></li>
+<li><p><strong>Criptografía de clave asimétrica:</strong> Se utilizan dos claves diferentes, una pública y otra privada.
+La clave pública se utiliza para cifrar la información, y la clave privada para descifrarla.
+Es ideal para comunicaciones donde no hay confianza previa entre las partes.</p></li>
+<li><p><strong>Funciones hash:</strong> Se utilizan para generar un resumen digital de la información.
+Este resumen permite verificar la integridad de la información sin necesidad de descifrarla.</p></li>
+</ul>
+</section>
+<section id="a-ver-explicamelo-pero-mas-facilito-y-con-ejemplos">
+<h3>A ver explícamelo pero más facilito y con ejemplos<a class="headerlink" href="#a-ver-explicamelo-pero-mas-facilito-y-con-ejemplos" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Cuando colocas una clave en un archivo comprimido con un programa como WinZip estas utilizando una clave simétrica
+porque todos los que sepan esa clave podrán revertir el proceso de cifrado y obtener los archivos originales.</p></li>
+<li><p>Cuando utilizas PGP o GPG en tus correos o creas una billetera crypto estas utilizando una clave asimétrica.
+De hecho, en el caso de las criptomonedas la dirección de la billetera se deriva de la llave pública.</p></li>
+<li><p>Otro ejemplo de es criptografía de clave asimétrica nos debería resultar familiar de cuando descargamos paquetes
+de Linux desde un repositorio autorizado y conocido, ya que primero hay que descargar y registrar una llave pública
+que permite verificar que los paquetes provienen de una fuente oficial de la distribución o del proyecto opensource
+y no de una tercera parte que podría incluir en ellos código malicioso.</p></li>
+<li><p>Finalmente, un ejemplo muy conocido del uso de funciones de hashes para realizar sumas de verificación que te
+debería resultar familiar, consiste en descargar una imagen ISO que nos permite instalar un sistema operativo como
+Windows o alguna distribución de Linux empleando una memoria USB. Como el archivo es grande y puede tener varios
+gigabytes el riesgo de que la información este corrupta por problemas en la descarga aumenta y antes de perder tiempo
+intentando hacer la instalación con una imagen producto de una descarga fallida calculamos la suma de verificación
+<a class="reference external" href="https://es.wikipedia.org/wiki/MD5">MD5</a> ó <a class="reference external" href="https://es.wikipedia.org/w/index.php?title=Secure_Hash_Algorithm&amp;amp;useskin=vector">SHA-256</a>
+y confirmamos la integridad del archivo descargado comprobando que tenemos la descarga correcta.</p></li>
+</ul>
+</section>
+<section id="algunas-ideas-adicionales-importantes-antes-de-pasar-a-programar">
+<h3>Algunas ideas adicionales importantes antes de pasar a programar<a class="headerlink" href="#algunas-ideas-adicionales-importantes-antes-de-pasar-a-programar" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Cifrado o encriptación es lo mismo. Según la <a class="reference external" href="https://www.rae.es/">Real Academia de la Lengua Española</a>
+los términos <a class="reference external" href="https://dle.rae.es/encriptar">cifrar</a> y <a class="reference external" href="https://dle.rae.es/cifrar">encriptar</a> son sinónimos y
+la principal acepción que aparece listada es bastante clara: <em>Transcribir en guarismos, letras o símbolos, de acuerdo
+con una clave, un mensaje o texto cuyo contenido se quiere proteger</em>.</p></li>
+<li><p>Los datos en binario no necesariamente estan cifrados en el sentido de que no se han transformado para protegerlos,
+simplemente estan representados en su forma digital más sencilla posible empleando cifras binarias como el 0 y el 1.</p></li>
+<li><p>La codificación de secuencias de datos binarios en formatos que simplemente los cambian de base como
+<a class="reference external" href="https://es.wikipedia.org/wiki/Base64">Base 64</a> tampoco constituyen una forma de criptografía y se pueden revertir
+de inmediato de manera directa ya se trata simplemente de un sistema de numeración posicional que utiliza los caracteres
+imprimibles de la tabla ASCII original para definir un alfabeto con símbolos que se emplean para representar las cifras
+del 1 al 64. Lo mismo sucede al representar datos binarios en formato <a class="reference external" href="https://es.wikipedia.org/wiki/Hexadecimal">hexadecimal</a>:
+podría tratarse de información cifrada o en <strong>texto plano</strong> que es como se llama a la información que no esta siendo
+cifrada para ser protegida.</p></li>
+<li><p>En criptografía un <strong>secreto</strong> es cualquier pieza de información que justamente, como su nombre lo dice, debe mantenerse
+en secreto por parte de sus usuarios y no debería ser compartida con terceras personas, salvo en el caso de los llamados
+secretos compartidos en donde dos o más partes utilizan el mismo secreto para verificar algo. Esto ocurre on los códigos de
+6 u 8 dígitos empleados la autenticación por segundo factor empleando OTPs o contraseñas descartables en cuyo caso el mismo
+secreto o semilla está almacenado tanto por el dispositivo que genera el código como en la infraestructura en la nube de
+la página web o servicio en linea que lo verifica.</p></li>
+<li><p>Muchos de los algoritmos criptográficos hacen uso de números aleatorios o <a class="reference external" href="https://es.wikipedia.org/wiki/N%C3%BAmero_pseudoaleatorio">pseudo-aleatorios</a>
+ya que estos son la entrada para general llaves o actuan como las claves en los algorítmos de cifrado simétrico.</p></li>
+</ul>
+</section>
+</section>
+<section id="ahora-si-manos-a-la-obra-con-un-poco-de-python">
+<h2>Ahora si manos a la obra con un poco de Python<a class="headerlink" href="#ahora-si-manos-a-la-obra-con-un-poco-de-python" title="Link to this heading">#</a></h2>
+<p>Las <a class="reference external" href="https://es.wikipedia.org/wiki/Funci%C3%B3n_hash">funciones Hash</a> se inventaron originalmente para poder indexar y buscar información dentro de estructuras de datos en memoria de forma que las características de los datos como los valores más frecuentes no creen una distribución poco uniforme pero rápidamente encontraron otros usos, especialmente para comparar datos de forma más simple sin tener que comparar todo el contenido de una cadena o archivo sino solo los resultados devueltos por la función hash, que dado que se producen por un proceso determinístico sin aleatoriedad, siempre van a dar el mismo resultado.</p>
+<p>Cuando empecé a aprender un poco de estos temas rápidamente confirmé una intuición matemática: ¿si el conjunto de valores de entrada es infinito pero el conjunto de valores de salida es finito no vamos a obtener valores repetidos? Sí. Cualquier función de hash puede tener teóricamente infinitos valores que devuelvan el mismo resultado y por lo tanto, infinitas <strong>colisiones</strong> como se llaman a los casos en donde el resultado es idéntico.</p>
+<p>La gracia está en que, en la práctica, los algoritmos de hashing que usamos emplean internamente series de matrices que descomponen los bits de la entrada y los mandan por distintos “circuitos” que reducen muy significativamente el riesgo de encontrar una colisión en nuestro dia a dia. Cuando un cierto algoritmo empieza a tener un número potencialmente problemático de colisiones para usos reales del dia a dia, se suele dejar de utilizar y es reemplazado por otro más robusto, asi esto implique hacer más cálculos y por lo tanto gastar un poco más de energía y dinero para computar el resultado.</p>
+<p>Es asi, que por ejemplo, a pesar de que el nombre MD5 aún suena y es popular, hoy por hoy en pleno 2024 se recomienda en su lugar el uso de SHA-256 ó SHA-512 para sumas de verificación que comprueban la integridad de archivos. El algoritmo <a class="reference external" href="https://en.wikipedia.org/wiki/BLAKE_(hash_function)">BLAKE2b</a> es otro un poco más nuevo que ofrece un buen balance entre velocidad (complejidad del cómputo) y seguridad (probabilidad de obtener una colisión).</p>
+<section id="computando-el-hash-de-una-simple-cadenita-de-texto">
+<h3>Computando el hash de una simple cadenita de texto<a class="headerlink" href="#computando-el-hash-de-una-simple-cadenita-de-texto" title="Link to this heading">#</a></h3>
+<p>La librería estándar de Python incluye implementaciones para las principales funciones hash en el <a class="reference external" href="https://docs.python.org/es/3/library/hashlib.html">módulo hashlib</a>.</p>
+<p>A continuación una pequeña demo de como usar estas funciones:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">hashlib</span>
+
+<span class="n">cadenas</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Hola mundo&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">cadena</span> <span class="ow">in</span> <span class="n">cadenas</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cadena: </span><span class="si">{</span><span class="n">cadena</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Calcular hashes</span>
+    <span class="n">hash_md5</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">cadena</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+    <span class="n">hash_sha1</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha1</span><span class="p">(</span><span class="n">cadena</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+    <span class="n">hash_sha256</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">cadena</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+    <span class="n">hash_sha512</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha512</span><span class="p">(</span><span class="n">cadena</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+    <span class="n">hash_blake2b</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">blake2b</span><span class="p">(</span><span class="n">cadena</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+    
+    <span class="c1"># Imprimir resultados</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MD5: </span><span class="si">{</span><span class="n">hash_md5</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SHA-1: </span><span class="si">{</span><span class="n">hash_sha1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SHA-256: </span><span class="si">{</span><span class="n">hash_sha256</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SHA-512: </span><span class="si">{</span><span class="n">hash_sha512</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Blake2b: </span><span class="si">{</span><span class="n">hash_blake2b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Salida:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cadena</span><span class="p">:</span>
+<span class="n">MD5</span><span class="p">:</span> <span class="n">d41d8cd98f00b204e9800998ecf8427e</span>
+<span class="n">SHA</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">da39a3ee5e6b4b0d3255bfef95601890afd80709</span>
+<span class="n">SHA</span><span class="o">-</span><span class="mi">256</span><span class="p">:</span> <span class="n">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
+<span class="n">SHA</span><span class="o">-</span><span class="mi">512</span><span class="p">:</span> <span class="n">cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e</span>
+<span class="n">Blake2b</span><span class="p">:</span> <span class="mi">786</span><span class="n">a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce</span>
+
+<span class="n">Cadena</span><span class="p">:</span> <span class="n">Hola</span> <span class="n">mundo</span>
+<span class="n">MD5</span><span class="p">:</span> <span class="n">f822102f4515609fc31927a84c6db7f8</span>
+<span class="n">SHA</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">c083106c930790151165b95bd11860724e3836cb</span>
+<span class="n">SHA</span><span class="o">-</span><span class="mi">256</span><span class="p">:</span> <span class="n">ca8f60b2cc7f05837d98b208b57fb6481553fc5f1219d59618fd025002a66f5c</span>
+<span class="n">SHA</span><span class="o">-</span><span class="mi">512</span><span class="p">:</span> <span class="mi">34</span><span class="n">ddb0edac59e441459e07cf33bd628f53fbbf752141125f069f32081b169f933666c71b2f1b83031da66bc905a1e72af7c6cfd779fc197513639a098f94c641</span>
+<span class="n">Blake2b</span><span class="p">:</span> <span class="n">d716858301360c6ba4619931eacd9ccb3f18c99b7dbc872c95fabb5f6e8e8f88560497234c51b230fad8bcae894977ee0448e4d16078a67406222f84e1406343</span>
+</pre></div>
+</div>
+<p>Nótese que en todos los casos utilizamos el método <code class="docutils literal notranslate"><span class="pre">hexdigest</span></code> para obtener una representación en forma de cadena de texto con dígitos hexadecimales ya que la salida en si de la función es una secuencia de datos binaria. El formato hexadecimal es baste cómodo para inspeccionar secuencias binarias ya que cada cifra representa un <a class="reference external" href="https://es.wikipedia.org/wiki/Nibble">nibble</a> o “medio byte”, es decir, 4 ceros o unos de los 8 que componen un byte.</p>
+<p>Si deseas, ejecuta el script varias veces y comprueba que los valores computados siempre son los mismos. Esa es una de las características importantes de las funciones de hash.</p>
+<p>Prueba tu mismo modificando el programa para calcular los hashes de cadenas prácticamente idénticas y verás que el resultado es totalmemnte distinto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cadena</span><span class="p">:</span> <span class="n">Hola</span> <span class="n">mundo</span>
+<span class="n">MD5</span><span class="p">:</span> <span class="n">f822102f4515609fc31927a84c6db7f8</span>
+<span class="n">SHA</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">c083106c930790151165b95bd11860724e3836cb</span>
+<span class="n">SHA</span><span class="o">-</span><span class="mi">256</span><span class="p">:</span> <span class="n">ca8f60b2cc7f05837d98b208b57fb6481553fc5f1219d59618fd025002a66f5c</span>
+<span class="n">SHA</span><span class="o">-</span><span class="mi">512</span><span class="p">:</span> <span class="mi">34</span><span class="n">ddb0edac59e441459e07cf33bd628f53fbbf752141125f069f32081b169f933666c71b2f1b83031da66bc905a1e72af7c6cfd779fc197513639a098f94c641</span>
+<span class="n">Blake2b</span><span class="p">:</span> <span class="n">d716858301360c6ba4619931eacd9ccb3f18c99b7dbc872c95fabb5f6e8e8f88560497234c51b230fad8bcae894977ee0448e4d16078a67406222f84e1406343</span>
+
+<span class="n">Cadena</span><span class="p">:</span> <span class="n">hola</span> <span class="n">mundo</span>
+<span class="n">MD5</span><span class="p">:</span> <span class="mi">0</span><span class="n">ad066a5d29f3f2a2a1c7c17dd082a79</span>
+<span class="n">SHA</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="mi">459567</span><span class="n">d3bde4418b7fe302ff9809c4b0befaf7dd</span>
+<span class="n">SHA</span><span class="o">-</span><span class="mi">256</span><span class="p">:</span> <span class="mi">0</span><span class="n">b894166d3336435c800bea36ff21b29eaa801a52f584c006c49289a0dcf6e2f</span>
+<span class="n">SHA</span><span class="o">-</span><span class="mi">512</span><span class="p">:</span> <span class="n">e361ecc31f2aac2066a3103d3b14dc63b5984b028f9f2d09dee67460ce2702bc81673acf58109b553324852c62a227d9a75d4c2f686580270fe143048f47c33c</span>
+<span class="n">Blake2b</span><span class="p">:</span> <span class="n">a7f66e229a2bcc6a4e6ec009c08994a958842e592883a30826f81135437719a0408a9f21ea252c3cee582cd05f254b5fb7e6c06db0fa0c8c9f2682051451a275</span>
+</pre></div>
+</div>
+<p>Esa es, justamente, otra de las características importantes de las funciones hash.</p>
+<p>Si buscamos una representación mas corta, lo que podría ser útil si el valor calculado se va a incluir en URLs o compartir con terceras personas, la solida podría representarse también en formato binario, octal y otras representaciones populares como <a class="reference external" href="https://bitcoinwiki.org/wiki/base58">Base58</a> que es lo que usa Bitcoin para mejorar la legibilidad de las direcciones de las billeteras evitando costosos errores (como potencialmente transferir a la dirección equivocada) al eliminar símbolos que se pueden confundir entre si como al <code class="docutils literal notranslate"><span class="pre">0</span></code> y la <code class="docutils literal notranslate"><span class="pre">O</span></code> (letra “O” mayúscula) o el <code class="docutils literal notranslate"><span class="pre">1</span></code> y la letra <code class="docutils literal notranslate"><span class="pre">l</span></code> (letra “L” minúscula).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">hashlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">base58</span><span class="w"> </span><span class="kn">import</span> <span class="n">b58encode</span>
+
+<span class="c1"># Calcular el hash SHA-256</span>
+<span class="n">hash_sha256</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="s2">&quot;Hola mundo&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+
+<span class="c1"># Convertir el hash a base58</span>
+<span class="n">hash_base58</span> <span class="o">=</span> <span class="n">b58encode</span><span class="p">(</span><span class="n">hash_sha256</span><span class="p">)</span>
+
+<span class="c1"># Convertir el hash a base64</span>
+<span class="n">hash_base64</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">hash_sha256</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+
+<span class="c1"># Imprimir resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SHA-256: </span><span class="si">{</span><span class="n">hash_sha256</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Base58: </span><span class="si">{</span><span class="n">hash_base58</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Base64: </span><span class="si">{</span><span class="n">hash_base64</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Salida:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SHA</span><span class="o">-</span><span class="mi">256</span><span class="p">:</span> <span class="n">ca8f60b2cc7f05837d98b208b57fb6481553fc5f1219d59618fd025002a66f5c</span>
+<span class="n">Base58</span><span class="p">:</span> <span class="n">EdiADfcJoH3PNhpomw1FsTXuNCJ1DTKzsFzDAg18YbmM</span>
+<span class="n">Base64</span><span class="p">:</span> <span class="n">yo9gssx</span><span class="o">/</span><span class="n">BYN9mLIItX</span><span class="o">+</span><span class="mi">2</span><span class="n">SBVT</span><span class="o">/</span><span class="n">F8SGdWWGP0CUAKmb1w</span><span class="o">=</span>
+</pre></div>
+</div>
+<p>En este último ejemplo si estamos usando el paquete <a class="reference external" href="https://pypi.org/project/base58/">Base58</a> de <a class="reference external" href="https://pypi.org/">Pypi</a> que puedes instalar ejecutando <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">base58</span></code> para instalarlo dentro de tu entorno virtual de Python.</p>
+<p>Si no sabes como, acá una guia muy rápida con los comandos que tienes que ejecutar en tu shell:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>env
+<span class="nb">source</span><span class="w"> </span>env/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>base58
+python<span class="w"> </span>ejemplo_02.py
+</pre></div>
+</div>
+</section>
+<section id="verificando-un-archivo-iso">
+<h3>Verificando un archivo .iso<a class="headerlink" href="#verificando-un-archivo-iso" title="Link to this heading">#</a></h3>
+<p>Imagineremos que tienes a la mano el archivo ISO de Ubuntu 20.04 que se puede descargar de <a class="reference external" href="https://releases.ubuntu.com/22.04.4/ubuntu-22.04.4-desktop-amd64.iso">acá</a>: (cuidado que son 4.7 GB y puede tomar algunos minutos).</p>
+<p>El código fuente para poder calcular el hash es el que sigue:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">hashlib</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calcular_hash_sha256</span><span class="p">(</span><span class="n">ruta_archivo</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calcula el hash SHA-256 de un archivo.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ruta_archivo (str): Ruta al archivo.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Hash SHA-256 del archivo.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ruta_archivo</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo</span><span class="p">:</span>
+        <span class="n">hash_sha256</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">bloque</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">archivo</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4096</span><span class="p">),</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+            <span class="n">hash_sha256</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">bloque</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">hash_sha256</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Crear un analizador de argumentos</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Calcular el hash SHA-256 de un archivo&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;ruta_archivo&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Ruta al archivo&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Parsear los argumentos</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="c1"># Si no se ha pasado la ruta al archivo, mostrar la ayuda</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">ruta_archivo</span><span class="p">:</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">print_help</span><span class="p">()</span>
+        <span class="k">return</span>
+
+    <span class="c1"># Calcular el hash SHA-256 del archivo</span>
+    <span class="n">hash_sha256</span> <span class="o">=</span> <span class="n">calcular_hash_sha256</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">ruta_archivo</span><span class="p">)</span>
+
+    <span class="c1"># Imprimir el hash SHA-256</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hash SHA-256 del archivo </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">ruta_archivo</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">hash_sha256</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Por favor, presta atención a algunos detalles de la implementación:</p>
+<ul class="simple">
+<li><p>Estamos empleando un <a class="reference external" href="https://python-intermedio.readthedocs.io/es/latest/context_managers.html">gestor de contexto</a>
+para abrir el archivo y cerrarlo automáticamente al final.</p></li>
+<li><p>El archivo original se esta leyendo en bloques de 4096 bytes a la vez y en modo binario.</p></li>
+<li><p>Estamos creando un objeto <a class="reference external" href="https://python-intermedio.readthedocs.io/es/latest/generators.html?highlight=iterador#iterador">iterador</a> a partir de una función anónima para poder emplear un bucle <code class="docutils literal notranslate"><span class="pre">for</span></code></p></li>
+<li><p>La función <code class="docutils literal notranslate"><span class="pre">sha256</span></code> del módulo <code class="docutils literal notranslate"><span class="pre">hashlib</span></code> devuelve un objeto que permite computar parcialmente el hash a partir
+de la función de hash seleccionada que en nuestro caso es SHA-256. Internamente, por razones de eficiencia Python
+está empleando a su vez funciones criptográficas de la librería de código abierto <a class="reference external" href="https://www.openssl.org/">OpenSSL</a>.</p></li>
+<li><p>La naturaleza de los algoritmos de hashing permite que el contenido se vaya procesando en bloques lo que cual
+facilita mucho las cosas porque no tenemos que cargar los 4.7 GB en memoria. Esto se logra con el método <code class="docutils literal notranslate"><span class="pre">update</span></code>.</p></li>
+</ul>
+<p><strong>Ejecución:</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>calcular_hash_sha1.py<span class="w"> </span>ubuntu-22.04.4-desktop-amd64.iso
+</pre></div>
+</div>
+<p><strong>Salida:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hash</span> <span class="n">SHA</span><span class="o">-</span><span class="mi">256</span> <span class="k">del</span> <span class="n">archivo</span> <span class="n">ubuntu</span><span class="o">-</span><span class="mf">22.04.4</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="n">amd64</span><span class="o">.</span><span class="n">iso</span><span class="p">:</span> <span class="mi">071</span><span class="n">d5a534c1a2d61d64c6599c47c992c778e08b054daecc2540d57929e4ab1fd</span>
+</pre></div>
+</div>
+<p>El valor obtenido es el correcto como puedes comparar dando una mirada al contenido de este archivo:</p>
+<p><a class="reference external" href="https://releases.ubuntu.com/22.04.4/SHA256SUMS">https://releases.ubuntu.com/22.04.4/SHA256SUMS</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">071</span><span class="n">d5a534c1a2d61d64c6599c47c992c778e08b054daecc2540d57929e4ab1fd</span> <span class="o">*</span><span class="n">ubuntu</span><span class="o">-</span><span class="mf">22.04.4</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="n">amd64</span><span class="o">.</span><span class="n">iso</span>
+<span class="mi">45</span><span class="n">f873de9f8cb637345d6e66a583762730bbea30277ef7b32c9c3bd6700a32b2</span> <span class="o">*</span><span class="n">ubuntu</span><span class="o">-</span><span class="mf">22.04.4</span><span class="o">-</span><span class="n">live</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">amd64</span><span class="o">.</span><span class="n">iso</span>
+</pre></div>
+</div>
+<p>Para darte una mejor idea de que tan pesadas pueden ser estas operaciones con archivos grandes yo si descargué el
+archivo ISO original y ejecuté el script con Python 3.11.3 en una PC bastante modesta con un procesador Intel Core i3
+corriendo a 3.70 Ghz corriendo en Ubuntu 22.04 en WSL2 y me demoró casi 5 minutos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="n">python</span> <span class="n">calcular_hash_sha256</span><span class="o">.</span><span class="n">py</span> <span class="n">ubuntu</span><span class="o">-</span><span class="mf">22.04.4</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="n">amd64</span><span class="o">.</span><span class="n">iso</span>
+<span class="n">Hash</span> <span class="n">SHA</span><span class="o">-</span><span class="mi">1</span> <span class="k">del</span> <span class="n">archivo</span> <span class="n">ubuntu</span><span class="o">-</span><span class="mf">22.04.4</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="n">amd64</span><span class="o">.</span><span class="n">iso</span><span class="p">:</span> <span class="mi">071</span><span class="n">d5a534c1a2d61d64c6599c47c992c778e08b054daecc2540d57929e4ab1fd</span>
+
+<span class="n">real</span>    <span class="mi">4</span><span class="n">m59</span><span class="mf">.383</span><span class="n">s</span>
+<span class="n">user</span>    <span class="mi">0</span><span class="n">m29</span><span class="mf">.578</span><span class="n">s</span>
+<span class="n">sys</span>     <span class="mi">0</span><span class="n">m8</span><span class="mf">.694</span><span class="n">s</span>
+</pre></div>
+</div>
+<p>El comando <code class="docutils literal notranslate"><span class="pre">sha256sum</span></code> que viene incluido con Ubuntu permite realizar el proceso de forma sustancialmente más sencilla y rápida tomando esta vez
+1 minuto y 16 segundos:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span><span class="w"> </span>sha256sum<span class="w"> </span>ubuntu-22.04.4-desktop-amd64.iso
+071d5a534c1a2d61d64c6599c47c992c778e08b054daecc2540d57929e4ab1fd<span class="w">  </span>ubuntu-22.04.4-desktop-amd64.iso
+
+real<span class="w">    </span>1m16.814s
+user<span class="w">    </span>0m22.480s
+sys<span class="w">     </span>0m1.465s
+</pre></div>
+</div>
+<p>Acá lo importante es hacernos una idea de la diferencia de tiempos ya que en este caso el cómputo del hash se completó aproximadamente
+unas 4 veces más rápido.</p>
+</section>
+</section>
+<section id="como-se-ve-una-implementacion-de-la-funcion-sha-256-en-python-puro">
+<h2>¿Cómo se ve una implementación de la funcion SHA-256 en Python puro?<a class="headerlink" href="#como-se-ve-una-implementacion-de-la-funcion-sha-256-en-python-puro" title="Link to this heading">#</a></h2>
+<p>Más o menos así:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Thomas Dixon&#39;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;MIT&#39;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">new</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sha256</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">sha256</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">_k</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0x428a2f98</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x71374491</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xb5c0fbcf</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xe9b5dba5</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0x3956c25b</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x59f111f1</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x923f82a4</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xab1c5ed5</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0xd807aa98</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x12835b01</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x243185be</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x550c7dc3</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0x72be5d74</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x80deb1fe</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x9bdc06a7</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xc19bf174</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0xe49b69c1</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xefbe4786</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x0fc19dc6</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x240ca1cc</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0x2de92c6f</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x4a7484aa</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x5cb0a9dc</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x76f988da</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0x983e5152</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xa831c66d</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xb00327c8</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xbf597fc7</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0xc6e00bf3</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xd5a79147</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x06ca6351</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x14292967</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0x27b70a85</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x2e1b2138</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x4d2c6dfc</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x53380d13</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0x650a7354</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x766a0abb</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x81c2c92e</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x92722c85</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0xa2bfe8a1</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xa81a664b</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xc24b8b70</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xc76c51a3</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0xd192e819</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xd6990624</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xf40e3585</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x106aa070</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0x19a4c116</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x1e376c08</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x2748774c</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x34b0bcb5</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0x391c0cb3</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x4ed8aa4a</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x5b9cca4f</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x682e6ff3</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0x748f82ee</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x78a5636f</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x84c87814</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x8cc70208</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0x90befffa</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xa4506ceb</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xbef9a3f7</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xc67178f2</span><span class="n">L</span><span class="p">)</span>
+    <span class="n">_h</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0x6a09e667</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xbb67ae85</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x3c6ef372</span><span class="n">L</span><span class="p">,</span> <span class="mh">0xa54ff53a</span><span class="n">L</span><span class="p">,</span>
+          <span class="mh">0x510e527f</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x9b05688c</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x1f83d9ab</span><span class="n">L</span><span class="p">,</span> <span class="mh">0x5be0cd19</span><span class="n">L</span><span class="p">)</span>
+    <span class="n">_output_size</span> <span class="o">=</span> <span class="mi">8</span>
+    
+    <span class="n">blocksize</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">block_size</span> <span class="o">=</span> <span class="mi">64</span>
+    <span class="n">digest_size</span> <span class="o">=</span> <span class="mi">32</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_counter</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">() argument 1 must be string, not </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">_rotr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">((</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">32</span><span class="o">-</span><span class="n">y</span><span class="p">)))</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="n">L</span>
+                    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_sha256_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">64</span>
+        <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;!16L&#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">64</span><span class="p">):</span>
+            <span class="n">s0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotr</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">15</span><span class="p">],</span> <span class="mi">7</span><span class="p">)</span> <span class="o">^</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotr</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">15</span><span class="p">],</span> <span class="mi">18</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">15</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="n">s1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotr</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="mi">17</span><span class="p">)</span> <span class="o">^</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotr</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="mi">19</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="mi">10</span><span class="p">)</span>
+            <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">16</span><span class="p">]</span> <span class="o">+</span> <span class="n">s0</span> <span class="o">+</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">7</span><span class="p">]</span> <span class="o">+</span> <span class="n">s1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="n">L</span>
+        
+        <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_h</span>
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">64</span><span class="p">):</span>
+            <span class="n">s0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">^</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span> <span class="o">^</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+            <span class="n">maj</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">c</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">b</span> <span class="o">&amp;</span> <span class="n">c</span><span class="p">)</span>
+            <span class="n">t2</span> <span class="o">=</span> <span class="n">s0</span> <span class="o">+</span> <span class="n">maj</span>
+            <span class="n">s1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotr</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="o">^</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotr</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="o">^</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotr</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+            <span class="n">ch</span> <span class="o">=</span> <span class="p">(</span><span class="n">e</span> <span class="o">&amp;</span> <span class="n">f</span><span class="p">)</span> <span class="o">^</span> <span class="p">((</span><span class="o">~</span><span class="n">e</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">g</span><span class="p">)</span>
+            <span class="n">t1</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">ch</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_k</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            
+            <span class="n">h</span> <span class="o">=</span> <span class="n">g</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="n">f</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">e</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="n">t1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="n">L</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">c</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">b</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="n">L</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">_h</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="n">L</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_h</span><span class="p">,</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">h</span><span class="p">])]</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">m</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">() argument 1 must be string, not </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">+=</span> <span class="n">m</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_counter</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+        
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">64</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sha256_process</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[:</span><span class="mi">64</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[</span><span class="mi">64</span><span class="p">:]</span>
+            
+    <span class="k">def</span><span class="w"> </span><span class="nf">digest</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">mdi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_counter</span> <span class="o">&amp;</span> <span class="mh">0x3F</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;!Q&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_counter</span><span class="o">&lt;&lt;</span><span class="mi">3</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">mdi</span> <span class="o">&lt;</span> <span class="mi">56</span><span class="p">:</span>
+            <span class="n">padlen</span> <span class="o">=</span> <span class="mi">55</span><span class="o">-</span><span class="n">mdi</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">padlen</span> <span class="o">=</span> <span class="mi">119</span><span class="o">-</span><span class="n">mdi</span>
+        
+        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x80</span><span class="s1">&#39;</span><span class="o">+</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="o">*</span><span class="n">padlen</span><span class="p">)</span><span class="o">+</span><span class="n">length</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;!L&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">_h</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_size</span><span class="p">]])</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">hexdigest</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">)</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Este código <a class="reference external" href="https://github.com/thomdixon/pysha2/blob/master/sha2/sha256.py">ha sido tomado</a> el repositorio [<a class="github reference external" href="https://github.com/thomdixon/pysha2">thomdixon/pysha2</a>] de <a class="reference external" href="https://github.com/thomdixon">Thom Dixon</a>.</p>
+<p>Como puedes ver, no es una implementación trivial. Por lo general -y siguiendo con el ejemplo de MD5-, en el mundo de la seguridad informática,
+estos algortimos son presentados en congresos académicos como <a class="reference external" href="https://www.iacr.org/cryptodb/data/conf.php?year=1991&amp;amp;venue=crypto">CRYPTO 1991</a>
+y buscan ser ampliamente difundidos para poder detectar vulnerabilidades en el mismo diseño.</p>
+<p>El diseñador de este algoritmo, <a class="reference external" href="https://en.wikipedia.org/wiki/Ron_Rivest">Ronald Rivest</a>, que es la “R” de <a class="reference external" href="https://www.rsa.com/">RSA</a>, lo
+difundió a través de un memo recogido en el <a class="reference external" href="https://www.rfc-es.org/rfc/rfc1321-es.txt">RFC 1321</a> publicado en 1992 y tan pronto como en 1993
+ya empezaron a aparecer <a class="reference external" href="https://link.springer.com/content/pdf/10.1007/3-540-48285-7_26.pdf">varios</a> <a class="reference external" href="https://ftp.arnes.si/packages/crypto-tools/rsa.com/cryptobytes/crypto2n2.pdf.gz">otros</a>
+<a class="reference external" href="https://web.archive.org/web/20090521001714/http://www.infosec.sdu.edu.cn/uploadfile/papers/How%20to%20Break%20MD5%20and%20Other%20Hash%20Functions.pdf">papers</a>
+señalando las vulnerabilidades y como implementar ataques.</p>
+<p>Contar con implementaciones de código abierto de funciones criptográficas y herramientas de seguridad es importante ya que, a pesar de que pueden <a class="reference external" href="https://nvd.nist.gov/vuln/detail/CVE-2020-22916">ser explotadas</a> ingeniosamente por atacantes que incluyen código malicioso en proyectos infiltrándose en el equipo de mantenedores como pasó como <a class="reference external" href="https://es.wikipedia.org/wiki/XZ_Utils">las herramientas XZ</a>, es la propia naturaleza abierta y la capacidad de escrutinio del opensource lo que permitió a <a class="reference external" href="https://www.linkedin.com/in/andres-freund/">Andrés Freund</a>, un desarrollador alemán del equipo de <a class="reference external" href="https://www.postgresql.org/">Postgres</a> y empleado de Microsoft a <a class="reference external" href="https://en.wikipedia.org/wiki/XZ_Utils_backdoor">descubrir la puerta trasera</a> que había sido implantada años antes y que podría haber facilitado muy serios ciberataques de escala global como lo reportó la prensa <a class="reference external" href="https://arstechnica.com/security/2024/04/what-we-know-about-the-xz-utils-backdoor-that-almost-infected-the-world/">internacional</a> y <a class="reference external" href="https://elcomercio.pe/tecnologia/ciberseguridad/como-un-ingeniero-evito-un-ciberataque-global-al-notar-que-un-programa-demoraba-medio-segundo-mas-en-cargar-linux-seguridad-informatica-vulnerabilidad-noticia/">nacional</a>.</p>
+</section>
+<section id="ejercicio-propuesto">
+<h2>Ejercicio propuesto<a class="headerlink" href="#ejercicio-propuesto" title="Link to this heading">#</a></h2>
+<p>¿Quieres aplicar tu nuevo conocimiento sobre las funciones de hashing a un problema concreto? ¡Intenta resolver este reto!</p>
+<p>Diseña un programa en Python que encuentre y reporte archivos contenido duplicado en una carpeta y todas sus subcarpetas.</p>
+<p>Aquí algunas sugerencias:</p>
+<ul class="simple">
+<li><p>Emplee una función de hashing como SHA-256 para computar el hash del contenido de cada archivo.</p></li>
+<li><p>Utiliza estos hashes como las llaves de un diccionario que mantenga listas con las rutas absolutas de los archivos que tienen
+el mismo contenido.</p></li>
+<li><p>Reporta aquellas listas que tengan dos o más archivos, es decir, donde existan archivos con contenido duplicado.</p></li>
+<li><p>Utiliza la función <a class="reference external" href="https://docs.python.org/es/3/library/hashlib.html">glob</a> para iterar sobre todos los archivos presentes
+en la carpeta actual y sus subcarpetas.</p></li>
+<li><p>Apóyate en herramientas de inteligencia artificial generativa como ChatGPT, Gemini o Claude para general el código o depurarlo
+si te quedas atorado o tienes problemas para depurarlo.</p></li>
+</ul>
+</section>
+<section id="repaso-conclusiones-y-cierre">
+<h2>Repaso, conclusiones y cierre<a class="headerlink" href="#repaso-conclusiones-y-cierre" title="Link to this heading">#</a></h2>
+<section id="repaso">
+<h3>Repaso<a class="headerlink" href="#repaso" title="Link to this heading">#</a></h3>
+<p>Lo más importante que debes recordar de este artículo es que la criptografía ayuda a proteger la información contra actores potencialmente maliciosos y esto se logra empleando distintos algoritmos que transforman los datos de forma reversible pero también irreversible. Ambas cosas son útiles y tienen una gran variedad de aplicaciones en un gran número de casos de uso.</p>
+<p>Hay 3 tipos de algoritmos critográficos que nos interesan más como desarrolladores: aquellos que usan claves simétricas y son reversibles, como cifrar un archivo empleando un password, aquellos que usan claves asimétricas, como una pareja de claves pública y privada que es la base de las firmas y certificados digitales como los que protegen el tráfico web o las conexiones por SSH y las funciones hash que nos permiten verificar la integridad de los archivos o comprobar contraseñas almacenándolas en un formato cifrado con técnicas que mitigan el riesgo de ataques.</p>
+</section>
+<section id="conclusiones">
+<h3>Conclusiones<a class="headerlink" href="#conclusiones" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>La librería estándar de Python incluye implementaciones razonablemente eficientes de las principales funciones de hashing integrandose con librerías (bibliotecas) como OpenSSL.</p></li>
+<li><p>El cómputo de sumas de verificación con funciones hash se puede realizar de manera incremental sobre archivos bastante grandes.</p></li>
+<li><p>La implementación de estas funciones no es algo trivial, exige mucha investigación y diseño y se beneficia del exhaustivo escrutinio de los investigadores en ciberseguridad y la implementación por parte de proyectos de código abierto que permiten que el código sea auditable.</p></li>
+</ul>
+</section>
+<section id="cierre">
+<h3>Cierre<a class="headerlink" href="#cierre" title="Link to this heading">#</a></h3>
+<p>Si no conocías mucho de estos temas o si ya te estabas olvidando de lo que aprendiste alguna vez, espero que este artículo te haya servido como una introducción
+ó te haya ayudado a recordar algunos de estos conceptos que hoy por hoy son tan fundamentales.</p>
+<p>En un siguiente artículo explicaremos como emplear funciones hash para almacenar contraseñas en bases de datos con un nivel de seguridad adecuada.</p>
+<p><strong>SPOILER:</strong> No es tan sencillo como computar directamente una de estas funciones y ya sino que hay que combinarlas con otras técnicas y aplicarlas cientos o miles de veces sobre la salida de ellas mismas para aumentar el costo computacional de un eventual ataque por fuerza bruta.</p>
+</section>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+     
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+     
+    <a href="../scraping-requests-bs/">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>Scraping con Python utilizando la biblioteca requests</span>
+    </a>
+    
+  </span>
+  <span class="ablog__spacer">&nbsp;</span>
+  <span class="ablog__next">
+     
+    <a href="../como-redactar-posts-con-fork/">
+      <span>Cómo Hacer Fork y Pull Request en el Blog de Python Perú</span>
+      
+      <i class="fa fa-arrow-circle-right"></i>
+      
+    </a>
+    
+  </span>
+</div>
+  
+</div>
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+
+
+
+<script>
+class ModeToggle {
+    static get MODE_KEY()
+    {
+        return "mode";
+    }
+    static get DARK_MODE()
+    {
+        return "dark";
+    }
+    static get LIGHT_MODE()
+    {
+        return "light";
+    }
+    static get AUTO_MODE()
+    {
+        return "auto";
+    }
+    static get ID()
+    {
+        return "mode-toggle";
+    }
+    constructor()
+    {
+        let self = this; /* always follow the system prefers */
+        this.sysDarkPrefers.forEach((el) => {
+            el.addEventListener("click", () => {
+                self.notify();
+            });
+        });
+    } /* constructor() */
+    get sysDarkPrefers()
+    {
+        return document.querySelectorAll(".theme-switch-button");
+    }
+    get isSysDarkPrefer()
+    {
+        return this.sysDarkPrefers.matches;
+    }
+    get isDarkMode()
+    {
+        return this.mode === ModeToggle.DARK_MODE;
+    }
+    get isLightMode()
+    {
+        return this.mode === ModeToggle.LIGHT_MODE;
+    }
+    get hasMode()
+    {
+        return this.mode != null;
+    }
+    get mode()
+    {
+        return localStorage.getItem(ModeToggle.MODE_KEY);
+    } /* get the current mode on screen */
+    get modeStatus()
+    {
+        if (this.isLightMode || (!this.hasMode && this.isSysDarkPrefer)) {
+            return ModeToggle.LIGHT_MODE;
+        } else {
+            return this.mode;
+        }
+    }
+    flip()
+    {
+        if (this.modeStatus === ModeToggle.LIGHT_MODE) {
+            return ModeToggle.AUTO_MODE;
+        } else if (this.modeStatus == ModeToggle.AUTO_MODE) {
+            return ModeToggle.DARK_MODE;
+        } else {
+            return ModeToggle.LIGHT_MODE;
+        }
+    }
+    notify()
+    {
+        window.postMessage({
+            direction: ModeToggle.ID,
+            message: this.flip()
+        }, "*");
+    }
+} /* ModeToggle */
+const toggle = new ModeToggle();
+</script>
+<script>
+    $(function() {
+        const origin = "https://giscus.app";
+        const iframe = "iframe.giscus-frame";
+        const lightTheme = "light";
+        const darkTheme = "dark";
+        let initTheme = lightTheme;
+        if ($("html[data-mode=dark]").length > 0 || ($("html[data-mode]").length == 0 && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            initTheme = darkTheme;
+        }
+        let giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "pythonpe/pythonpe-blog",
+            "data-repo-id": "R_kgDOLnXH7w",
+            "data-category": "Blog comments",
+            "data-category-id": "DIC_kwDOLnXH784CeaCq",
+            "data-mapping": "pathname",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-theme": initTheme,
+            "data-input-position": "bottom",
+            "data-lang": "es",
+            "crossorigin": "anonymous",
+            "async": ""
+        };
+        let giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("tail-wrapper").appendChild(giscusScript);
+        addEventListener("message", (event) => {
+            if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
+                /* global theme mode changed */
+                const mode = event.data.message;
+                const theme = (mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme);
+                const message = {
+                    setConfig: {
+                        theme: theme
+                    }
+                };
+                const giscus = document.querySelector(iframe).contentWindow;
+                giscus.postMessage({
+                    giscus: message
+                }, origin);
+            }
+        });
+    });
+</script>
+<div id="tail-wrapper">
+</div>
+
+</div>
+  
+</div>
+                </footer>
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> En esta página
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivacion-de-este-articulo">Motivación de este artículo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algunos-conceptos-basicos-y-un-poco-de-contexto">Algunos conceptos básicos y un poco de contexto</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-la-criptografia-version-para-desarrolladores-apurados">¿Qué es la criptografía? (versión para desarrolladores apurados)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-objetivos-buscamos-con-el-uso-de-la-criptografia">¿Qué objetivos buscamos con el uso de la criptografía?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principales-aplicaciones">Principales aplicaciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regulaciones-y-normas-legales-que-exigen-el-uso-de-la-criptografia-en-el-peru">Regulaciones y normas legales que exigen el uso de la criptografía en el Perú</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#como-te-impacta-como-desarrollador">¿Cómo te impacta como desarrollador?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-criptografia-que-nos-interesan">Tipos de criptografía que nos interesan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-ver-explicamelo-pero-mas-facilito-y-con-ejemplos">A ver explícamelo pero más facilito y con ejemplos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algunas-ideas-adicionales-importantes-antes-de-pasar-a-programar">Algunas ideas adicionales importantes antes de pasar a programar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ahora-si-manos-a-la-obra-con-un-poco-de-python">Ahora si manos a la obra con un poco de Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computando-el-hash-de-una-simple-cadenita-de-texto">Computando el hash de una simple cadenita de texto</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verificando-un-archivo-iso">Verificando un archivo .iso</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-se-ve-una-implementacion-de-la-funcion-sha-256-en-python-puro">¿Cómo se ve una implementación de la funcion SHA-256 en Python puro?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-propuesto">Ejercicio propuesto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repaso-conclusiones-y-cierre">Repaso, conclusiones y cierre</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repaso">Repaso</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones">Conclusiones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cierre">Cierre</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/blog/intro-criptografia.md.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Python Perú.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Construido con el <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html"> Tema PyData Sphinx </a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

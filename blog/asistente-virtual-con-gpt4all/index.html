@@ -1,0 +1,1302 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Python y GPT4All, Creando tu asistente de IA personal con 5 líneas" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://blog.python.pe/blog/asistente-virtual-con-gpt4all/" />
+<meta property="og:site_name" content="Blog de Python Perú" />
+<meta property="og:description" content="Cuando buscamos tutoriales sobre asistentes virtuales, a menudo encontramos recursos que involucran integraciones con APIs externas como OpenAI, Claude o Gemini. Si bien estas soluciones son podero..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://blog.python.pe/_images/social_previews/summary_blog_asistente-virtual-con-gpt4all_97986d3c.png" />
+<meta property="og:image:alt" content="Cuando buscamos tutoriales sobre asistentes virtuales, a menudo encontramos recursos que involucran integraciones con APIs externas como OpenAI, Claude o Gem..." />
+<meta name="description" content="Cuando buscamos tutoriales sobre asistentes virtuales, a menudo encontramos recursos que involucran integraciones con APIs externas como OpenAI, Claude o Gemini. Si bien estas soluciones son podero..." />
+<meta name="twitter:card" content="summary_large_image" />
+
+    <title>Python y GPT4All, Creando tu asistente de IA personal con 5 líneas &#8212; Blog de Python Perú</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/markdown.css?v=dc714126" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=a20647df"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=d190bf04"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-NZ0W1CL2L1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-NZ0W1CL2L1');
+            </script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-NZ0W1CL2L1');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/asistente-virtual-con-gpt4all';</script>
+    <link rel="canonical" href="https://blog.python.pe/blog/asistente-virtual-con-gpt4all/" />
+    <link rel="icon" href="../../_static/favicon-48x48.png"/>
+    <link rel="author" title="Sobre este documento" href="../../about/" />
+    <link rel="index" title="Índice" href="../../genindex/" />
+    <link rel="search" title="Búsqueda" href="../../search/" />
+<meta name="robots" content="follow, index">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" /> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="Blog de Python Perú | Aprende y explora"
+/>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Buscar en el blog..."
+         aria-label="Buscar en el blog..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.svg" class="logo__image only-light" alt="Blog de Python Perú - Home"/>
+    <img src="../../_static/logo.svg" class="logo__image only-dark pst-js-only" alt="Blog de Python Perú - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/">
+    Acerca de Python Perú
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pythonpe/pythonpe-blog" title="Repositorio del Blog en GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Repositorio del Blog en GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.meetup.com/pythonperu/" title="Meetup" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-meetup fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Meetup</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk" title="Comunidad de WhatsApp" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-whatsapp fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Comunidad de WhatsApp</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://t.me/pythonperu" title="Canal de Telegram" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-telegram fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Canal de Telegram</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.twitch.tv/pythonperu" title="Twitch" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitch fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitch</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://python.pe" title="Python Perú" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Python Perú</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://blog.python.pe/blog/atom.xml" title="RSS feed" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS feed</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/">
+    Acerca de Python Perú
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pythonpe/pythonpe-blog" title="Repositorio del Blog en GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Repositorio del Blog en GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.meetup.com/pythonperu/" title="Meetup" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-meetup fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Meetup</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk" title="Comunidad de WhatsApp" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-whatsapp fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Comunidad de WhatsApp</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://t.me/pythonperu" title="Canal de Telegram" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-telegram fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Canal de Telegram</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.twitch.tv/pythonperu" title="Twitch" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitch fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitch</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://python.pe" title="Python Perú" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Python Perú</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://blog.python.pe/blog/atom.xml" title="RSS feed" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS feed</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__postcard">
+   
+  <h2>
+     
+    <i class="fa fa-calendar"></i>
+    
+    <span>18 febrero 2025</span>
+    
+  </h2>
+  <ul>
+    <div class="ablog-sidebar-item ablog__postcard2">
+   
+  <li id="ablog-sidebar-item author ablog__author">
+    <span>
+      
+      <i class="fa-fw fa fa-user"></i>
+      
+    </span>
+     
+    <a href="../author/ider-delzo/">Ider Delzo</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item location ablog__location">
+    <span>
+      
+      <i class="fa-fw fa fa-location-arrow"></i>
+      
+    </span>
+     
+    <a href="../location/lima/">Lima</a>
+     ,    
+    <a href="../location/peru/">Perú</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item language ablog__language">
+    <span>
+      
+      <i class="fa-fw fa fa-language"></i>
+      
+    </span>
+     
+    <a href="../language/espanol/">Español</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item category ablog__category">
+    <span>
+      
+      <i class="fa-fw fa fa-folder-open"></i>
+      
+    </span>
+     
+    <a href="../category/tutorial/">Tutorial</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item tags ablog__tags">
+    <span>
+       
+      <i class="fa-fw fa fa-tags"></i>
+       
+    </span>
+     
+    <a href="../tag/ai/">AI</a>
+        
+    <a href="../tag/chatbots/">chatbots</a>
+        
+    <a href="../tag/ollama/">ollama</a>
+        
+    <a href="../tag/gpt4all/">gpt4all</a>
+        
+    <a href="../tag/llm/">llm</a>
+        
+    <a href="../tag/llama/">llama</a>
+        
+    <a href="../tag/chat/">chat</a>
+      
+  </li>
+   
+</div>
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__recentposts">
+  <h3>
+    <a href="../">Entradas recientes</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../estructura-cv-python-II/">
+        17 marzo - Potencia tu CV con Python (II): Usando NLP para hacer match con ofertas
+      </a>
+    </li>
+    
+    <li>
+      <a href="../haciendo-app-chat-gpt-con-tech-pyodide/">
+        12 marzo - Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-3.5 Turbo: Una Prueba de Concepto
+      </a>
+    </li>
+    
+    <li>
+      <a href="../estructura-cv-python-I/">
+        26 febrero - Potencia tu CV con Python (I): De PDF a Datos Estructurados en Minutos con OpenAI
+      </a>
+    </li>
+    
+    <li>
+      <a href="../Introduccion-a-DuckDB/">
+        10 febrero - Introducción a DuckDB: Una alternativa ligera y poderosa para análisis de datos
+      </a>
+    </li>
+    
+    <li>
+      <a href="../desarrollo-app-con-flet/">
+        01 julio - Desarrollando una pequeña aplicación con flet
+      </a>
+    </li>
+    
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__tagcloud">
+  <link
+    rel="stylesheet"
+    href="../../_static/ablog/tagcloud.css"
+    type="text/css"
+  />
+  <h3><a href="../tag/">Etiquetas</a></h3>
+  <ul class="ablog-cloud">
+     
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/1brc/">1brc</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/ai/">AI</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/data-science/">Data Science</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt/">GPT</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ml/">ML</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/nlp/">NLP</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pdf/">PDF</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pymupdf/">PyMuPDF</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/spacy/">Spacy</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ablog/">ablog</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ai-generated/">ai-generated</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/app/">app</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/asyncio/">asyncio</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/beautifulsoup4/">beautifulsoup4</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/chat/">chat</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/chatbots/">chatbots</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/criptografia/">criptografia</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/csv/">csv</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/flet/">flet</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/flutter/">flutter</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/fork/">fork</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/git/">git</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt/">gpt</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt-4/">gpt-4</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt-4-turbo/">gpt-4-turbo</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt4all/">gpt4all</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/httpx/">httpx</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/jupyterlite/">jupyterlite</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/llama/">llama</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/llm/">llm</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/mojo/">mojo</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/multiplatform/">multiplatform</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ollama/">ollama</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/openai/">openai</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pandas/">pandas</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/playwright/">playwright</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/principiantes/">principiantes</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pull-request/">pull-request</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pyodide/">pyodide</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-5">
+      <a href="../tag/python/">python</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/python-flutter/">python-flutter</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/python-ulid/">python-ulid</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/requests/">requests</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/scraping/">scraping</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/seguridad/">seguridad</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/sphinx/">sphinx</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/tutorial/">tutorial</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ulid/">ulid</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/utilidades/">utilidades</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/uuid/">uuid</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/youtube/">youtube</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__categories">
+  <h3>
+    <a href="../category/">Categorías</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../category/data-science/">Data science (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/desafio-de-mil-millon-de-filas/">Desafío de Mil Millón de Filas (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/jupyterlite/">JupyterLite (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/lenguaje/">Lenguaje (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/scraping/">Scraping (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/scripts/">Scripts (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/snippets/">Snippets (3)</a>
+    </li>
+      
+    <li>
+      <a href="../category/tutorial/">Tutorial (9)</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__archives">
+  <h3>
+    <a href="../archive/">Archivos</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../2025/">2025 (5)</a>
+    </li>
+      
+    <li>
+      <a href="../2024/">2024 (13)</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div id="searchbox"></div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Miga de pan" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../" class="nav-link" aria-label="Inicio">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Python y GPT4All, Creando tu asistente de IA personal con 5 líneas</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section class="tex2jax_ignore mathjax_ignore" id="python-y-gpt4all-creando-tu-asistente-de-ia-personal-con-5-lineas">
+<h1>Python y GPT4All, Creando tu asistente de IA personal con 5 líneas<a class="headerlink" href="#python-y-gpt4all-creando-tu-asistente-de-ia-personal-con-5-lineas" title="Link to this heading">#</a></h1>
+<p>Cuando buscamos tutoriales sobre asistentes virtuales, a menudo encontramos recursos que involucran integraciones con APIs externas como OpenAI, Claude o Gemini. Si bien estas soluciones son poderosas, nos enfrentamos a dos limitaciones significativas: la dependencia de una conexión a internet y los costos asociados con el uso de APIs de terceros. Es aquí donde herramientas como GPT4All y Ollama brillan, permitiéndonos ejecutar modelos de lenguaje directamente en nuestro hardware local, lo que no solo elimina la necesidad de una conexión constante a internet, sino que también nos libera de los costos recurrentes asociados con servicios en la nube, haciendo que la inteligencia artificial sea más accesible para desarrolladores, investigadores y entusiastas por igual.</p>
+<p><img alt="Python developer" src="../../_images/gpt4all.png" /></p>
+<p>En este artículo haremos un breve cliente en Python para crear nuestro propio cliente utilizando GPT4All como herramienta principal.</p>
+<section id="por-que-no-ollama">
+<h2>¿Por qué no Ollama?:<a class="headerlink" href="#por-que-no-ollama" title="Link to this heading">#</a></h2>
+<p>Ollama es una herramienta poderosa, una de sus mayores ventajas es que podemos utilizar los modelos mas recientes pero tendríamos que lidiar con iniciar el servicio externo y comunicarnos por medio de la interfaz REST que provee esta herramienta.</p>
+<p>GPT4All por otro lado nos permite usar la librería propia de Python para poder cargar el modelo e interactuar directamente con él de una forma mas sencilla.</p>
+</section>
+<section id="mi-primer-chat-con-llm">
+<h2>Mi primer chat con LLM:<a class="headerlink" href="#mi-primer-chat-con-llm" title="Link to this heading">#</a></h2>
+<p>Para comenzar crearemos un entorno virtual e instalaremos GPT4All:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>gpt4all
+</pre></div>
+</div>
+<p>Con estas dependencias podremos empezar con nuestro código, en un archivo nuevo de Python (yo lo llamé <a class="reference external" href="http://chat.py">chat.py</a>) creamos estas líneas:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gpt4all</span><span class="w"> </span><span class="kn">import</span> <span class="n">GPT4All</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">GPT4All</span><span class="p">(</span><span class="s2">&quot;Llama-3.2-1B-Instruct-Q4_0.gguf&quot;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">model</span><span class="o">.</span><span class="n">chat_session</span><span class="p">():</span>
+    <span class="n">respuesta</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+        <span class="s2">&quot;¿Cómo puedo implementar un algoritmo de ordenamiento rápido en Python? &quot;</span>
+        <span class="s2">&quot;muestrame el codigo correspondiente.&quot;</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">respuesta</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Después de descargar el modelo (toma unos minutos la primera vez) ya nos devuelve una respuesta:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>¡Claro! A continuación, te muestro una lista de algunos algoritmos de ordenamiento rápidos y su implementación en Python:
+
+1. **Burbuja**: El algoritmo de burbuja es uno de los más simples y efectivos para ordenar un conjunto de elementos.
+2. **Mercedón**: El mercedón es similar a la burbuja, pero utiliza una estructura de búsqueda de dos pointers que se mueven hacia adelante hasta encontrar el elemento correcto en el medio del arreglo.
+3. **Búsqueda en lista**: La búsqueda en lista es un algoritmo simple y eficiente para ordenar un conjunto de elementos.
+4. **Algoritmo de ordenamiento por toma a toma (QuickSort)**: El QuickSort es un algoritmo de ordenamiento que funciona como una mezcla, dividiendo el arreglo en dos partes hasta encontrar la posición correcta del elemento.
+
+Aquí te muestro el código para cada uno de estos algoritmos:
+
+**Burbuja**
+
+def burbuja(arr):
+    n = len(arr)
+
+    for i in range(n-1):
+        key = arr[i]
+        j = i+1
+
+        while j &lt; n and arr[j] &gt; key:
+            arr[j], arr[j-1] = arr[j-1], arr[j]
+            j += 1
+
+        print(&quot;Arrango:&quot;, arr)
+
+    return arr
+
+arr = [64, 34, 25, 12, 22, 11, 90]
+print(burbuja(arr))
+
+[la respuesta sigue...]
+
+**Algoritmo de ordenamiento por toma a toma (QuickSort)**
+
+def quicksort(arr):
+    if len(arr) &lt;= 1:
+        return arr
+
+    pivot = arr[len(arr)//2]
+
+    left = [x for x in arr if x &lt; pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x &gt; pivot]
+
+    print(&quot;Arrango:&quot;, arr)
+    quicksort(left).extend(middle)
+    quicksort(right)
+
+arr = [64, 34, 25, 12, 22, 11, 90]
+quicksort(arr)
+
+Espero que esta muestra te haya ayudado a entender cómo implementar algunos algoritmos de ordenamiento rápidos en Python. ¡Si tienes alguna pregunta o necesitas más ayuda, no dudes en preguntar!
+</pre></div>
+</div>
+<p>¡Y esto fue sencillo! Para terminar podemos hace una implementación mas elaborada con una interfaz en consola:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gpt4all</span><span class="w"> </span><span class="kn">import</span> <span class="n">GPT4All</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">GPT4All</span><span class="p">(</span><span class="s2">&quot;Llama-3.2-1B-Instruct-Q4_0.gguf&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Esperando mensaje, escriba &#39;salir&#39; para terminar.&quot;</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">model</span><span class="o">.</span><span class="n">chat_session</span><span class="p">():</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Usuario: &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">user_input</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;salir&#39;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gracias por usar el chat. ¡Hasta luego!&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+
+        <span class="n">answer</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">user_input</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AI:&quot;</span><span class="p">,</span> <span class="n">answer</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Y con esto tenemos nuestro asistente de IA de bolsillo.</p>
+</section>
+<section id="notas">
+<h2>Notas:<a class="headerlink" href="#notas" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Una de las desventajas de GPT4All es que no disponemos de todos los modelos disponibles en Hugging Face (a la fecha de este artículo intente correr deepseek-r1 pero me encontré con errores pendientes en nuevas releases)</p></li>
+<li><p>GPT4All ofrece algunas herramientas para hacer embeddings pero aun tiene ciertas limitaciones</p></li>
+<li><p>Encontré la lista de modelos disponibles desde el repositorio de <a class="reference external" href="https://github.com/nomic-ai/gpt4all/tree/29f29773af72abefd114f119a6632837263e1896/gpt4all-chat/metadata">GPT4All-chat</a> no todos los modelos están soportados por la SDK de Python pero puedes ir viendo y probando el mejor modelo que se acomode a las especificaciones de tu ordenador.</p></li>
+</ul>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+     
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+     
+    <a href="../Introduccion-a-DuckDB/">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>Introducción a DuckDB: Una alternativa ligera y poderosa para análisis de datos</span>
+    </a>
+    
+  </span>
+  <span class="ablog__spacer">&nbsp;</span>
+  <span class="ablog__next">
+     
+    <a href="../estructura-cv-python-I/">
+      <span>Potencia tu CV con Python (I): De PDF a Datos Estructurados en Minutos con OpenAI</span>
+      
+      <i class="fa fa-arrow-circle-right"></i>
+      
+    </a>
+    
+  </span>
+</div>
+  
+</div>
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+
+
+
+<script>
+class ModeToggle {
+    static get MODE_KEY()
+    {
+        return "mode";
+    }
+    static get DARK_MODE()
+    {
+        return "dark";
+    }
+    static get LIGHT_MODE()
+    {
+        return "light";
+    }
+    static get AUTO_MODE()
+    {
+        return "auto";
+    }
+    static get ID()
+    {
+        return "mode-toggle";
+    }
+    constructor()
+    {
+        let self = this; /* always follow the system prefers */
+        this.sysDarkPrefers.forEach((el) => {
+            el.addEventListener("click", () => {
+                self.notify();
+            });
+        });
+    } /* constructor() */
+    get sysDarkPrefers()
+    {
+        return document.querySelectorAll(".theme-switch-button");
+    }
+    get isSysDarkPrefer()
+    {
+        return this.sysDarkPrefers.matches;
+    }
+    get isDarkMode()
+    {
+        return this.mode === ModeToggle.DARK_MODE;
+    }
+    get isLightMode()
+    {
+        return this.mode === ModeToggle.LIGHT_MODE;
+    }
+    get hasMode()
+    {
+        return this.mode != null;
+    }
+    get mode()
+    {
+        return localStorage.getItem(ModeToggle.MODE_KEY);
+    } /* get the current mode on screen */
+    get modeStatus()
+    {
+        if (this.isLightMode || (!this.hasMode && this.isSysDarkPrefer)) {
+            return ModeToggle.LIGHT_MODE;
+        } else {
+            return this.mode;
+        }
+    }
+    flip()
+    {
+        if (this.modeStatus === ModeToggle.LIGHT_MODE) {
+            return ModeToggle.AUTO_MODE;
+        } else if (this.modeStatus == ModeToggle.AUTO_MODE) {
+            return ModeToggle.DARK_MODE;
+        } else {
+            return ModeToggle.LIGHT_MODE;
+        }
+    }
+    notify()
+    {
+        window.postMessage({
+            direction: ModeToggle.ID,
+            message: this.flip()
+        }, "*");
+    }
+} /* ModeToggle */
+const toggle = new ModeToggle();
+</script>
+<script>
+    $(function() {
+        const origin = "https://giscus.app";
+        const iframe = "iframe.giscus-frame";
+        const lightTheme = "light";
+        const darkTheme = "dark";
+        let initTheme = lightTheme;
+        if ($("html[data-mode=dark]").length > 0 || ($("html[data-mode]").length == 0 && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            initTheme = darkTheme;
+        }
+        let giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "pythonpe/pythonpe-blog",
+            "data-repo-id": "R_kgDOLnXH7w",
+            "data-category": "Blog comments",
+            "data-category-id": "DIC_kwDOLnXH784CeaCq",
+            "data-mapping": "pathname",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-theme": initTheme,
+            "data-input-position": "bottom",
+            "data-lang": "es",
+            "crossorigin": "anonymous",
+            "async": ""
+        };
+        let giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("tail-wrapper").appendChild(giscusScript);
+        addEventListener("message", (event) => {
+            if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
+                /* global theme mode changed */
+                const mode = event.data.message;
+                const theme = (mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme);
+                const message = {
+                    setConfig: {
+                        theme: theme
+                    }
+                };
+                const giscus = document.querySelector(iframe).contentWindow;
+                giscus.postMessage({
+                    giscus: message
+                }, origin);
+            }
+        });
+    });
+</script>
+<div id="tail-wrapper">
+</div>
+
+</div>
+  
+</div>
+                </footer>
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> En esta página
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-no-ollama">¿Por qué no Ollama?:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mi-primer-chat-con-llm">Mi primer chat con LLM:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notas">Notas:</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/blog/asistente-virtual-con-gpt4all.md.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Python Perú.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Construido con el <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html"> Tema PyData Sphinx </a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora - Entradas en Lenguaje</title>
+  <updated>2025-03-17T16:28:48.319744+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/category/lenguaje/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/mojo-alternativa-a-python/</id>
+    <title>Mojo: El Nuevo Lenguaje de Programación que Promete Revolucionar Python</title>
+    <updated>2024-04-02T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Es 4 de mayo de 2023 y los desarrolladores en todo el mundo están a punto de
+experimentar una revolución en la programación productiva con la llegada de
+Mojo. Concebido como una superposición de Python, este nuevo lenguaje promete
+ser hasta 35,000 veces más rápido, un hito significativo considerando la
+pervivencia de Python como el lenguaje dominante en inteligencia artificial.&lt;/p&gt;
+&lt;p&gt;Sin embargo, es bien sabido que Python, a pesar de su popularidad, batalla con
+la velocidad de ejecución. Situación que ha dado ventaja a lenguajes como Rust
+y C++ en tareas que demandan un alto rendimiento. Pero ¿Qué hace a Mojo tan
+especial y cómo logra estas impresionantes cifras de rendimiento?&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/mojo-alternativa-a-python/"/>
+    <summary>Es 4 de mayo de 2023 y los desarrolladores en todo el mundo están a punto de
+experimentar una revolución en la programación productiva con la llegada de
+Mojo. Concebido como una superposición de Python, este nuevo lenguaje promete
+ser hasta 35,000 veces más rápido, un hito significativo considerando la
+pervivencia de Python como el lenguaje dominante en inteligencia artificial.Sin embargo, es bien sabido que Python, a pesar de su popularidad, batalla con
+la velocidad de ejecución. Situación que ha dado ventaja a lenguajes como Rust
+y C++ en tareas que demandan un alto rendimiento. Pero ¿Qué hace a Mojo tan
+especial y cómo logra estas impresionantes cifras de rendimiento?</summary>
+    <category term="ai-generated" label="ai-generated"/>
+    <category term="mojo" label="mojo"/>
+    <category term="python" label="python"/>
+    <published>2024-04-02T00:00:00+00:00</published>
+  </entry>
+</feed>

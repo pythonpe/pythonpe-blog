@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora - Entradas etiquetadas playwright</title>
+  <updated>2025-03-17T16:28:48.430898+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/tag/playwright/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/scraping-con-playwright-y-asyncio/</id>
+    <title>Desarrollando un Bot de Scraping Evasivo</title>
+    <updated>2024-06-02T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;En el mundo del scraping, enfrentamos constantemente la batalla contra
+mecanismos de defensa diseñados para detectar y bloquear nuestros bots. Hoy,
+quiero compartirles un proyecto personal que busca no solo sortear estas
+defensas, sino hacerlo de manera eficiente y escalable.&lt;/p&gt;
+&lt;p&gt;Al intentar extraer datos de un sitio web que utiliza Radware, un servicio
+avanzado contra bots de scraping, me vi en la necesidad de crear una solución
+que pudiera superar estos obstáculos. Aquí les presento cómo logré desarrollar
+un bot de scraping que no solo logra su cometido sino que evita ser detectado
+por mecanismos de anti-bots.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/scraping-con-playwright-y-asyncio/"/>
+    <summary>En el mundo del scraping, enfrentamos constantemente la batalla contra
+mecanismos de defensa diseñados para detectar y bloquear nuestros bots. Hoy,
+quiero compartirles un proyecto personal que busca no solo sortear estas
+defensas, sino hacerlo de manera eficiente y escalable.Al intentar extraer datos de un sitio web que utiliza Radware, un servicio
+avanzado contra bots de scraping, me vi en la necesidad de crear una solución
+que pudiera superar estos obstáculos. Aquí les presento cómo logré desarrollar
+un bot de scraping que no solo logra su cometido sino que evita ser detectado
+por mecanismos de anti-bots.</summary>
+    <category term="asyncio" label="asyncio"/>
+    <category term="playwright" label="playwright"/>
+    <category term="python" label="python"/>
+    <category term="scraping" label="scraping"/>
+    <published>2024-06-02T00:00:00+00:00</published>
+  </entry>
+</feed>

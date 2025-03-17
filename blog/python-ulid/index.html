@@ -1,0 +1,1248 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="ULID para la generación de identificadores únicos en Python" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://blog.python.pe/blog/python-ulid/" />
+<meta property="og:site_name" content="Blog de Python Perú" />
+<meta property="og:description" content="En el universo de la programación moderna, la generación de identificadores únicos es esencial para una amplia variedad de aplicaciones, desde sistemas de bases de datos distribuidas hasta platafor..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://blog.python.pe/_images/social_previews/summary_blog_python-ulid_d762d8ee.png" />
+<meta property="og:image:alt" content="En el universo de la programación moderna, la generación de identificadores únicos es esencial para una amplia variedad de aplicaciones, desde sistemas de ba..." />
+<meta name="description" content="En el universo de la programación moderna, la generación de identificadores únicos es esencial para una amplia variedad de aplicaciones, desde sistemas de bases de datos distribuidas hasta platafor..." />
+<meta name="twitter:card" content="summary_large_image" />
+
+    <title>ULID para la generación de identificadores únicos en Python &#8212; Blog de Python Perú</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/markdown.css?v=dc714126" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=a20647df"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=d190bf04"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-NZ0W1CL2L1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-NZ0W1CL2L1');
+            </script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-NZ0W1CL2L1');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/python-ulid';</script>
+    <link rel="canonical" href="https://blog.python.pe/blog/python-ulid/" />
+    <link rel="icon" href="../../_static/favicon-48x48.png"/>
+    <link rel="author" title="Sobre este documento" href="../../about/" />
+    <link rel="index" title="Índice" href="../../genindex/" />
+    <link rel="search" title="Búsqueda" href="../../search/" />
+<meta name="robots" content="follow, index">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" /> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="Blog de Python Perú | Aprende y explora"
+/>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Buscar en el blog..."
+         aria-label="Buscar en el blog..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.svg" class="logo__image only-light" alt="Blog de Python Perú - Home"/>
+    <img src="../../_static/logo.svg" class="logo__image only-dark pst-js-only" alt="Blog de Python Perú - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/">
+    Acerca de Python Perú
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pythonpe/pythonpe-blog" title="Repositorio del Blog en GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Repositorio del Blog en GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.meetup.com/pythonperu/" title="Meetup" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-meetup fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Meetup</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk" title="Comunidad de WhatsApp" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-whatsapp fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Comunidad de WhatsApp</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://t.me/pythonperu" title="Canal de Telegram" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-telegram fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Canal de Telegram</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.twitch.tv/pythonperu" title="Twitch" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitch fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitch</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://python.pe" title="Python Perú" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Python Perú</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://blog.python.pe/blog/atom.xml" title="RSS feed" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS feed</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/">
+    Acerca de Python Perú
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pythonpe/pythonpe-blog" title="Repositorio del Blog en GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Repositorio del Blog en GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.meetup.com/pythonperu/" title="Meetup" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-meetup fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Meetup</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk" title="Comunidad de WhatsApp" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-whatsapp fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Comunidad de WhatsApp</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://t.me/pythonperu" title="Canal de Telegram" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-telegram fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Canal de Telegram</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.twitch.tv/pythonperu" title="Twitch" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitch fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitch</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://python.pe" title="Python Perú" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Python Perú</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://blog.python.pe/blog/atom.xml" title="RSS feed" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS feed</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__postcard">
+   
+  <h2>
+     
+    <i class="fa fa-calendar"></i>
+    
+    <span>06 abril 2024</span>
+    
+  </h2>
+  <ul>
+    <div class="ablog-sidebar-item ablog__postcard2">
+   
+  <li id="ablog-sidebar-item author ablog__author">
+    <span>
+      
+      <i class="fa-fw fa fa-user"></i>
+      
+    </span>
+     
+    <a href="../author/sergio-infante/">Sergio Infante</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item location ablog__location">
+    <span>
+      
+      <i class="fa-fw fa fa-location-arrow"></i>
+      
+    </span>
+     
+    <a href="../location/lima/">Lima</a>
+     ,    
+    <a href="../location/peru/">Perú</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item language ablog__language">
+    <span>
+      
+      <i class="fa-fw fa fa-language"></i>
+      
+    </span>
+     
+    <a href="../language/espanol/">Español</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item category ablog__category">
+    <span>
+      
+      <i class="fa-fw fa fa-folder-open"></i>
+      
+    </span>
+     
+    <a href="../category/tutorial/">Tutorial</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item tags ablog__tags">
+    <span>
+       
+      <i class="fa-fw fa fa-tags"></i>
+       
+    </span>
+     
+    <a href="../tag/ulid/">ulid</a>
+        
+    <a href="../tag/uuid/">uuid</a>
+        
+    <a href="../tag/python-ulid/">python-ulid</a>
+      
+  </li>
+   
+</div>
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__recentposts">
+  <h3>
+    <a href="../">Entradas recientes</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../estructura-cv-python-II/">
+        17 marzo - Potencia tu CV con Python (II): Usando NLP para hacer match con ofertas
+      </a>
+    </li>
+    
+    <li>
+      <a href="../haciendo-app-chat-gpt-con-tech-pyodide/">
+        12 marzo - Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-3.5 Turbo: Una Prueba de Concepto
+      </a>
+    </li>
+    
+    <li>
+      <a href="../estructura-cv-python-I/">
+        26 febrero - Potencia tu CV con Python (I): De PDF a Datos Estructurados en Minutos con OpenAI
+      </a>
+    </li>
+    
+    <li>
+      <a href="../asistente-virtual-con-gpt4all/">
+        18 febrero - Python y GPT4All, Creando tu asistente de IA personal con 5 líneas
+      </a>
+    </li>
+    
+    <li>
+      <a href="../Introduccion-a-DuckDB/">
+        10 febrero - Introducción a DuckDB: Una alternativa ligera y poderosa para análisis de datos
+      </a>
+    </li>
+    
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__tagcloud">
+  <link
+    rel="stylesheet"
+    href="../../_static/ablog/tagcloud.css"
+    type="text/css"
+  />
+  <h3><a href="../tag/">Etiquetas</a></h3>
+  <ul class="ablog-cloud">
+     
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/1brc/">1brc</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/ai/">AI</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/data-science/">Data Science</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt/">GPT</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ml/">ML</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/nlp/">NLP</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pdf/">PDF</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pymupdf/">PyMuPDF</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/spacy/">Spacy</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ablog/">ablog</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ai-generated/">ai-generated</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/app/">app</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/asyncio/">asyncio</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/beautifulsoup4/">beautifulsoup4</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/chat/">chat</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/chatbots/">chatbots</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/criptografia/">criptografia</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/csv/">csv</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/flet/">flet</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/flutter/">flutter</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/fork/">fork</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/git/">git</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt/">gpt</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt-4/">gpt-4</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt-4-turbo/">gpt-4-turbo</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt4all/">gpt4all</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/httpx/">httpx</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/jupyterlite/">jupyterlite</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/llama/">llama</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/llm/">llm</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/mojo/">mojo</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/multiplatform/">multiplatform</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ollama/">ollama</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/openai/">openai</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pandas/">pandas</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/playwright/">playwright</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/principiantes/">principiantes</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pull-request/">pull-request</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pyodide/">pyodide</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-5">
+      <a href="../tag/python/">python</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/python-flutter/">python-flutter</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/python-ulid/">python-ulid</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/requests/">requests</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/scraping/">scraping</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/seguridad/">seguridad</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/sphinx/">sphinx</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/tutorial/">tutorial</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ulid/">ulid</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/utilidades/">utilidades</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/uuid/">uuid</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/youtube/">youtube</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__categories">
+  <h3>
+    <a href="../category/">Categorías</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../category/data-science/">Data science (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/desafio-de-mil-millon-de-filas/">Desafío de Mil Millón de Filas (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/jupyterlite/">JupyterLite (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/lenguaje/">Lenguaje (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/scraping/">Scraping (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/scripts/">Scripts (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/snippets/">Snippets (3)</a>
+    </li>
+      
+    <li>
+      <a href="../category/tutorial/">Tutorial (9)</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__archives">
+  <h3>
+    <a href="../archive/">Archivos</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../2025/">2025 (5)</a>
+    </li>
+      
+    <li>
+      <a href="../2024/">2024 (13)</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div id="searchbox"></div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Miga de pan" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../" class="nav-link" aria-label="Inicio">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">ULID para la generación de identificadores únicos en Python</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section class="tex2jax_ignore mathjax_ignore" id="ulid-para-la-generacion-de-identificadores-unicos-en-python">
+<h1>ULID para la generación de identificadores únicos en Python<a class="headerlink" href="#ulid-para-la-generacion-de-identificadores-unicos-en-python" title="Link to this heading">#</a></h1>
+<p>En el universo de la programación moderna, la generación de identificadores únicos es esencial para una amplia variedad de aplicaciones, desde sistemas de bases de datos distribuidas hasta plataformas de gestión de usuarios.</p>
+<section id="ulid-una-solucion-ordenada-y-segura">
+<h2>ULID: Una solución ordenada y segura<a class="headerlink" href="#ulid-una-solucion-ordenada-y-segura" title="Link to this heading">#</a></h2>
+<p>ULID, que significa “Universally Unique Lexicographically Sortable Identifier”, es un tipo de identificador único diseñado para ser ordenado lexicográficamente y garantizar seguridad para la concurrencia. Su estructura combina un timestamp en milisegundos con una porción aleatoria, lo que garantiza su unicidad y permite su ordenación cronológica. Estas características lo hacen especialmente útil en aplicaciones que requieren una alta eficiencia en la generación y gestión de identificadores únicos, especialmente en entornos distribuidos.</p>
+<p>Para utilizar ULID en Python, podemos emplear la biblioteca ulid, que ofrece una interfaz sencilla para generar y manipular ULIDs.</p>
+<p>Para utilizar la biblioteca python-ulid, primero debes instalarla mediante pip:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>python-ulid
+</pre></div>
+</div>
+<p>Y este sería un ejemplo de como usarlo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ulid</span><span class="w"> </span><span class="kn">import</span> <span class="n">ULID</span>
+
+<span class="c1"># Generar un ULID</span>
+<span class="n">ulid_obj</span> <span class="o">=</span> <span class="n">ULID</span><span class="p">()</span>
+<span class="n">ulid_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ulid_obj</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ULID generado:&quot;</span><span class="p">,</span> <span class="n">ulid_str</span><span class="p">)</span>
+
+<span class="c1"># Obtener el timestamp del ULID</span>
+<span class="n">timestamp</span> <span class="o">=</span> <span class="n">ulid_obj</span><span class="o">.</span><span class="n">timestamp</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Timestamp del ULID:&quot;</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>En este ejemplo, importamos la clase ULID de la biblioteca ulid. Luego, creamos una instancia de esta clase para generar un nuevo ULID. Convertimos el objeto ULID a una cadena utilizando str() y lo imprimimos.</p>
+<p>También puedes acceder al timestamp del ULID utilizando el método timestamp del objeto ULID. Esto te permite obtener la marca de tiempo que se utilizó para generar el ULID.</p>
+<p>Además de su capacidad para la ordenación lexicográfica y la seguridad para la concurrencia, ULID también ofrece una implementación robusta y eficiente para la generación de identificadores únicos en Python.</p>
+</section>
+<section id="uuid-la-opcion-versatil-y-ampliamente-adoptada">
+<h2>UUID: La opción versátil y ampliamente adoptada<a class="headerlink" href="#uuid-la-opcion-versatil-y-ampliamente-adoptada" title="Link to this heading">#</a></h2>
+<p>UUID, que significa “Universally Unique Identifier”, es otro tipo común de identificador único que ha sido ampliamente adoptado en la industria. A diferencia de ULID, los UUIDs no están diseñados específicamente para la ordenación lexicográfica, pero ofrecen una mayor versatilidad y compatibilidad con sistemas existentes. Su estructura se basa en identificadores aleatorios, lo que garantiza su unicidad en la mayoría de los casos.</p>
+<p>Para generar un UUID en Python, podemos utilizar el módulo uuid de la biblioteca estándar de Python. Aquí tienes un ejemplo de código para generar un UUID utilizando el módulo uuid:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+
+<span class="n">uuid_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;UUID generado:&quot;</span><span class="p">,</span> <span class="n">uuid_str</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Aunque los UUIDs no ofrecen la misma eficiencia en la ordenación lexicográfica que los ULIDs, su amplia adopción y compatibilidad los convierten en una opción atractiva para una variedad de aplicaciones.</p>
+</section>
+<section id="python-ulid-pydantic-integracion-de-ulid-con-pydantic">
+<h2>python-ulid[pydantic] Integración de ULID con Pydantic<a class="headerlink" href="#python-ulid-pydantic-integracion-de-ulid-con-pydantic" title="Link to this heading">#</a></h2>
+<p>Para aquellos que prefieren utilizar ULID en conjunto con Pydantic, existe una extensión llamada <code class="docutils literal notranslate"><span class="pre">python-ulid[pydantic]</span></code>, que permite la integración de ULID con la biblioteca Pydantic para la validación de datos en Python. Pydantic es una biblioteca de validación de datos que simplifica la definición de modelos de datos en Python.</p>
+<p>Se instala de esta manera:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>python-ulid<span class="o">[</span>pydantic<span class="o">]</span>
+</pre></div>
+</div>
+<p>Aquí tienes un ejemplo de cómo utilizar ULID con Pydantic utilizando la extensión <code class="docutils literal notranslate"><span class="pre">python-ulid[pydantic]</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ulid</span><span class="w"> </span><span class="kn">import</span> <span class="n">ULID</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">ULID</span>
+
+<span class="n">valid_ulid_str</span> <span class="o">=</span> <span class="s2">&quot;01E59ZR9N5PQ3K0VGXZ5Y0V68D&quot;</span>
+<span class="n">my_model_instance</span> <span class="o">=</span> <span class="n">MyModel</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">valid_ulid_str</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_model_instance</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="conclusion">
+<h2>Conclusión<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>En conclusión, ULID y UUID son opciones viables para la generación de identificadores únicos en Python, cada una con sus propias características, ventajas y desventajas. La elección entre ellas dependerá de los requisitos específicos de tu aplicación y de las características que consideres más importantes, como la eficiencia en la ordenación lexicográfica, la compatibilidad con sistemas existentes y la integración con otras bibliotecas y marcos de trabajo. Al comprender las diferencias entre estos enfoques y evaluar tus necesidades específicas, podrás tomar una decisión informada que satisfaga los requisitos de tu aplicación y garantice una gestión eficiente de identificadores únicos en Python.</p>
+<p>Happy Coding! 😎</p>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+     
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+     
+    <a href="../leyendo-csv-pandas-python/">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>Leyendo archivos CSV con Pandas</span>
+    </a>
+    
+  </span>
+  <span class="ablog__spacer">&nbsp;</span>
+  <span class="ablog__next">
+     
+    <a href="../integrando-jupyterlite-en-sphinx/">
+      <span>Explorando JupyterLite e integrándolo en tu blog de Sphinx</span>
+      
+      <i class="fa fa-arrow-circle-right"></i>
+      
+    </a>
+    
+  </span>
+</div>
+  
+</div>
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+
+
+
+<script>
+class ModeToggle {
+    static get MODE_KEY()
+    {
+        return "mode";
+    }
+    static get DARK_MODE()
+    {
+        return "dark";
+    }
+    static get LIGHT_MODE()
+    {
+        return "light";
+    }
+    static get AUTO_MODE()
+    {
+        return "auto";
+    }
+    static get ID()
+    {
+        return "mode-toggle";
+    }
+    constructor()
+    {
+        let self = this; /* always follow the system prefers */
+        this.sysDarkPrefers.forEach((el) => {
+            el.addEventListener("click", () => {
+                self.notify();
+            });
+        });
+    } /* constructor() */
+    get sysDarkPrefers()
+    {
+        return document.querySelectorAll(".theme-switch-button");
+    }
+    get isSysDarkPrefer()
+    {
+        return this.sysDarkPrefers.matches;
+    }
+    get isDarkMode()
+    {
+        return this.mode === ModeToggle.DARK_MODE;
+    }
+    get isLightMode()
+    {
+        return this.mode === ModeToggle.LIGHT_MODE;
+    }
+    get hasMode()
+    {
+        return this.mode != null;
+    }
+    get mode()
+    {
+        return localStorage.getItem(ModeToggle.MODE_KEY);
+    } /* get the current mode on screen */
+    get modeStatus()
+    {
+        if (this.isLightMode || (!this.hasMode && this.isSysDarkPrefer)) {
+            return ModeToggle.LIGHT_MODE;
+        } else {
+            return this.mode;
+        }
+    }
+    flip()
+    {
+        if (this.modeStatus === ModeToggle.LIGHT_MODE) {
+            return ModeToggle.AUTO_MODE;
+        } else if (this.modeStatus == ModeToggle.AUTO_MODE) {
+            return ModeToggle.DARK_MODE;
+        } else {
+            return ModeToggle.LIGHT_MODE;
+        }
+    }
+    notify()
+    {
+        window.postMessage({
+            direction: ModeToggle.ID,
+            message: this.flip()
+        }, "*");
+    }
+} /* ModeToggle */
+const toggle = new ModeToggle();
+</script>
+<script>
+    $(function() {
+        const origin = "https://giscus.app";
+        const iframe = "iframe.giscus-frame";
+        const lightTheme = "light";
+        const darkTheme = "dark";
+        let initTheme = lightTheme;
+        if ($("html[data-mode=dark]").length > 0 || ($("html[data-mode]").length == 0 && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            initTheme = darkTheme;
+        }
+        let giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "pythonpe/pythonpe-blog",
+            "data-repo-id": "R_kgDOLnXH7w",
+            "data-category": "Blog comments",
+            "data-category-id": "DIC_kwDOLnXH784CeaCq",
+            "data-mapping": "pathname",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-theme": initTheme,
+            "data-input-position": "bottom",
+            "data-lang": "es",
+            "crossorigin": "anonymous",
+            "async": ""
+        };
+        let giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("tail-wrapper").appendChild(giscusScript);
+        addEventListener("message", (event) => {
+            if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
+                /* global theme mode changed */
+                const mode = event.data.message;
+                const theme = (mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme);
+                const message = {
+                    setConfig: {
+                        theme: theme
+                    }
+                };
+                const giscus = document.querySelector(iframe).contentWindow;
+                giscus.postMessage({
+                    giscus: message
+                }, origin);
+            }
+        });
+    });
+</script>
+<div id="tail-wrapper">
+</div>
+
+</div>
+  
+</div>
+                </footer>
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> En esta página
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ulid-una-solucion-ordenada-y-segura">ULID: Una solución ordenada y segura</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uuid-la-opcion-versatil-y-ampliamente-adoptada">UUID: La opción versátil y ampliamente adoptada</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-ulid-pydantic-integracion-de-ulid-con-pydantic">python-ulid[pydantic] Integración de ULID con Pydantic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusión</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/blog/python-ulid.md.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Python Perú.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Construido con el <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html"> Tema PyData Sphinx </a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

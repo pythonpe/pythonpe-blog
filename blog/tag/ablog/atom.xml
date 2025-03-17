@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora - Entradas etiquetadas ablog</title>
+  <updated>2025-03-17T16:28:48.378486+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/tag/ablog/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/como-redactar-posts-con-fork/</id>
+    <title>Cómo Hacer Fork y Pull Request en el Blog de Python Perú</title>
+    <updated>2024-04-14T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Bienvenidos a la comunidad de Python Perú y a este Blog que marca el inicio de
+una nueva etapa de la comunidad.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python Perú Logo" class="markdown-body align-center" src="https://blog.python.pe/_images/logo.svg" style="width: 200px;" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/como-redactar-posts-con-fork/"/>
+    <summary>Bienvenidos a la comunidad de Python Perú y a este Blog que marca el inicio de
+una nueva etapa de la comunidad.Python Perú Logo</summary>
+    <category term="ablog" label="ablog"/>
+    <category term="fork" label="fork"/>
+    <category term="git" label="git"/>
+    <category term="pull-request" label="pull-request"/>
+    <category term="sphinx" label="sphinx"/>
+    <category term="tutorial" label="tutorial"/>
+    <published>2024-04-14T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/como-redactar-posts/</id>
+    <title>Cómo Redactar Posts en el Blog de Python Perú y no Morir en el Intento</title>
+    <updated>2024-04-04T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Debo iniciar las líneas de este post dándoles la bienvenida a la comunidad de
+Python Perú y a este Blog que marca el inicio de una nueva etapa de la
+comunidad.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python Perú Logo" class="markdown-body align-center" src="https://blog.python.pe/_images/logo.svg" style="width: 200px;" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/como-redactar-posts/"/>
+    <summary>Debo iniciar las líneas de este post dándoles la bienvenida a la comunidad de
+Python Perú y a este Blog que marca el inicio de una nueva etapa de la
+comunidad.Python Perú Logo</summary>
+    <category term="ablog" label="ablog"/>
+    <category term="git" label="git"/>
+    <category term="pull-request" label="pull-request"/>
+    <category term="sphinx" label="sphinx"/>
+    <category term="tutorial" label="tutorial"/>
+    <published>2024-04-04T00:00:00+00:00</published>
+  </entry>
+</feed>

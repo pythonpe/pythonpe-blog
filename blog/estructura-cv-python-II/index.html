@@ -1,0 +1,1376 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Potencia tu CV con Python (II): Usando NLP para hacer match con ofertas" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://blog.python.pe/blog/estructura-cv-python-II/" />
+<meta property="og:site_name" content="Blog de Python Perú" />
+<meta property="og:description" content="¡Hola de nuevo! En este artículo anterior les conté cómo desarrollé un sistema para estructurar y analizar mi CV utilizando inteligencia artificial. Hoy quiero compartir la segunda parte de este pr..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://blog.python.pe/_images/social_previews/summary_blog_estructura-cv-python-II_0fb6a52a.png" />
+<meta property="og:image:alt" content="¡Hola de nuevo! En este artículo anterior les conté cómo desarrollé un sistema para estructurar y analizar mi CV utilizando inteligencia artificial. Hoy quie..." />
+<meta name="description" content="¡Hola de nuevo! En este artículo anterior les conté cómo desarrollé un sistema para estructurar y analizar mi CV utilizando inteligencia artificial. Hoy quiero compartir la segunda parte de este pr..." />
+<meta name="twitter:card" content="summary_large_image" />
+
+    <title>Potencia tu CV con Python (II): Usando NLP para hacer match con ofertas &#8212; Blog de Python Perú</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/markdown.css?v=dc714126" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=a20647df"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=d190bf04"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-NZ0W1CL2L1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-NZ0W1CL2L1');
+            </script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-NZ0W1CL2L1');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/estructura-cv-python-II';</script>
+    <link rel="canonical" href="https://blog.python.pe/blog/estructura-cv-python-II/" />
+    <link rel="icon" href="../../_static/favicon-48x48.png"/>
+    <link rel="author" title="Sobre este documento" href="../../about/" />
+    <link rel="index" title="Índice" href="../../genindex/" />
+    <link rel="search" title="Búsqueda" href="../../search/" />
+<meta name="robots" content="follow, index">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" /> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="Blog de Python Perú | Aprende y explora"
+/>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Buscar en el blog..."
+         aria-label="Buscar en el blog..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.svg" class="logo__image only-light" alt="Blog de Python Perú - Home"/>
+    <img src="../../_static/logo.svg" class="logo__image only-dark pst-js-only" alt="Blog de Python Perú - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/">
+    Acerca de Python Perú
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pythonpe/pythonpe-blog" title="Repositorio del Blog en GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Repositorio del Blog en GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.meetup.com/pythonperu/" title="Meetup" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-meetup fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Meetup</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk" title="Comunidad de WhatsApp" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-whatsapp fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Comunidad de WhatsApp</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://t.me/pythonperu" title="Canal de Telegram" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-telegram fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Canal de Telegram</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.twitch.tv/pythonperu" title="Twitch" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitch fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitch</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://python.pe" title="Python Perú" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Python Perú</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://blog.python.pe/blog/atom.xml" title="RSS feed" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS feed</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/">
+    Acerca de Python Perú
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pythonpe/pythonpe-blog" title="Repositorio del Blog en GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Repositorio del Blog en GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.meetup.com/pythonperu/" title="Meetup" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-meetup fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Meetup</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chat.whatsapp.com/D9bPvUrddvSBUIkMSoTqrk" title="Comunidad de WhatsApp" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-whatsapp fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Comunidad de WhatsApp</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://t.me/pythonperu" title="Canal de Telegram" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-telegram fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Canal de Telegram</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.twitch.tv/pythonperu" title="Twitch" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitch fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitch</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://python.pe" title="Python Perú" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Python Perú</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://blog.python.pe/blog/atom.xml" title="RSS feed" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS feed</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__postcard">
+   
+  <h2>
+     
+    <i class="fa fa-calendar"></i>
+    
+    <span>17 marzo 2025</span>
+    
+  </h2>
+  <ul>
+    <div class="ablog-sidebar-item ablog__postcard2">
+   
+  <li id="ablog-sidebar-item author ablog__author">
+    <span>
+      
+      <i class="fa-fw fa fa-user"></i>
+      
+    </span>
+     
+    <a href="../author/ider-delzo/">Ider Delzo</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item location ablog__location">
+    <span>
+      
+      <i class="fa-fw fa fa-location-arrow"></i>
+      
+    </span>
+     
+    <a href="../location/lima/">Lima</a>
+     ,    
+    <a href="../location/peru/">Perú</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item language ablog__language">
+    <span>
+      
+      <i class="fa-fw fa fa-language"></i>
+      
+    </span>
+     
+    <a href="../language/espanol/">Español</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item category ablog__category">
+    <span>
+      
+      <i class="fa-fw fa fa-folder-open"></i>
+      
+    </span>
+     
+    <a href="../category/tutorial/">Tutorial</a>
+      
+  </li>
+   
+  <li id="ablog-sidebar-item tags ablog__tags">
+    <span>
+       
+      <i class="fa-fw fa fa-tags"></i>
+       
+    </span>
+     
+    <a href="../tag/ai/">AI</a>
+        
+    <a href="../tag/nlp/">NLP</a>
+        
+    <a href="../tag/ml/">ML</a>
+        
+    <a href="../tag/data-science/">Data Science</a>
+        
+    <a href="../tag/spacy/">Spacy</a>
+      
+  </li>
+   
+</div>
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__recentposts">
+  <h3>
+    <a href="../">Entradas recientes</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../haciendo-app-chat-gpt-con-tech-pyodide/">
+        12 marzo - Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-3.5 Turbo: Una Prueba de Concepto
+      </a>
+    </li>
+    
+    <li>
+      <a href="../estructura-cv-python-I/">
+        26 febrero - Potencia tu CV con Python (I): De PDF a Datos Estructurados en Minutos con OpenAI
+      </a>
+    </li>
+    
+    <li>
+      <a href="../asistente-virtual-con-gpt4all/">
+        18 febrero - Python y GPT4All, Creando tu asistente de IA personal con 5 líneas
+      </a>
+    </li>
+    
+    <li>
+      <a href="../Introduccion-a-DuckDB/">
+        10 febrero - Introducción a DuckDB: Una alternativa ligera y poderosa para análisis de datos
+      </a>
+    </li>
+    
+    <li>
+      <a href="../desarrollo-app-con-flet/">
+        01 julio - Desarrollando una pequeña aplicación con flet
+      </a>
+    </li>
+    
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__tagcloud">
+  <link
+    rel="stylesheet"
+    href="../../_static/ablog/tagcloud.css"
+    type="text/css"
+  />
+  <h3><a href="../tag/">Etiquetas</a></h3>
+  <ul class="ablog-cloud">
+     
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/1brc/">1brc</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/ai/">AI</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/data-science/">Data Science</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt/">GPT</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ml/">ML</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/nlp/">NLP</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pdf/">PDF</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pymupdf/">PyMuPDF</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/spacy/">Spacy</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ablog/">ablog</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ai-generated/">ai-generated</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/app/">app</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/asyncio/">asyncio</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/beautifulsoup4/">beautifulsoup4</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/chat/">chat</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/chatbots/">chatbots</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/criptografia/">criptografia</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/csv/">csv</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/flet/">flet</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/flutter/">flutter</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/fork/">fork</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/git/">git</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt/">gpt</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt-4/">gpt-4</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt-4-turbo/">gpt-4-turbo</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/gpt4all/">gpt4all</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/httpx/">httpx</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/jupyterlite/">jupyterlite</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/llama/">llama</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/llm/">llm</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/mojo/">mojo</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/multiplatform/">multiplatform</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ollama/">ollama</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/openai/">openai</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pandas/">pandas</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/playwright/">playwright</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/principiantes/">principiantes</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pull-request/">pull-request</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/pyodide/">pyodide</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-5">
+      <a href="../tag/python/">python</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/python-flutter/">python-flutter</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/python-ulid/">python-ulid</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/requests/">requests</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/scraping/">scraping</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/seguridad/">seguridad</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/sphinx/">sphinx</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/tutorial/">tutorial</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/ulid/">ulid</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-2">
+      <a href="../tag/utilidades/">utilidades</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/uuid/">uuid</a>
+    </li>
+      
+    <li class="ablog-cloud ablog-cloud-1">
+      <a href="../tag/youtube/">youtube</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__categories">
+  <h3>
+    <a href="../category/">Categorías</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../category/data-science/">Data science (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/desafio-de-mil-millon-de-filas/">Desafío de Mil Millón de Filas (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/jupyterlite/">JupyterLite (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/lenguaje/">Lenguaje (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/scraping/">Scraping (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/scripts/">Scripts (1)</a>
+    </li>
+      
+    <li>
+      <a href="../category/snippets/">Snippets (3)</a>
+    </li>
+      
+    <li>
+      <a href="../category/tutorial/">Tutorial (9)</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__archives">
+  <h3>
+    <a href="../archive/">Archivos</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../2025/">2025 (5)</a>
+    </li>
+      
+    <li>
+      <a href="../2024/">2024 (13)</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div id="searchbox"></div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Miga de pan" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../" class="nav-link" aria-label="Inicio">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Potencia tu CV con Python (II): Usando NLP para hacer match con ofertas</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section class="tex2jax_ignore mathjax_ignore" id="potencia-tu-cv-con-python-ii-usando-nlp-para-hacer-match-con-ofertas">
+<h1>Potencia tu CV con Python (II): Usando NLP para hacer match con ofertas<a class="headerlink" href="#potencia-tu-cv-con-python-ii-usando-nlp-para-hacer-match-con-ofertas" title="Link to this heading">#</a></h1>
+<p>¡Hola de nuevo! En este <a class="reference external" href="https://blog.python.pe/blog/estructura-cv-python-I/">artículo anterior</a> les conté cómo desarrollé un sistema para estructurar y analizar mi CV utilizando inteligencia artificial. Hoy quiero compartir la segunda parte de este proyecto: el análisis de compatibilidad entre mi CV y las ofertas laborales.</p>
+<p><img alt="Python developer" src="../../_images/CV-python-openai.png" /></p>
+<p>Después de lograr estructurar mi CV de manera eficiente, me di cuenta de que el siguiente paso lógico era determinar qué tan compatible soy con las ofertas de trabajo que encuentro. ¿De qué sirve tener un CV bien estructurado si no sabemos a cuáles ofertas vale la pena aplicar?</p>
+<section id="procesamiento-bilingue">
+<h2>Procesamiento bilingüe<a class="headerlink" href="#procesamiento-bilingue" title="Link to this heading">#</a></h2>
+<p>La primera característica en la que pensé es que pueda trabajar tanto con ofertas en español como en inglés. Esto es crucial para quienes buscamos trabajo en mercados internacionales:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">JobMatcher</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Cargar el modelo de spaCy para ingles</span>
+        <span class="c1"># Si necesitas otro idioma, cambia &#39;en_core_web_sm&#39; por el modelo correspondiente</span>
+        <span class="c1"># Por ejemplo, &#39;es_core_news_sm&#39; para español</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nlp_es</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;es_core_news_md&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nlp_en</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+            <span class="c1"># Si los modelos no están instalados, descárgalos</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Descargando modelos de spaCy...&quot;</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;python -m spacy download es_core_news_md&quot;</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;python -m spacy download en_core_web_md&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nlp_es</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;es_core_news_md&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nlp_en</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>El sistema detecta automáticamente el idioma del texto analizando palabras comunes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_language_nlp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">es_words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;el&quot;</span><span class="p">,</span> <span class="s2">&quot;la&quot;</span><span class="p">,</span> <span class="s2">&quot;los&quot;</span><span class="p">,</span> <span class="s2">&quot;las&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;de&quot;</span><span class="p">,</span> <span class="s2">&quot;para&quot;</span><span class="p">,</span> <span class="s2">&quot;con&quot;</span><span class="p">,</span> <span class="s2">&quot;por&quot;</span><span class="p">]</span>
+        <span class="n">en_words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;the&quot;</span><span class="p">,</span> <span class="s2">&quot;and&quot;</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="s2">&quot;to&quot;</span><span class="p">,</span> <span class="s2">&quot;for&quot;</span><span class="p">,</span> <span class="s2">&quot;with&quot;</span><span class="p">,</span> <span class="s2">&quot;by&quot;</span><span class="p">,</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span> <span class="s2">&quot;at&quot;</span><span class="p">]</span>
+
+        <span class="n">text_lower</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">es_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">es_words</span> <span class="k">if</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="ow">in</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">text_lower</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+        <span class="n">en_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">en_words</span> <span class="k">if</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="ow">in</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">text_lower</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="s2">&quot;es&quot;</span> <span class="k">if</span> <span class="n">es_count</span> <span class="o">&gt;</span> <span class="n">en_count</span> <span class="k">else</span> <span class="s2">&quot;en&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_doc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Doc</span><span class="p">:</span>
+        <span class="n">text_language</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_language_nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">text_language</span> <span class="o">==</span> <span class="s2">&quot;es&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlp_es</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlp_en</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="el-algoritmo-de-compatibilidad">
+<h2>El algoritmo de compatibilidad<a class="headerlink" href="#el-algoritmo-de-compatibilidad" title="Link to this heading">#</a></h2>
+<p>Ahora comenzamos con el core de la lógica, vamos a definir la compatibilidad usando el título de la oferta (Ej. Senior Python Developer) y también la lista de skills definidos (Python, Flask, SQL) asi que los extraemos y los calculamos por separado:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">analyze_job_offer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cv_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">job_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="n">position_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">analyze_positions</span><span class="p">(</span><span class="n">cv_data</span><span class="p">,</span> <span class="n">job_data</span><span class="p">)</span>
+    <span class="n">skills_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">analyze_skills</span><span class="p">(</span><span class="n">cv_data</span><span class="p">,</span> <span class="n">job_data</span><span class="p">)</span>
+    
+    <span class="n">overall_score</span> <span class="o">=</span> <span class="n">position_score</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="n">skills_score</span> <span class="o">*</span> <span class="mf">0.5</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;overall_score&quot;</span><span class="p">:</span> <span class="n">overall_score</span><span class="p">,</span>
+        <span class="s2">&quot;position_score&quot;</span><span class="p">:</span> <span class="n">position_score</span><span class="p">,</span>
+        <span class="s2">&quot;skills_score&quot;</span><span class="p">:</span> <span class="n">skills_score</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>Ahora veremos la implementación de ambos scores individualmente:</p>
+<section id="compatibilidad-de-posicion">
+<h3>1. Compatibilidad de posición<a class="headerlink" href="#compatibilidad-de-posicion" title="Link to this heading">#</a></h3>
+<p>comparemos el título del puesto ofrecido con mis experiencias laborales previas, buscando la mejor coincidencia:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">analyze_positions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cv_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">job_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">experience</span> <span class="o">=</span> <span class="n">cv_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;experience&quot;</span><span class="p">,</span> <span class="p">[])</span>
+
+    <span class="k">for</span> <span class="n">exp</span> <span class="ow">in</span> <span class="n">experience</span><span class="p">:</span>
+        <span class="n">position_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_position_score</span><span class="p">(</span>
+            <span class="n">job_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;job_title&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span> <span class="n">exp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;position&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">position_score</span><span class="p">)</span>
+    
+    <span class="n">max_score</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="k">if</span> <span class="n">scores</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="k">return</span> <span class="n">max_score</span>
+</pre></div>
+</div>
+<p>Lo interesante aquí es que no solo busca coincidencias exactas, sino que utiliza la similitud semántica para entender si mi experiencia es relevante para el puesto. Además, considera el nivel de seniority:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_position_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_post_title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">exp_position</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">job_post_title</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">exp_position</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.0</span>
+        <span class="n">job_doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_doc</span><span class="p">(</span><span class="n">job_post_title</span><span class="p">)</span>
+        <span class="n">exp_doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_doc</span><span class="p">(</span><span class="n">exp_position</span><span class="p">)</span>
+
+        <span class="c1"># Calcular la similitud vectorial entre el título de trabajo y la posición del empleado</span>
+        <span class="n">similarity</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">exp_doc</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="n">job_doc</span><span class="p">))</span>
+
+        <span class="n">seniority_levels</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;intern&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;junior&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;associate&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;ii&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">&quot;mid&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">&quot;intermediate&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">&quot;iii&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s2">&quot;senior&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;sr&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;lead&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+            <span class="s2">&quot;principal&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+            <span class="s2">&quot;staff&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+            <span class="s2">&quot;architect&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+            <span class="s2">&quot;director&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+            <span class="s2">&quot;head&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+            <span class="s2">&quot;chief&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="c1"># extraer el niver de seniority</span>
+        <span class="n">job_seniority</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">exp_seniority</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">job_doc</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">text</span> <span class="ow">in</span> <span class="n">seniority_levels</span><span class="p">:</span>
+                <span class="n">job_seniority</span> <span class="o">=</span> <span class="n">seniority_levels</span><span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">text</span><span class="p">]</span>
+                <span class="k">break</span>
+
+        <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">exp_doc</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">text</span> <span class="ow">in</span> <span class="n">seniority_levels</span><span class="p">:</span>
+                <span class="n">exp_seniority</span> <span class="o">=</span> <span class="n">seniority_levels</span><span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">text</span><span class="p">]</span>
+                <span class="k">break</span>
+
+        <span class="c1"># Calcular la diferencia de niveles de senioridad y aplicar un penalizador</span>
+        <span class="n">seniority_diff</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">job_seniority</span> <span class="o">-</span> <span class="n">exp_seniority</span><span class="p">)</span>
+        <span class="n">seniority_penalty</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">seniority_diff</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># Cap penalizador a 0.5</span>
+
+        <span class="n">similarity</span> <span class="o">*=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">seniority_penalty</span>
+
+        <span class="k">return</span> <span class="n">similarity</span>
+</pre></div>
+</div>
+</section>
+<section id="compatibilidad-de-habilidades">
+<h3>2. Compatibilidad de habilidades<a class="headerlink" href="#compatibilidad-de-habilidades" title="Link to this heading">#</a></h3>
+<p>Esta parte es crucial: ¿tengo las habilidades técnicas que la empresa está buscando?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span><span class="w"> </span><span class="nf">analyze_skills</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cv_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">job_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="c1"># Obtengo las habilidades del CV y las de cada emperiencia</span>
+        <span class="n">skills</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">cv_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;skills&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+        <span class="k">for</span> <span class="n">exp</span> <span class="ow">in</span> <span class="n">cv_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;experience&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="n">skills</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">exp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;skills&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+        <span class="n">job_skills</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">job_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;skills&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;technologies&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+
+        <span class="c1"># Calcular el match directo</span>
+        <span class="n">direct_matches</span> <span class="o">=</span> <span class="n">skills</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">job_skills</span><span class="p">)</span>
+        <span class="n">direct_matches_score</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="n">direct_matches</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">job_skills</span><span class="p">)</span> <span class="k">if</span> <span class="n">job_skills</span> <span class="k">else</span> <span class="mf">0.0</span>
+        <span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Pero aquí viene lo realmente interesante. ¿Qué pasa con las habilidades que no coinciden exactamente pero están relacionadas? Por ejemplo, si la oferta pide “React.js” y yo tengo “React” en mi CV, o si piden “AWS” y yo tengo “Amazon Web Services”.
+Para resolver esto, implementé un análisis de similitud semántica:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+        <span class="c1"># Podemos tambien calcular los matches semanticos que no coinciden directamente</span>
+        <span class="n">remaining_job_skills</span> <span class="o">=</span> <span class="n">skills</span> <span class="o">-</span> <span class="n">direct_matches</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">remaining_job_skills</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">1.0</span>
+
+        <span class="n">semantic_match_score</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">remaining_cv_skills</span> <span class="o">=</span> <span class="n">skills</span> <span class="o">-</span> <span class="n">direct_matches</span>
+        <span class="n">semantic_matches</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Definir un umbral de similitud para los matches semanticos</span>
+        <span class="n">skill_similarity_threshold</span> <span class="o">=</span> <span class="mf">0.75</span>
+
+        <span class="k">for</span> <span class="n">job_skill</span> <span class="ow">in</span> <span class="n">remaining_job_skills</span><span class="p">:</span>
+            <span class="n">job_doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_doc</span><span class="p">(</span><span class="n">job_skill</span><span class="p">)</span>
+            <span class="n">best_similarity</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+            <span class="k">for</span> <span class="n">cv_skill</span> <span class="ow">in</span> <span class="n">remaining_cv_skills</span><span class="p">:</span>
+                <span class="n">cv_doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_doc</span><span class="p">(</span><span class="n">cv_skill</span><span class="p">)</span>
+                <span class="n">similarity</span> <span class="o">=</span> <span class="n">job_doc</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="n">cv_doc</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">similarity</span> <span class="o">&gt;</span> <span class="n">best_similarity</span><span class="p">:</span>
+                    <span class="n">best_similarity</span> <span class="o">=</span> <span class="n">similarity</span>
+
+            <span class="k">if</span> <span class="n">best_similarity</span> <span class="o">&gt;=</span> <span class="n">skill_similarity_threshold</span><span class="p">:</span>
+                <span class="n">semantic_matches</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">semantic_match_score</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">semantic_matches</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">remaining_job_skills</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">remaining_job_skills</span>
+            <span class="k">else</span> <span class="mf">0.0</span>
+        <span class="p">)</span>
+
+        <span class="n">final_score</span> <span class="o">=</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">direct_matches_score</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">semantic_match_score</span>
+        <span class="k">return</span> <span class="n">final_score</span>
+</pre></div>
+</div>
+<p>Y gracias a esto puedo generar un score más preciso, por ahora tengo un resultado decente, en algún momento pensé en implementar OpenAI para un análisis mas semantico pero eso puede dar mas espacio para otro artículo.</p>
+<p>Puedes revisar el código en este proyecto: <a class="reference external" href="https://github.com/soloidx/cv_improver_poc/blob/main/src/02_job_match_compatibility.py">02_job_match_compatibility.py</a></p>
+<p>También implementé un script para estructurar una oferta laboral usando OpenAI <a class="reference external" href="https://github.com/soloidx/cv_improver_poc/blob/main/src/02_extract_job_information.py">02_extract_job_information.py</a></p>
+</section>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+     
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+     
+    <a href="../haciendo-app-chat-gpt-con-tech-pyodide/">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-3.5 Turbo: Una Prueba de Concepto</span>
+    </a>
+    
+  </span>
+  <span class="ablog__spacer">&nbsp;</span>
+  <span class="ablog__next">
+    
+  </span>
+</div>
+  
+</div>
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+
+
+
+<script>
+class ModeToggle {
+    static get MODE_KEY()
+    {
+        return "mode";
+    }
+    static get DARK_MODE()
+    {
+        return "dark";
+    }
+    static get LIGHT_MODE()
+    {
+        return "light";
+    }
+    static get AUTO_MODE()
+    {
+        return "auto";
+    }
+    static get ID()
+    {
+        return "mode-toggle";
+    }
+    constructor()
+    {
+        let self = this; /* always follow the system prefers */
+        this.sysDarkPrefers.forEach((el) => {
+            el.addEventListener("click", () => {
+                self.notify();
+            });
+        });
+    } /* constructor() */
+    get sysDarkPrefers()
+    {
+        return document.querySelectorAll(".theme-switch-button");
+    }
+    get isSysDarkPrefer()
+    {
+        return this.sysDarkPrefers.matches;
+    }
+    get isDarkMode()
+    {
+        return this.mode === ModeToggle.DARK_MODE;
+    }
+    get isLightMode()
+    {
+        return this.mode === ModeToggle.LIGHT_MODE;
+    }
+    get hasMode()
+    {
+        return this.mode != null;
+    }
+    get mode()
+    {
+        return localStorage.getItem(ModeToggle.MODE_KEY);
+    } /* get the current mode on screen */
+    get modeStatus()
+    {
+        if (this.isLightMode || (!this.hasMode && this.isSysDarkPrefer)) {
+            return ModeToggle.LIGHT_MODE;
+        } else {
+            return this.mode;
+        }
+    }
+    flip()
+    {
+        if (this.modeStatus === ModeToggle.LIGHT_MODE) {
+            return ModeToggle.AUTO_MODE;
+        } else if (this.modeStatus == ModeToggle.AUTO_MODE) {
+            return ModeToggle.DARK_MODE;
+        } else {
+            return ModeToggle.LIGHT_MODE;
+        }
+    }
+    notify()
+    {
+        window.postMessage({
+            direction: ModeToggle.ID,
+            message: this.flip()
+        }, "*");
+    }
+} /* ModeToggle */
+const toggle = new ModeToggle();
+</script>
+<script>
+    $(function() {
+        const origin = "https://giscus.app";
+        const iframe = "iframe.giscus-frame";
+        const lightTheme = "light";
+        const darkTheme = "dark";
+        let initTheme = lightTheme;
+        if ($("html[data-mode=dark]").length > 0 || ($("html[data-mode]").length == 0 && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            initTheme = darkTheme;
+        }
+        let giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "pythonpe/pythonpe-blog",
+            "data-repo-id": "R_kgDOLnXH7w",
+            "data-category": "Blog comments",
+            "data-category-id": "DIC_kwDOLnXH784CeaCq",
+            "data-mapping": "pathname",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-theme": initTheme,
+            "data-input-position": "bottom",
+            "data-lang": "es",
+            "crossorigin": "anonymous",
+            "async": ""
+        };
+        let giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("tail-wrapper").appendChild(giscusScript);
+        addEventListener("message", (event) => {
+            if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
+                /* global theme mode changed */
+                const mode = event.data.message;
+                const theme = (mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme);
+                const message = {
+                    setConfig: {
+                        theme: theme
+                    }
+                };
+                const giscus = document.querySelector(iframe).contentWindow;
+                giscus.postMessage({
+                    giscus: message
+                }, origin);
+            }
+        });
+    });
+</script>
+<div id="tail-wrapper">
+</div>
+
+</div>
+  
+</div>
+                </footer>
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> En esta página
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#procesamiento-bilingue">Procesamiento bilingüe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-algoritmo-de-compatibilidad">El algoritmo de compatibilidad</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compatibilidad-de-posicion">1. Compatibilidad de posición</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compatibilidad-de-habilidades">2. Compatibilidad de habilidades</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/blog/estructura-cv-python-II.md.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Python Perú.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Construido con el <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html"> Tema PyData Sphinx </a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

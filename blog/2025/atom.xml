@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora - Publicado en 2025</title>
+  <updated>2025-03-17T16:28:48.339845+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/2025/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/estructura-cv-python-II/</id>
+    <title>Potencia tu CV con Python (II): Usando NLP para hacer match con ofertas</title>
+    <updated>2025-03-17T00:00:00+00:00</updated>
+    <author>
+      <name>Ider Delzo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;¡Hola de nuevo! En este &lt;a class="reference external" href="https://blog.python.pe/blog/estructura-cv-python-I/"&gt;artículo anterior&lt;/a&gt; les conté cómo desarrollé un sistema para estructurar y analizar mi CV utilizando inteligencia artificial. Hoy quiero compartir la segunda parte de este proyecto: el análisis de compatibilidad entre mi CV y las ofertas laborales.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/CV-python-openai.png" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/estructura-cv-python-II/"/>
+    <summary>¡Hola de nuevo! En este artículo anterior les conté cómo desarrollé un sistema para estructurar y analizar mi CV utilizando inteligencia artificial. Hoy quiero compartir la segunda parte de este proyecto: el análisis de compatibilidad entre mi CV y las ofertas laborales.Python developer</summary>
+    <category term="AI" label="AI"/>
+    <category term="DataScience" label="Data Science"/>
+    <category term="ML" label="ML"/>
+    <category term="NLP" label="NLP"/>
+    <category term="Spacy" label="Spacy"/>
+    <published>2025-03-17T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/haciendo-app-chat-gpt-con-tech-pyodide/</id>
+    <title>Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-3.5 Turbo: Una Prueba de Concepto</title>
+    <updated>2025-03-12T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;img alt="OpenAI" class="align-center" src="https://blog.python.pe/_images/openai.png" style="width: 400px;" /&gt;&lt;/p&gt;
+&lt;p&gt;Construir una aplicación basada en la web que aproveche tanto el entorno de
+Python como el modelo de lenguaje GPT-3.5 Turbo de OpenAI puede ser una empresa
+emocionante. Este artículo explica la creación de una aplicación de chat como
+prueba de concepto utilizando Pyodide, una herramienta que permite ejecutar
+Python en el navegador web, e integrarla con GPT-3.5 Turbo para simular un
+agente conversacional inteligente.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/haciendo-app-chat-gpt-con-tech-pyodide/"/>
+    <summary>OpenAIConstruir una aplicación basada en la web que aproveche tanto el entorno de
+Python como el modelo de lenguaje GPT-3.5 Turbo de OpenAI puede ser una empresa
+emocionante. Este artículo explica la creación de una aplicación de chat como
+prueba de concepto utilizando Pyodide, una herramienta que permite ejecutar
+Python en el navegador web, e integrarla con GPT-3.5 Turbo para simular un
+agente conversacional inteligente.</summary>
+    <category term="gpt" label="gpt"/>
+    <category term="httpx" label="httpx"/>
+    <category term="openai" label="openai"/>
+    <category term="pyodide" label="pyodide"/>
+    <category term="python" label="python"/>
+    <published>2025-03-12T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/estructura-cv-python-I/</id>
+    <title>Potencia tu CV con Python (I): De PDF a Datos Estructurados en Minutos con OpenAI</title>
+    <updated>2025-02-26T00:00:00+00:00</updated>
+    <author>
+      <name>Ider Delzo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Últimamente he estado pensando en cómo mejorar mi proceso de solicitud de empleo. ¿Sabes lo frustrante que es tener que reformatear constantemente tu CV para diferentes ofertas? Con cada empresa tenía que adaptar mi CV para tener el mejor fit para el puesto de trabajo. Estaba cansado de editar manualmente la misma información una y otra vez.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/CV-python-openai.png" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/estructura-cv-python-I/"/>
+    <summary>Últimamente he estado pensando en cómo mejorar mi proceso de solicitud de empleo. ¿Sabes lo frustrante que es tener que reformatear constantemente tu CV para diferentes ofertas? Con cada empresa tenía que adaptar mi CV para tener el mejor fit para el puesto de trabajo. Estaba cansado de editar manualmente la misma información una y otra vez.Python developer</summary>
+    <category term="AI" label="AI"/>
+    <category term="GPT" label="GPT"/>
+    <category term="PDF" label="PDF"/>
+    <category term="PyMuPDF" label="PyMuPDF"/>
+    <category term="llm" label="llm"/>
+    <category term="openai" label="openai"/>
+    <published>2025-02-26T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/asistente-virtual-con-gpt4all/</id>
+    <title>Python y GPT4All, Creando tu asistente de IA personal con 5 líneas</title>
+    <updated>2025-02-18T00:00:00+00:00</updated>
+    <author>
+      <name>Ider Delzo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Cuando buscamos tutoriales sobre asistentes virtuales, a menudo encontramos recursos que involucran integraciones con APIs externas como OpenAI, Claude o Gemini. Si bien estas soluciones son poderosas, nos enfrentamos a dos limitaciones significativas: la dependencia de una conexión a internet y los costos asociados con el uso de APIs de terceros. Es aquí donde herramientas como GPT4All y Ollama brillan, permitiéndonos ejecutar modelos de lenguaje directamente en nuestro hardware local, lo que no solo elimina la necesidad de una conexión constante a internet, sino que también nos libera de los costos recurrentes asociados con servicios en la nube, haciendo que la inteligencia artificial sea más accesible para desarrolladores, investigadores y entusiastas por igual.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/gpt4all.png" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/asistente-virtual-con-gpt4all/"/>
+    <summary>Cuando buscamos tutoriales sobre asistentes virtuales, a menudo encontramos recursos que involucran integraciones con APIs externas como OpenAI, Claude o Gemini. Si bien estas soluciones son poderosas, nos enfrentamos a dos limitaciones significativas: la dependencia de una conexión a internet y los costos asociados con el uso de APIs de terceros. Es aquí donde herramientas como GPT4All y Ollama brillan, permitiéndonos ejecutar modelos de lenguaje directamente en nuestro hardware local, lo que no solo elimina la necesidad de una conexión constante a internet, sino que también nos libera de los costos recurrentes asociados con servicios en la nube, haciendo que la inteligencia artificial sea más accesible para desarrolladores, investigadores y entusiastas por igual.Python developer</summary>
+    <category term="AI" label="AI"/>
+    <category term="chat" label="chat"/>
+    <category term="chatbots" label="chatbots"/>
+    <category term="gpt4all" label="gpt4all"/>
+    <category term="llama" label="llama"/>
+    <category term="llm" label="llm"/>
+    <category term="ollama" label="ollama"/>
+    <published>2025-02-18T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/Introduccion-a-DuckDB/</id>
+    <title>Introducción a DuckDB: Una alternativa ligera y poderosa para análisis de datos</title>
+    <updated>2025-02-10T00:00:00+00:00</updated>
+    <author>
+      <name>Ider Delzo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Cuando pensamos en base de datos normalmente se nos ocurre Oracle, PostgreSQL o hasta Redis y MongoDB, pensamos en servidores dentro de arquitecturas con múltiples nodos y clientes que se comunican por la red. Sin embargo no todas las aplicaciones requieren ser tan complejas,  tenemos por ejemplo a SQLite, que es ligero y embebido (se integra directamente en la aplicación y no requiere de un servidor) y por eso suele ser la solución perfecta para muchas aplicaciones móviles y web.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/introduction_duckdb.png" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/Introduccion-a-DuckDB/"/>
+    <summary>Cuando pensamos en base de datos normalmente se nos ocurre Oracle, PostgreSQL o hasta Redis y MongoDB, pensamos en servidores dentro de arquitecturas con múltiples nodos y clientes que se comunican por la red. Sin embargo no todas las aplicaciones requieren ser tan complejas,  tenemos por ejemplo a SQLite, que es ligero y embebido (se integra directamente en la aplicación y no requiere de un servidor) y por eso suele ser la solución perfecta para muchas aplicaciones móviles y web.Python developer</summary>
+    <category term="csv" label="csv"/>
+    <category term="pandas" label="pandas"/>
+    <category term="python" label="python"/>
+    <published>2025-02-10T00:00:00+00:00</published>
+  </entry>
+</feed>

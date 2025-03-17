@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora - Entradas en Tutorial</title>
+  <updated>2025-03-17T16:28:48.327275+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/category/tutorial/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/estructura-cv-python-II/</id>
+    <title>Potencia tu CV con Python (II): Usando NLP para hacer match con ofertas</title>
+    <updated>2025-03-17T00:00:00+00:00</updated>
+    <author>
+      <name>Ider Delzo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;¡Hola de nuevo! En este &lt;a class="reference external" href="https://blog.python.pe/blog/estructura-cv-python-I/"&gt;artículo anterior&lt;/a&gt; les conté cómo desarrollé un sistema para estructurar y analizar mi CV utilizando inteligencia artificial. Hoy quiero compartir la segunda parte de este proyecto: el análisis de compatibilidad entre mi CV y las ofertas laborales.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/CV-python-openai.png" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/estructura-cv-python-II/"/>
+    <summary>¡Hola de nuevo! En este artículo anterior les conté cómo desarrollé un sistema para estructurar y analizar mi CV utilizando inteligencia artificial. Hoy quiero compartir la segunda parte de este proyecto: el análisis de compatibilidad entre mi CV y las ofertas laborales.Python developer</summary>
+    <category term="AI" label="AI"/>
+    <category term="DataScience" label="Data Science"/>
+    <category term="ML" label="ML"/>
+    <category term="NLP" label="NLP"/>
+    <category term="Spacy" label="Spacy"/>
+    <published>2025-03-17T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/haciendo-app-chat-gpt-con-tech-pyodide/</id>
+    <title>Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-3.5 Turbo: Una Prueba de Concepto</title>
+    <updated>2025-03-12T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;img alt="OpenAI" class="align-center" src="https://blog.python.pe/_images/openai.png" style="width: 400px;" /&gt;&lt;/p&gt;
+&lt;p&gt;Construir una aplicación basada en la web que aproveche tanto el entorno de
+Python como el modelo de lenguaje GPT-3.5 Turbo de OpenAI puede ser una empresa
+emocionante. Este artículo explica la creación de una aplicación de chat como
+prueba de concepto utilizando Pyodide, una herramienta que permite ejecutar
+Python en el navegador web, e integrarla con GPT-3.5 Turbo para simular un
+agente conversacional inteligente.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/haciendo-app-chat-gpt-con-tech-pyodide/"/>
+    <summary>OpenAIConstruir una aplicación basada en la web que aproveche tanto el entorno de
+Python como el modelo de lenguaje GPT-3.5 Turbo de OpenAI puede ser una empresa
+emocionante. Este artículo explica la creación de una aplicación de chat como
+prueba de concepto utilizando Pyodide, una herramienta que permite ejecutar
+Python en el navegador web, e integrarla con GPT-3.5 Turbo para simular un
+agente conversacional inteligente.</summary>
+    <category term="gpt" label="gpt"/>
+    <category term="httpx" label="httpx"/>
+    <category term="openai" label="openai"/>
+    <category term="pyodide" label="pyodide"/>
+    <category term="python" label="python"/>
+    <published>2025-03-12T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/estructura-cv-python-I/</id>
+    <title>Potencia tu CV con Python (I): De PDF a Datos Estructurados en Minutos con OpenAI</title>
+    <updated>2025-02-26T00:00:00+00:00</updated>
+    <author>
+      <name>Ider Delzo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Últimamente he estado pensando en cómo mejorar mi proceso de solicitud de empleo. ¿Sabes lo frustrante que es tener que reformatear constantemente tu CV para diferentes ofertas? Con cada empresa tenía que adaptar mi CV para tener el mejor fit para el puesto de trabajo. Estaba cansado de editar manualmente la misma información una y otra vez.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/CV-python-openai.png" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/estructura-cv-python-I/"/>
+    <summary>Últimamente he estado pensando en cómo mejorar mi proceso de solicitud de empleo. ¿Sabes lo frustrante que es tener que reformatear constantemente tu CV para diferentes ofertas? Con cada empresa tenía que adaptar mi CV para tener el mejor fit para el puesto de trabajo. Estaba cansado de editar manualmente la misma información una y otra vez.Python developer</summary>
+    <category term="AI" label="AI"/>
+    <category term="GPT" label="GPT"/>
+    <category term="PDF" label="PDF"/>
+    <category term="PyMuPDF" label="PyMuPDF"/>
+    <category term="llm" label="llm"/>
+    <category term="openai" label="openai"/>
+    <published>2025-02-26T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/asistente-virtual-con-gpt4all/</id>
+    <title>Python y GPT4All, Creando tu asistente de IA personal con 5 líneas</title>
+    <updated>2025-02-18T00:00:00+00:00</updated>
+    <author>
+      <name>Ider Delzo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Cuando buscamos tutoriales sobre asistentes virtuales, a menudo encontramos recursos que involucran integraciones con APIs externas como OpenAI, Claude o Gemini. Si bien estas soluciones son poderosas, nos enfrentamos a dos limitaciones significativas: la dependencia de una conexión a internet y los costos asociados con el uso de APIs de terceros. Es aquí donde herramientas como GPT4All y Ollama brillan, permitiéndonos ejecutar modelos de lenguaje directamente en nuestro hardware local, lo que no solo elimina la necesidad de una conexión constante a internet, sino que también nos libera de los costos recurrentes asociados con servicios en la nube, haciendo que la inteligencia artificial sea más accesible para desarrolladores, investigadores y entusiastas por igual.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/gpt4all.png" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/asistente-virtual-con-gpt4all/"/>
+    <summary>Cuando buscamos tutoriales sobre asistentes virtuales, a menudo encontramos recursos que involucran integraciones con APIs externas como OpenAI, Claude o Gemini. Si bien estas soluciones son poderosas, nos enfrentamos a dos limitaciones significativas: la dependencia de una conexión a internet y los costos asociados con el uso de APIs de terceros. Es aquí donde herramientas como GPT4All y Ollama brillan, permitiéndonos ejecutar modelos de lenguaje directamente en nuestro hardware local, lo que no solo elimina la necesidad de una conexión constante a internet, sino que también nos libera de los costos recurrentes asociados con servicios en la nube, haciendo que la inteligencia artificial sea más accesible para desarrolladores, investigadores y entusiastas por igual.Python developer</summary>
+    <category term="AI" label="AI"/>
+    <category term="chat" label="chat"/>
+    <category term="chatbots" label="chatbots"/>
+    <category term="gpt4all" label="gpt4all"/>
+    <category term="llama" label="llama"/>
+    <category term="llm" label="llm"/>
+    <category term="ollama" label="ollama"/>
+    <published>2025-02-18T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/desarrollo-app-con-flet/</id>
+    <title>Desarrollando una pequeña aplicación con flet</title>
+    <updated>2024-07-01T00:00:00+00:00</updated>
+    <author>
+      <name>Daniel Gómez</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;a class="reference internal" href="#que-es-flet"&gt;&lt;span class="xref myst"&gt;&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;Qué&lt;/span&gt; &lt;span class="pre"&gt;es&lt;/span&gt; &lt;span class="pre"&gt;flet&lt;/span&gt;&lt;/code&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;1.1 &lt;a class="reference internal" href="#por-que-usar-flet"&gt;&lt;span class="xref myst"&gt;Por qué usar flet&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/desarrollo-app-con-flet/"/>
+    <summary>Qué es flet1.1 Por qué usar flet</summary>
+    <category term="app" label="app"/>
+    <category term="flet" label="flet"/>
+    <category term="flutter" label="flutter"/>
+    <category term="multiplatform" label="multiplatform"/>
+    <category term="python" label="python"/>
+    <category term="python-flutter" label="python-flutter"/>
+    <published>2024-07-01T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/como-redactar-posts-con-fork/</id>
+    <title>Cómo Hacer Fork y Pull Request en el Blog de Python Perú</title>
+    <updated>2024-04-14T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Bienvenidos a la comunidad de Python Perú y a este Blog que marca el inicio de
+una nueva etapa de la comunidad.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python Perú Logo" class="markdown-body align-center" src="https://blog.python.pe/_images/logo.svg" style="width: 200px;" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/como-redactar-posts-con-fork/"/>
+    <summary>Bienvenidos a la comunidad de Python Perú y a este Blog que marca el inicio de
+una nueva etapa de la comunidad.Python Perú Logo</summary>
+    <category term="ablog" label="ablog"/>
+    <category term="fork" label="fork"/>
+    <category term="git" label="git"/>
+    <category term="pull-request" label="pull-request"/>
+    <category term="sphinx" label="sphinx"/>
+    <category term="tutorial" label="tutorial"/>
+    <published>2024-04-14T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/intro-criptografia/</id>
+    <title>Introducción a la criptografía con Python</title>
+    <updated>2024-04-11T00:00:00+00:00</updated>
+    <author>
+      <name>Antonio Ognio</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Para poder implementar correctamente las medidas mínimas de seguridad en tus proyectos con Python,
+en particular las aplicaciones web, iremos desarrollando una serie de artículos en donde el objetivo
+no es simplemente decirte que paquetes utilizar y que te vueltas un experto en copiar y pegar sino
+que, por el contrario, entiendas los conceptos más básicos que te permitan apreciar y evaluar de
+forma más efectiva y ¿porque no decirlo? profesional el nivel de seguridad de tu código.&lt;/p&gt;
+&lt;p&gt;Es la disciplina que estudia las técnicas para transformar la información desde su formato original
+a otro que permita protegerla del acceso por parte de usuarios no autorizados de forma que se pueda
+prevenir cualquier adulteración y certificar su procedencia.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/intro-criptografia/"/>
+    <summary>Para poder implementar correctamente las medidas mínimas de seguridad en tus proyectos con Python,
+en particular las aplicaciones web, iremos desarrollando una serie de artículos en donde el objetivo
+no es simplemente decirte que paquetes utilizar y que te vueltas un experto en copiar y pegar sino
+que, por el contrario, entiendas los conceptos más básicos que te permitan apreciar y evaluar de
+forma más efectiva y ¿porque no decirlo? profesional el nivel de seguridad de tu código.Es la disciplina que estudia las técnicas para transformar la información desde su formato original
+a otro que permita protegerla del acceso por parte de usuarios no autorizados de forma que se pueda
+prevenir cualquier adulteración y certificar su procedencia.</summary>
+    <category term="criptografia" label="criptografia"/>
+    <category term="principiantes" label="principiantes"/>
+    <category term="seguridad" label="seguridad"/>
+    <category term="tutorial" label="tutorial"/>
+    <published>2024-04-11T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/python-ulid/</id>
+    <title>ULID para la generación de identificadores únicos en Python</title>
+    <updated>2024-04-06T00:00:00+00:00</updated>
+    <author>
+      <name>Sergio Infante</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;En el universo de la programación moderna, la generación de identificadores únicos es esencial para una amplia variedad de aplicaciones, desde sistemas de bases de datos distribuidas hasta plataformas de gestión de usuarios.&lt;/p&gt;
+&lt;p&gt;ULID, que significa “Universally Unique Lexicographically Sortable Identifier”, es un tipo de identificador único diseñado para ser ordenado lexicográficamente y garantizar seguridad para la concurrencia. Su estructura combina un timestamp en milisegundos con una porción aleatoria, lo que garantiza su unicidad y permite su ordenación cronológica. Estas características lo hacen especialmente útil en aplicaciones que requieren una alta eficiencia en la generación y gestión de identificadores únicos, especialmente en entornos distribuidos.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/python-ulid/"/>
+    <summary>En el universo de la programación moderna, la generación de identificadores únicos es esencial para una amplia variedad de aplicaciones, desde sistemas de bases de datos distribuidas hasta plataformas de gestión de usuarios.ULID, que significa “Universally Unique Lexicographically Sortable Identifier”, es un tipo de identificador único diseñado para ser ordenado lexicográficamente y garantizar seguridad para la concurrencia. Su estructura combina un timestamp en milisegundos con una porción aleatoria, lo que garantiza su unicidad y permite su ordenación cronológica. Estas características lo hacen especialmente útil en aplicaciones que requieren una alta eficiencia en la generación y gestión de identificadores únicos, especialmente en entornos distribuidos.</summary>
+    <category term="python-ulid" label="python-ulid"/>
+    <category term="ulid" label="ulid"/>
+    <category term="uuid" label="uuid"/>
+    <published>2024-04-06T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/como-redactar-posts/</id>
+    <title>Cómo Redactar Posts en el Blog de Python Perú y no Morir en el Intento</title>
+    <updated>2024-04-04T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Debo iniciar las líneas de este post dándoles la bienvenida a la comunidad de
+Python Perú y a este Blog que marca el inicio de una nueva etapa de la
+comunidad.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python Perú Logo" class="markdown-body align-center" src="https://blog.python.pe/_images/logo.svg" style="width: 200px;" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/como-redactar-posts/"/>
+    <summary>Debo iniciar las líneas de este post dándoles la bienvenida a la comunidad de
+Python Perú y a este Blog que marca el inicio de una nueva etapa de la
+comunidad.Python Perú Logo</summary>
+    <category term="ablog" label="ablog"/>
+    <category term="git" label="git"/>
+    <category term="pull-request" label="pull-request"/>
+    <category term="sphinx" label="sphinx"/>
+    <category term="tutorial" label="tutorial"/>
+    <published>2024-04-04T00:00:00+00:00</published>
+  </entry>
+</feed>

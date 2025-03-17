@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora - Entradas etiquetadas pyodide</title>
+  <updated>2025-03-17T16:28:48.436277+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/tag/pyodide/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/haciendo-app-chat-gpt-con-tech-pyodide/</id>
+    <title>Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-3.5 Turbo: Una Prueba de Concepto</title>
+    <updated>2025-03-12T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;img alt="OpenAI" class="align-center" src="https://blog.python.pe/_images/openai.png" style="width: 400px;" /&gt;&lt;/p&gt;
+&lt;p&gt;Construir una aplicación basada en la web que aproveche tanto el entorno de
+Python como el modelo de lenguaje GPT-3.5 Turbo de OpenAI puede ser una empresa
+emocionante. Este artículo explica la creación de una aplicación de chat como
+prueba de concepto utilizando Pyodide, una herramienta que permite ejecutar
+Python en el navegador web, e integrarla con GPT-3.5 Turbo para simular un
+agente conversacional inteligente.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/haciendo-app-chat-gpt-con-tech-pyodide/"/>
+    <summary>OpenAIConstruir una aplicación basada en la web que aproveche tanto el entorno de
+Python como el modelo de lenguaje GPT-3.5 Turbo de OpenAI puede ser una empresa
+emocionante. Este artículo explica la creación de una aplicación de chat como
+prueba de concepto utilizando Pyodide, una herramienta que permite ejecutar
+Python en el navegador web, e integrarla con GPT-3.5 Turbo para simular un
+agente conversacional inteligente.</summary>
+    <category term="gpt" label="gpt"/>
+    <category term="httpx" label="httpx"/>
+    <category term="openai" label="openai"/>
+    <category term="pyodide" label="pyodide"/>
+    <category term="python" label="python"/>
+    <published>2025-03-12T00:00:00+00:00</published>
+  </entry>
+</feed>

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora - Entradas etiquetadas PyMuPDF</title>
+  <updated>2025-03-17T16:28:48.375971+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/tag/pymupdf/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/estructura-cv-python-I/</id>
+    <title>Potencia tu CV con Python (I): De PDF a Datos Estructurados en Minutos con OpenAI</title>
+    <updated>2025-02-26T00:00:00+00:00</updated>
+    <author>
+      <name>Ider Delzo</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Últimamente he estado pensando en cómo mejorar mi proceso de solicitud de empleo. ¿Sabes lo frustrante que es tener que reformatear constantemente tu CV para diferentes ofertas? Con cada empresa tenía que adaptar mi CV para tener el mejor fit para el puesto de trabajo. Estaba cansado de editar manualmente la misma información una y otra vez.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python developer" src="https://blog.python.pe/_images/CV-python-openai.png" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/estructura-cv-python-I/"/>
+    <summary>Últimamente he estado pensando en cómo mejorar mi proceso de solicitud de empleo. ¿Sabes lo frustrante que es tener que reformatear constantemente tu CV para diferentes ofertas? Con cada empresa tenía que adaptar mi CV para tener el mejor fit para el puesto de trabajo. Estaba cansado de editar manualmente la misma información una y otra vez.Python developer</summary>
+    <category term="AI" label="AI"/>
+    <category term="GPT" label="GPT"/>
+    <category term="PDF" label="PDF"/>
+    <category term="PyMuPDF" label="PyMuPDF"/>
+    <category term="llm" label="llm"/>
+    <category term="openai" label="openai"/>
+    <published>2025-02-26T00:00:00+00:00</published>
+  </entry>
+</feed>

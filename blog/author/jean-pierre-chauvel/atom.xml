@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <id>https://blog.python.pe</id>
+  <title>Blog de Python Perú | Aprende y explora - Entradas por Jean-Pierre Chauvel</title>
+  <updated>2025-03-17T16:28:48.231195+00:00</updated>
+  <link href="https://blog.python.pe"/>
+  <link href="https://blog.python.pe/blog/author/jean-pierre-chauvel/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <subtitle>Explora artículos sobre Python, desarrollo web y más con la comunidad de Python Perú.</subtitle>
+  <entry>
+    <id>https://blog.python.pe/blog/haciendo-app-chat-gpt-con-tech-pyodide/</id>
+    <title>Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-3.5 Turbo: Una Prueba de Concepto</title>
+    <updated>2025-03-12T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;img alt="OpenAI" class="align-center" src="https://blog.python.pe/_images/openai.png" style="width: 400px;" /&gt;&lt;/p&gt;
+&lt;p&gt;Construir una aplicación basada en la web que aproveche tanto el entorno de
+Python como el modelo de lenguaje GPT-3.5 Turbo de OpenAI puede ser una empresa
+emocionante. Este artículo explica la creación de una aplicación de chat como
+prueba de concepto utilizando Pyodide, una herramienta que permite ejecutar
+Python en el navegador web, e integrarla con GPT-3.5 Turbo para simular un
+agente conversacional inteligente.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/haciendo-app-chat-gpt-con-tech-pyodide/"/>
+    <summary>OpenAIConstruir una aplicación basada en la web que aproveche tanto el entorno de
+Python como el modelo de lenguaje GPT-3.5 Turbo de OpenAI puede ser una empresa
+emocionante. Este artículo explica la creación de una aplicación de chat como
+prueba de concepto utilizando Pyodide, una herramienta que permite ejecutar
+Python en el navegador web, e integrarla con GPT-3.5 Turbo para simular un
+agente conversacional inteligente.</summary>
+    <category term="gpt" label="gpt"/>
+    <category term="httpx" label="httpx"/>
+    <category term="openai" label="openai"/>
+    <category term="pyodide" label="pyodide"/>
+    <category term="python" label="python"/>
+    <published>2025-03-12T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/scraping-con-playwright-y-asyncio/</id>
+    <title>Desarrollando un Bot de Scraping Evasivo</title>
+    <updated>2024-06-02T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;En el mundo del scraping, enfrentamos constantemente la batalla contra
+mecanismos de defensa diseñados para detectar y bloquear nuestros bots. Hoy,
+quiero compartirles un proyecto personal que busca no solo sortear estas
+defensas, sino hacerlo de manera eficiente y escalable.&lt;/p&gt;
+&lt;p&gt;Al intentar extraer datos de un sitio web que utiliza Radware, un servicio
+avanzado contra bots de scraping, me vi en la necesidad de crear una solución
+que pudiera superar estos obstáculos. Aquí les presento cómo logré desarrollar
+un bot de scraping que no solo logra su cometido sino que evita ser detectado
+por mecanismos de anti-bots.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/scraping-con-playwright-y-asyncio/"/>
+    <summary>En el mundo del scraping, enfrentamos constantemente la batalla contra
+mecanismos de defensa diseñados para detectar y bloquear nuestros bots. Hoy,
+quiero compartirles un proyecto personal que busca no solo sortear estas
+defensas, sino hacerlo de manera eficiente y escalable.Al intentar extraer datos de un sitio web que utiliza Radware, un servicio
+avanzado contra bots de scraping, me vi en la necesidad de crear una solución
+que pudiera superar estos obstáculos. Aquí les presento cómo logré desarrollar
+un bot de scraping que no solo logra su cometido sino que evita ser detectado
+por mecanismos de anti-bots.</summary>
+    <category term="asyncio" label="asyncio"/>
+    <category term="playwright" label="playwright"/>
+    <category term="python" label="python"/>
+    <category term="scraping" label="scraping"/>
+    <published>2024-06-02T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/puede-python-analizar-mil-millones-de-filas-rapidamente/</id>
+    <title>Explorando el Desafío de Mil Millón de Filas en Python</title>
+    <updated>2024-04-15T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;El desafío de procesar mil millón de filas de datos es una tarea intimidante que pone a prueba la
+capacidad de cualquier lenguaje de programación, incluido Python. En este artículo, exploraremos
+cómo Python, con su naturaleza interpretada, se compara ante este reto colossal, adoptando
+estrategias ingeniosas y aprovechando la potencia de las librerías disponibles para manejar una tarea
+de procesamiento de datos de tal magnitud.&lt;/p&gt;
+&lt;p&gt;Este recorrido comienza con una implementación simple en Python puro, utilizando diccionarios para
+agrupar mediciones por ciudad y calcular valores mínimos, máximos y promedios de temperatura. Esta
+aproximación tomó 9 minutos y 28 segundos para ejecutarse en un archivo de texto de 13GB, una
+diferencia notable frente a la implementación base en Java que corre en 3 minutos y 12 segundos.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/puede-python-analizar-mil-millones-de-filas-rapidamente/"/>
+    <summary>El desafío de procesar mil millón de filas de datos es una tarea intimidante que pone a prueba la
+capacidad de cualquier lenguaje de programación, incluido Python. En este artículo, exploraremos
+cómo Python, con su naturaleza interpretada, se compara ante este reto colossal, adoptando
+estrategias ingeniosas y aprovechando la potencia de las librerías disponibles para manejar una tarea
+de procesamiento de datos de tal magnitud.Este recorrido comienza con una implementación simple en Python puro, utilizando diccionarios para
+agrupar mediciones por ciudad y calcular valores mínimos, máximos y promedios de temperatura. Esta
+aproximación tomó 9 minutos y 28 segundos para ejecutarse en un archivo de texto de 13GB, una
+diferencia notable frente a la implementación base en Java que corre en 3 minutos y 12 segundos.</summary>
+    <category term="1brc" label="1brc"/>
+    <category term="ai-generated" label="ai-generated"/>
+    <category term="python" label="python"/>
+    <published>2024-04-15T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/como-redactar-posts-con-fork/</id>
+    <title>Cómo Hacer Fork y Pull Request en el Blog de Python Perú</title>
+    <updated>2024-04-14T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Bienvenidos a la comunidad de Python Perú y a este Blog que marca el inicio de
+una nueva etapa de la comunidad.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python Perú Logo" class="markdown-body align-center" src="https://blog.python.pe/_images/logo.svg" style="width: 200px;" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/como-redactar-posts-con-fork/"/>
+    <summary>Bienvenidos a la comunidad de Python Perú y a este Blog que marca el inicio de
+una nueva etapa de la comunidad.Python Perú Logo</summary>
+    <category term="ablog" label="ablog"/>
+    <category term="fork" label="fork"/>
+    <category term="git" label="git"/>
+    <category term="pull-request" label="pull-request"/>
+    <category term="sphinx" label="sphinx"/>
+    <category term="tutorial" label="tutorial"/>
+    <published>2024-04-14T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/integrando-jupyterlite-en-sphinx/</id>
+    <title>Explorando JupyterLite e integrándolo en tu blog de Sphinx</title>
+    <updated>2024-04-08T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;img alt="JupyterLite" class="align-center" src="https://blog.python.pe/_images/jupyterlite.png" style="height: 300px;" /&gt;&lt;/p&gt;
+&lt;p&gt;Como desarrollador y entusiasta de data, siempre me encuentro explorando nuevas
+tecnologías y herramientas para mejorar mis proyectos y documentación.
+Recientemente, mi curiosidad me llevó a descubrir JupyterLite, una
+implementación ligera de JupyterLab que se ejecuta completamente en el navegador
+sin necesidad de un servidor. Intrigado por sus capacidades, decidí experimentar
+con la integración de JupyterLite en mi blog de Sphinx utilizando la extensión
+jupyterlite-sphinx. En esta publicación, compartiré mi experiencia de integrar
+JupyterLite en mi documentación y los pasos que tomé para hacer que funcione sin
+problemas con mi blog construido con Sphinx.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/integrando-jupyterlite-en-sphinx/"/>
+    <summary>JupyterLiteComo desarrollador y entusiasta de data, siempre me encuentro explorando nuevas
+tecnologías y herramientas para mejorar mis proyectos y documentación.
+Recientemente, mi curiosidad me llevó a descubrir JupyterLite, una
+implementación ligera de JupyterLab que se ejecuta completamente en el navegador
+sin necesidad de un servidor. Intrigado por sus capacidades, decidí experimentar
+con la integración de JupyterLite en mi blog de Sphinx utilizando la extensión
+jupyterlite-sphinx. En esta publicación, compartiré mi experiencia de integrar
+JupyterLite en mi documentación y los pasos que tomé para hacer que funcione sin
+problemas con mi blog construido con Sphinx.</summary>
+    <category term="jupyterlite" label="jupyterlite"/>
+    <category term="sphinx" label="sphinx"/>
+    <published>2024-04-08T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/como-redactar-posts/</id>
+    <title>Cómo Redactar Posts en el Blog de Python Perú y no Morir en el Intento</title>
+    <updated>2024-04-04T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Debo iniciar las líneas de este post dándoles la bienvenida a la comunidad de
+Python Perú y a este Blog que marca el inicio de una nueva etapa de la
+comunidad.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Python Perú Logo" class="markdown-body align-center" src="https://blog.python.pe/_images/logo.svg" style="width: 200px;" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/como-redactar-posts/"/>
+    <summary>Debo iniciar las líneas de este post dándoles la bienvenida a la comunidad de
+Python Perú y a este Blog que marca el inicio de una nueva etapa de la
+comunidad.Python Perú Logo</summary>
+    <category term="ablog" label="ablog"/>
+    <category term="git" label="git"/>
+    <category term="pull-request" label="pull-request"/>
+    <category term="sphinx" label="sphinx"/>
+    <category term="tutorial" label="tutorial"/>
+    <published>2024-04-04T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/yt-insight-generator/</id>
+    <title>Un Generador de Artículos para Blogs con formato Markdown usando GPT-4 Turbo</title>
+    <updated>2024-04-03T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;img alt="openai" src="https://blog.python.pe/_images/openai.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Hace poco se me ocurrió, en vista a que &lt;a class="reference internal" href="../ider-delzo/" title="Ider Delzo"&gt;&lt;em&gt;Ider Delzo&lt;/em&gt;&lt;/a&gt; y yo decidimos crear este blog, crear un script en Python para que autogenere un review de un video en YouTube usando nada menos que el API de GPT-4 Turbo de OpenAI.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/yt-insight-generator/"/>
+    <summary>openaiHace poco se me ocurrió, en vista a que author-soloidx y yo decidimos crear este blog, crear un script en Python para que autogenere un review de un video en YouTube usando nada menos que el API de GPT-4 Turbo de OpenAI.</summary>
+    <category term="gpt-4" label="gpt-4"/>
+    <category term="gpt-4-turbo" label="gpt-4-turbo"/>
+    <category term="openai" label="openai"/>
+    <category term="python" label="python"/>
+    <category term="youtube" label="youtube"/>
+    <published>2024-04-03T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.python.pe/blog/mojo-alternativa-a-python/</id>
+    <title>Mojo: El Nuevo Lenguaje de Programación que Promete Revolucionar Python</title>
+    <updated>2024-04-02T00:00:00+00:00</updated>
+    <author>
+      <name>Jean-Pierre Chauvel</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Es 4 de mayo de 2023 y los desarrolladores en todo el mundo están a punto de
+experimentar una revolución en la programación productiva con la llegada de
+Mojo. Concebido como una superposición de Python, este nuevo lenguaje promete
+ser hasta 35,000 veces más rápido, un hito significativo considerando la
+pervivencia de Python como el lenguaje dominante en inteligencia artificial.&lt;/p&gt;
+&lt;p&gt;Sin embargo, es bien sabido que Python, a pesar de su popularidad, batalla con
+la velocidad de ejecución. Situación que ha dado ventaja a lenguajes como Rust
+y C++ en tareas que demandan un alto rendimiento. Pero ¿Qué hace a Mojo tan
+especial y cómo logra estas impresionantes cifras de rendimiento?&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://blog.python.pe/blog/mojo-alternativa-a-python/"/>
+    <summary>Es 4 de mayo de 2023 y los desarrolladores en todo el mundo están a punto de
+experimentar una revolución en la programación productiva con la llegada de
+Mojo. Concebido como una superposición de Python, este nuevo lenguaje promete
+ser hasta 35,000 veces más rápido, un hito significativo considerando la
+pervivencia de Python como el lenguaje dominante en inteligencia artificial.Sin embargo, es bien sabido que Python, a pesar de su popularidad, batalla con
+la velocidad de ejecución. Situación que ha dado ventaja a lenguajes como Rust
+y C++ en tareas que demandan un alto rendimiento. Pero ¿Qué hace a Mojo tan
+especial y cómo logra estas impresionantes cifras de rendimiento?</summary>
+    <category term="ai-generated" label="ai-generated"/>
+    <category term="mojo" label="mojo"/>
+    <category term="python" label="python"/>
+    <published>2024-04-02T00:00:00+00:00</published>
+  </entry>
+</feed>
