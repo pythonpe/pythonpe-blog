@@ -6,7 +6,7 @@ authors = [
 license = {text = "Apache License, Version 2.0"}
 requires-python = "<4.0,>=3.13"
 dependencies = [
-    "Sphinx<8.0.0,>=7.2.6",
+    "Sphinx>=7.2.6,<9.0.0",
     "ablog<1.0.0,>=0.11.6",
     "pydata-sphinx-theme<1.0.0,>=0.15.2",
     "myst-parser[linkify]<3.0.0,>=2.0.0",
