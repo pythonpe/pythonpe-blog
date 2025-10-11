@@ -23,7 +23,7 @@ package-mode = false
 
 [dependency-groups]
 dev = [
-    "isort<7.0.0,>=6.0.1",
+    "isort>=6.0.1,<8.0.0",
     "black<26.0.0,>=25.1.0",
 ]
 
