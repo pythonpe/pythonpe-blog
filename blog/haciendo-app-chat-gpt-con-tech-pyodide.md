@@ -75,7 +75,7 @@ chat:
 <body>
 
 <!-- Pyodide setup logic will insert content here -->
-<script src="https://cdn.jsdelivr.net/pyodide/v0.27.3/full/pyodide.js"></script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.29.4/full/pyodide.js"></script>
 <script src="python.js"></script>
 </body>
 </html>
@@ -117,16 +117,16 @@ async function setupPyodide() {
         response = await pyfetch("app.tar.gz")
         await response.unpack_archive()
 
-        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/multidict/multidict-4.7.6-py3-none-any.whl', keep_going=True)
-        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/frozenlist/frozenlist-1.4.0-py3-none-any.whl', keep_going=True)
-        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/aiohttp/aiohttp-4.0.0a2.dev0-py3-none-any.whl', keep_going=True)
-        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/openai/openai-1.3.7-py3-none-any.whl', keep_going=True)
-        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/urllib3/urllib3-2.1.0-py3-none-any.whl', keep_going=True)
+        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/multidict/multidict-6.7.0-py3-none-any.whl', keep_going=True)
+        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/frozenlist/frozenlist-1.6.0-py3-none-any.whl', keep_going=True)
+        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/aiohttp/aiohttp-3.11.13-py3-none-any.whl', keep_going=True)
+        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/openai/openai-1.68.2-py3-none-any.whl', keep_going=True)
+        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/urllib3/urllib3-2.5.0-py3-none-any.whl', keep_going=True)
         await micropip.install("ssl")
         import ssl
         await micropip.install("httpx", keep_going=True)
         import httpx
-        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/urllib3/urllib3-2.1.0-py3-none-any.whl', keep_going=True)
+        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/urllib3/urllib3-2.5.0-py3-none-any.whl', keep_going=True)
         import urllib3
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
