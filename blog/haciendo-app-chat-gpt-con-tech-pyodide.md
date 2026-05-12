@@ -7,18 +7,18 @@ category: Tutorial
 tags: pyodide, openai, gpt, httpx, python
 language: Español
 ---
-# Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-3.5 Turbo: Una Prueba de Concepto
+# Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-5.4 mini: Una Prueba de Concepto
 
 ![OpenAI](/_static/images/openai.png){ align=center width=400px }
 
 Construir una aplicación basada en la web que aproveche tanto el entorno de
-Python como el modelo de lenguaje GPT-3.5 Turbo de OpenAI puede ser una empresa
+Python como el modelo de lenguaje GPT-5.4 mini de OpenAI puede ser una empresa
 emocionante. Este artículo explica la creación de una aplicación de chat como
 prueba de concepto utilizando Pyodide, una herramienta que permite ejecutar
-Python en el navegador web, e integrarla con GPT-3.5 Turbo para simular un
+Python en el navegador web, e integrarla con GPT-5.4 mini para simular un
 agente conversacional inteligente.
 
-## El Panorama de la Integración entre Pyodide y GPT-3.5 Turbo
+## El Panorama de la Integración entre Pyodide y GPT-5.4 mini
 
 Con la capacidad de ejecutar Python directamente en los navegadores web, Pyodide
 ofrece una oportunidad emocionante para llevar las capacidades poderosas de las
@@ -26,7 +26,7 @@ bibliotecas basadas en Python directamente a las aplicaciones del lado del
 cliente. Esto incluye aplicaciones que pueden beneficiarse de estar cerca de los
 usuarios, como herramientas interactivas y tableros de visualización de datos.
 
-Esta prueba de concepto integra Pyodide con el modelo GPT-3.5 Turbo de OpenAI,
+Esta prueba de concepto integra Pyodide con el modelo GPT-5.4 mini de OpenAI,
 que proporciona la capacidad de simular una conversación similar a la humana. A
 continuación, te guiaré a través de cada componente de esta aplicación,
 explicando su funcionalidad, técnicas de integración y la razón detrás de
@@ -181,21 +181,21 @@ document.addEventListener("DOMContentLoaded", function() {
   asegura que los paquetes de Python necesarios estén disponibles a través de
 `micropip`.
 
-- **Solicitud de la Clave API**: Para asegurar la interacción con GPT-3.5
-  Turbo, se requiere una clave API. Esto se obtiene a través de un aviso del
+- **Solicitud de la Clave API**: Para asegurar la interacción con GPT-5.4
+  mini, se requiere una clave API. Esto se obtiene a través de un aviso del
 navegador cuando la aplicación se carga por primera vez.
 
 - **Interoperabilidad JavaScript-Python**: Usando `pyodide.registerJsModule`,
   creamos un puente entre JavaScript y Python. Esto permite que Python llame a
 una función de JavaScript (`displayResponse`), que actualiza el cuadro de chat
-con las respuestas de GPT-3.5 Turbo.
+  con las respuestas de GPT-5.4 mini.
 
 - **Carga de la Lógica del Backend**: La lógica del backend se encapsula en
   Python e integra a través de `pyodide.runPythonAsync`. Esto permite que los
 módulos definidos en Python sean transparentes para JavaScript como funciones
 sincrónicas.
 
-### Python: Manejo de Conversaciones con GPT-3.5 Turbo
+### Python: Manejo de Conversaciones con GPT-5.4 mini
 
 El corazón de la aplicación involucra una serie de componentes de Python que
 gestionan la comunicación con la API de OpenAI:
@@ -256,7 +256,7 @@ async def handle_message(api_key: str, message: str) -> None:
                 "content": quote_plus(message),
             }
         ],
-        model="gpt-3.5-turbo",
+        model="gpt-5.4-mini",
         max_tokens=4096,
         temperature=0.2,
     )
@@ -300,7 +300,7 @@ lentas de red.
 
 - **Manejo de Mensajes**: La función `handle_message` gestiona la interacción
   con la API de OpenAI. Construye una solicitud usando la entrada del usuario,
-la envía a GPT-3.5 Turbo, y devuelve la respuesta de la IA al frontend a
+la envía a GPT-5.4 mini, y devuelve la respuesta de la IA al frontend a
 través de la función `displayResponse` proporcionada en `js_module`.
 
 - **Conexión con JavaScript**: El `sender_message_proxy` es un puente
@@ -341,7 +341,7 @@ explorar técnicas para simplificar la entrega de paquetes a los clientes.
 ## Conclusión
 
 La aplicación descrita aquí demuestra las posibilidades de combinar Pyodide y
-GPT-3 en un entorno basado en la web, ofreciendo una interfaz interactiva para
+GPT-5.4 en un entorno basado en la web, ofreciendo una interfaz interactiva para
 experimentar con capacidades de IA. Aunque sigue siendo una prueba de concepto,
 abre la puerta a futuras iteraciones hacia una aplicación robusta y lista para
 producción.
