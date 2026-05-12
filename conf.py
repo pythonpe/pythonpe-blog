@@ -286,6 +286,7 @@ exclude_patterns = [
     "github_submodule/*",
     "LICENSE.md",
     "README.md",
+    "blog/desarrollo-app-con-flet.md",
     ".venv/*",
 ]
 
