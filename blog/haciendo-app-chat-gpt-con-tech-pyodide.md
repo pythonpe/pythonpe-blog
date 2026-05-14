@@ -1,24 +1,24 @@
 ---
 blogpost: true
-date: Mar 12, 2025
+date: May 13, 2026
 author: hellhound
 location: Lima, Perú
 category: Tutorial
 tags: pyodide, openai, gpt, httpx, python
 language: Español
 ---
-# Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-3.5 Turbo: Una Prueba de Concepto
+# Creación de una Aplicación de Chat Potenciada por Pyodide y GPT-5.4-mini: Una Prueba de Concepto
 
 ![OpenAI](/_static/images/openai.png){ align=center width=400px }
 
 Construir una aplicación basada en la web que aproveche tanto el entorno de
-Python como el modelo de lenguaje GPT-3.5 Turbo de OpenAI puede ser una empresa
+Python como el modelo de lenguaje GPT-5.4-mini de OpenAI puede ser una empresa
 emocionante. Este artículo explica la creación de una aplicación de chat como
 prueba de concepto utilizando Pyodide, una herramienta que permite ejecutar
-Python en el navegador web, e integrarla con GPT-3.5 Turbo para simular un
+Python en el navegador web, e integrarla con GPT-5.4-mini para simular un
 agente conversacional inteligente.
 
-## El Panorama de la Integración entre Pyodide y GPT-3.5 Turbo
+## El Panorama de la Integración entre Pyodide y GPT-5.4-mini
 
 Con la capacidad de ejecutar Python directamente en los navegadores web, Pyodide
 ofrece una oportunidad emocionante para llevar las capacidades poderosas de las
@@ -26,7 +26,7 @@ bibliotecas basadas en Python directamente a las aplicaciones del lado del
 cliente. Esto incluye aplicaciones que pueden beneficiarse de estar cerca de los
 usuarios, como herramientas interactivas y tableros de visualización de datos.
 
-Esta prueba de concepto integra Pyodide con el modelo GPT-3.5 Turbo de OpenAI,
+Esta prueba de concepto integra Pyodide con el modelo GPT-5.4-mini de OpenAI,
 que proporciona la capacidad de simular una conversación similar a la humana. A
 continuación, te guiaré a través de cada componente de esta aplicación,
 explicando su funcionalidad, técnicas de integración y la razón detrás de
@@ -52,30 +52,102 @@ chat:
     <title>Pyodide Chat App</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            max-width: 640px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            color: #1a1a1a;
+        }
+        h1 {
+            font-size: 1.4rem;
+            margin-bottom: 0.25rem;
+        }
+        #subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        #status {
+            padding: 0.6rem 0.8rem;
+            background: #f4f4f7;
+            border: 1px solid #e0e0e6;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #444;
+            margin-bottom: 1rem;
         }
         #chatbox {
-            border: 1px solid #ccc;
-            height: 300px;
-            overflow-y: scroll;
-            padding: 10px;
-            margin-bottom: 10px;
+            border: 1px solid #d0d0d6;
+            border-radius: 6px;
+            height: 360px;
+            overflow-y: auto;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
+            background: #fff;
+        }
+        .msg {
+            padding: 0.5rem 0.75rem;
+            margin-bottom: 0.5rem;
+            border-radius: 6px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .msg.you {
+            background: #e8f0ff;
+            border-left: 3px solid #4a7dff;
+        }
+        .msg.ai {
+            background: #f4f4f7;
+            border-left: 3px solid #888;
+        }
+        .msg.err {
+            background: #fdecea;
+            border-left: 3px solid #d33;
+            color: #8a1c1c;
+        }
+        #input-row {
+            display: flex;
+            gap: 0.5rem;
         }
         #user-input {
-            width: calc(100% - 70px);
+            flex: 1;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #d0d0d6;
+            border-radius: 6px;
+            font-size: 1rem;
         }
         #send-button {
-            width: 60px;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            background: #4a7dff;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        #send-button:disabled {
+            background: #aac;
+            cursor: not-allowed;
         }
     </style>
 </head>
 <body>
 
-<!-- Pyodide setup logic will insert content here -->
-<script src="https://cdn.jsdelivr.net/pyodide/v0.27.3/full/pyodide.js"></script>
+<h1>Pyodide Chat</h1>
+<div id="subtitle">Python (via Pyodide) + OpenRouter, all in your browser.</div>
+
+<div id="status">Initializing…</div>
+
+<div id="app" hidden>
+    <div id="chatbox"></div>
+    <div id="input-row">
+        <input id="user-input" type="text" placeholder="Type a message and press Enter…" autocomplete="off" />
+        <button id="send-button">Send</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/pyodide/v0.29.4/full/pyodide.js"></script>
 <script src="python.js"></script>
 </body>
 </html>
@@ -96,83 +168,99 @@ inicialización de JavaScript:
 
 ```javascript
 async function setupPyodide() {
-    const pyodide = await loadPyodide();
-    await pyodide.loadPackage("micropip");
+    const status = document.getElementById("status");
+    const setStatus = (msg) => { if (status) status.textContent = msg; };
 
-    // JavaScript functions to register with the Python environment
+    setStatus("Loading Pyodide…");
+    const pyodide = await loadPyodide({
+        indexURL: "https://cdn.jsdelivr.net/pyodide/v0.29.4/full/",
+    });
+
+    setStatus("Loading Python packages (openai, httpx, ssl)…");
+    await pyodide.loadPackage(["openai", "httpx", "ssl"]);
+
     const jsModule = {
         async displayResponse(response) {
             const chatbox = document.getElementById("chatbox");
-            chatbox.innerHTML += `<div><strong>AI:</strong> ${response}</div>`;
-        }
+            const div = document.createElement("div");
+            div.className = "msg ai";
+            div.innerHTML = `<strong>AI:</strong> `;
+            div.appendChild(document.createTextNode(response));
+            chatbox.appendChild(div);
+            chatbox.scrollTop = chatbox.scrollHeight;
+            setSending(false);
+        },
+        async displayError(message) {
+            const chatbox = document.getElementById("chatbox");
+            const div = document.createElement("div");
+            div.className = "msg err";
+            div.innerHTML = `<strong>Error:</strong> `;
+            div.appendChild(document.createTextNode(message));
+            chatbox.appendChild(div);
+            chatbox.scrollTop = chatbox.scrollHeight;
+            setSending(false);
+        },
     };
-
     pyodide.registerJsModule("js_module", jsModule);
 
+    setStatus("Fetching app bundle…");
     await pyodide.runPythonAsync(`
-        import micropip
-        import os
         from pyodide.http import pyfetch
-
-        response = await pyfetch("app.tar.gz")
+        response = await pyfetch("build/app.tar.gz")
         await response.unpack_archive()
-
-        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/multidict/multidict-4.7.6-py3-none-any.whl', keep_going=True)
-        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/frozenlist/frozenlist-1.4.0-py3-none-any.whl', keep_going=True)
-        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/aiohttp/aiohttp-4.0.0a2.dev0-py3-none-any.whl', keep_going=True)
-        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/openai/openai-1.3.7-py3-none-any.whl', keep_going=True)
-        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/urllib3/urllib3-2.1.0-py3-none-any.whl', keep_going=True)
-        await micropip.install("ssl")
-        import ssl
-        await micropip.install("httpx", keep_going=True)
-        import httpx
-        await micropip.install('https://raw.githubusercontent.com/psymbio/pyodide_wheels/main/urllib3/urllib3-2.1.0-py3-none-any.whl', keep_going=True)
-        import urllib3
-        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
         from main import sender_message_proxy
     `);
-    
-    // Prompt the user for the OpenAI API key
-    const apiKey = window.prompt("Please enter your OpenAI API key:");
 
-    // Add the HTML content after Pyodide setup.
-    document.body.innerHTML += `
-        <h1>Pyodide Chat with AI Assistant</h1>
-        <div id="chatbox"></div>
-        <input type="text" id="user-input" placeholder="Type your message...">
-        <button id="send-button">Send</button>
-    `;
+    const apiKey = window.prompt("Please enter your OpenRouter API key:");
+    if (!apiKey) {
+        setStatus("No API key provided. Reload to try again.");
+        return;
+    }
+
+    setStatus("Ready.");
+    document.getElementById("app").hidden = false;
 
     const sendMessageToPython = pyodide.globals.get("sender_message_proxy");
+    const userInput = document.getElementById("user-input");
+    const sendButton = document.getElementById("send-button");
 
-    // Add event listener to send button
-    document.getElementById("send-button").addEventListener("click", () => {
-        const userInput = document.getElementById("user-input").value;
-        document.getElementById("user-input").value = "";
+    function setSending(isSending) {
+        sendButton.disabled = isSending;
+        userInput.disabled = isSending;
+        sendButton.textContent = isSending ? "…" : "Send";
+        if (!isSending) userInput.focus();
+    }
+
+    function send() {
+        const text = userInput.value.trim();
+        if (!text) return;
+        userInput.value = "";
+
         const chatbox = document.getElementById("chatbox");
-        chatbox.innerHTML += `<div><strong>You:</strong> ${userInput}</div>`;
+        const div = document.createElement("div");
+        div.className = "msg you";
+        div.innerHTML = `<strong>You:</strong> `;
+        div.appendChild(document.createTextNode(text));
+        chatbox.appendChild(div);
+        chatbox.scrollTop = chatbox.scrollHeight;
 
-        sendMessageToPython(apiKey, userInput);
+        setSending(true);
+        sendMessageToPython(apiKey, text);
+    }
+
+    sendButton.addEventListener("click", send);
+    userInput.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") send();
     });
+    userInput.focus();
 
-    // Add event listener for the Enter key on the input field
-    document.getElementById("user-input").addEventListener("keypress", (event) => {
-        if (event.key === "Enter") {
-            document.getElementById("send-button").click();
-        }
-    });
-
-    await pyodide.runPythonAsync(`
+    pyodide.runPythonAsync(`
         from main import main as py_main
-
         await py_main()
     `);
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    setupPyodide();
-});
+document.addEventListener("DOMContentLoaded", setupPyodide);
 ```
 
 #### Aspectos Clave del Código JavaScript
@@ -181,21 +269,21 @@ document.addEventListener("DOMContentLoaded", function() {
   asegura que los paquetes de Python necesarios estén disponibles a través de
 `micropip`.
 
-- **Solicitud de la Clave API**: Para asegurar la interacción con GPT-3.5
-  Turbo, se requiere una clave API. Esto se obtiene a través de un aviso del
+- **Solicitud de la Clave API**: Para asegurar la interacción con GPT-5.4-mini,
+se requiere una clave API. Esto se obtiene a través de un aviso del
 navegador cuando la aplicación se carga por primera vez.
 
 - **Interoperabilidad JavaScript-Python**: Usando `pyodide.registerJsModule`,
   creamos un puente entre JavaScript y Python. Esto permite que Python llame a
 una función de JavaScript (`displayResponse`), que actualiza el cuadro de chat
-con las respuestas de GPT-3.5 Turbo.
+con las respuestas de GPT-5.4-mini.
 
 - **Carga de la Lógica del Backend**: La lógica del backend se encapsula en
   Python e integra a través de `pyodide.runPythonAsync`. Esto permite que los
 módulos definidos en Python sean transparentes para JavaScript como funciones
 sincrónicas.
 
-### Python: Manejo de Conversaciones con GPT-3.5 Turbo
+### Python: Manejo de Conversaciones con GPT-5.4-mini
 
 El corazón de la aplicación involucra una serie de componentes de Python que
 gestionan la comunicación con la API de OpenAI:
@@ -203,64 +291,84 @@ gestionan la comunicación con la API de OpenAI:
 #### Backend de Python (`main.py`)
 
 ```python
+"""Pyodide-side chat backend.
+
+Runs inside the browser via Pyodide (WASM). Modern Pyodide (>= 0.27.2) ships
+`openai`, `httpx`, and `urllib3` as bundled packages with built-in
+Emscripten/Fetch transports, so no custom HTTP transport is needed anymore.
+"""
+
 import asyncio
-import json
-from urllib.parse import quote_plus
 
 import httpx
 import openai
 from pyodide.ffi import create_proxy
-import urllib3
-
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 import js_module
 
-
-class URLLib3Transport(httpx.AsyncBaseTransport):
-    def __init__(self) -> None:
-        self.pool = urllib3.PoolManager()
-
-    async def handle_async_request(self, request: httpx.Request) -> httpx.Response:
-        payload = json.loads(request.content.decode("utf-8").replace("'", '"'))
-        urllib3_response = self.pool.request(
-            request.method,
-            str(request.url),
-            headers=request.headers,
-            json=payload,
-        )
-        content = json.loads(
-            urllib3_response.data.decode("utf-8")
-        )
-        stream = httpx.ByteStream(
-            json.dumps(content).encode("utf-8")
-        )
-        headers = [(b"content-type", b"application/json")]
-        return httpx.Response(200, headers=headers, stream=stream)
-
-
-client: httpx.AsyncClient = httpx.AsyncClient(transport=URLLib3Transport())
-openai_client: openai.AsyncOpenAI = openai.AsyncOpenAI(
-    base_url="https://api.openai.com/v1/", api_key="", http_client=client
+MODEL = "openai/gpt-5.4-mini"
+SYSTEM_PROMPT = (
+    "You are a concise, friendly assistant running inside a Pyodide-powered "
+    "browser chat. Keep answers short unless the user asks for detail."
 )
+
+# OpenRouter's CORS preflight rejects the openai SDK's auto-injected
+# x-stainless-* headers. Strip them with an httpx request hook before send.
+_STAINLESS_HEADERS = {
+    "x-stainless-lang",
+    "x-stainless-package-version",
+    "x-stainless-os",
+    "x-stainless-arch",
+    "x-stainless-runtime",
+    "x-stainless-runtime-version",
+    "x-stainless-async",
+    "x-stainless-retry-count",
+    "x-stainless-read-timeout",
+}
+
+
+async def _strip_stainless(request: httpx.Request) -> None:
+    request.headers = httpx.Headers(
+        {k: v for k, v in request.headers.items() if k.lower() not in _STAINLESS_HEADERS}
+    )
+
+
+_http_client = httpx.AsyncClient(event_hooks={"request": [_strip_stainless]})
+
+openai_client: openai.AsyncOpenAI = openai.AsyncOpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key="placeholder",
+    http_client=_http_client,
+    default_headers={
+        "HTTP-Referer": "http://localhost",
+        "X-Title": "Pyodide Chat GPT2",
+    },
+)
+
+history: list[dict[str, str]] = [{"role": "system", "content": SYSTEM_PROMPT}]
+
 message_queue: asyncio.Queue[tuple[str, str]] = asyncio.Queue()
 loop: asyncio.AbstractEventLoop | None = None
 
 
 async def handle_message(api_key: str, message: str) -> None:
     openai_client.api_key = api_key
-    response = await openai_client.chat.completions.create(
-        messages=[
-            {
-                "role": "user",
-                "content": quote_plus(message),
-            }
-        ],
-        model="gpt-3.5-turbo",
-        max_tokens=4096,
-        temperature=0.2,
-    )
-    await js_module.displayResponse(response.choices[0].message.content)
+    history.append({"role": "user", "content": message})
+    try:
+        response = await openai_client.chat.completions.create(
+            model=MODEL,
+            messages=history,
+            max_completion_tokens=1024,
+            temperature=0.2,
+        )
+        reply = response.choices[0].message.content or ""
+        history.append({"role": "assistant", "content": reply})
+        await js_module.displayResponse(reply)
+    except Exception as exc:
+        # Roll back the just-appended user turn so a retry doesn't duplicate it.
+        if history and history[-1].get("role") == "user":
+            history.pop()
+        await js_module.displayError(f"{type(exc).__name__}: {exc}")
 
 
 async def receiver() -> None:
@@ -300,7 +408,7 @@ lentas de red.
 
 - **Manejo de Mensajes**: La función `handle_message` gestiona la interacción
   con la API de OpenAI. Construye una solicitud usando la entrada del usuario,
-la envía a GPT-3.5 Turbo, y devuelve la respuesta de la IA al frontend a
+la envía a GPT-5.4-mini, y devuelve la respuesta de la IA al frontend a
 través de la función `displayResponse` proporcionada en `js_module`.
 
 - **Conexión con JavaScript**: El `sender_message_proxy` es un puente
@@ -348,8 +456,9 @@ producción.
 
 ```{note}
 
-Puedes encontrar el código completo aquí: https://github.com/jpchauvel/pyodide-chat-gpt
+Puedes encontrar el código completo aquí: https://github.com/jpchauvel/pyodide-chat-gpt2
+(Con este código, puedes probarlo con tokens de OpenRouter).
 
 [¡Pruébalo ahora!](https://chauvel.org/blog/pyodide-chat-gpt/)
-
+(Necesitas un token de OpenAI)
 ```
